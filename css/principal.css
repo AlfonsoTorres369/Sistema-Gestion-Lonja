@@ -524,7 +524,7 @@
     max-height: 340px;
     overflow-y: scroll;
   }
-  
+
   .container {
     width: 100%;
     padding-right: 15px;
@@ -535,25 +535,25 @@
   
   @media (min-width: 576px) {
     .container {
-      max-width: 540px;
+      max-width: 100%;
     }
   }
   
   @media (min-width: 768px) {
     .container {
-      max-width: 720px;
+      max-width: 100%;
     }
   }
   
   @media (min-width: 992px) {
     .container {
-      max-width: 960px;
+      max-width: 100%;
     }
   }
   
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px;
+      max-width: 100%;
     }
   }
   
