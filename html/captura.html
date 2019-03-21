@@ -17,13 +17,15 @@
 
     <!-- Bootstrap core CSS -->
     <link href="../css/boostrap.css" rel="stylesheet">
+    <link href="../css/lonja.css" rel="stylesheet">
+
 
 </head>
 
 <body>
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="principal.html"><img src="../images/Aquabid.png" width="55px"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -52,6 +54,7 @@
         </nav>
     </header>
 
+    <!--
     <p>Zona de captura</p>
     <select>
         <option>Cantábrico</option>
@@ -70,15 +73,58 @@
 
     <p>Barco</p>
     <input type="text" name="Barco">
+    -->
+    <!-- Page Content -->
+    <div class="ncontainer">
+        <div class="ncontainer-interno">
+            <form>
+                <div class="form-row center">
+                    <div class="form-group col-md-12">
+                        <label for="Zona captura">Zona captura:</label>
+                        <select class="form-control">
+                            <option>Cantábrico</option>
+                            <option>Atlántico</option>
+                            <option>Mediterráneo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row center">
+                    <div class="form-group col-md-12">
+                        <label for="Producto">Producto:</label>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="form-row center">
+                    <div class="form-group col-md-12">
+                        <label for="Producto">Peso:</label>
+                        <input class="form-control" type="number">
+                    </div>
+                </div>
+                <div class="form-row center">
+                    <div class="form-group col-md-12">
+                        <label for="Producto">Tamaño:</label>
+                        <input class="form-control" type="number">
+                    </div>
+                </div>
+                <div class="form-row center">
+                    <div class="form-group col-md-12">
+                        <label for="Producto">Barco:</label>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /.container -->
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
-            </div>
-            <!-- /.container -->
-        </footer>
-    
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
 </body>
 
 </html>

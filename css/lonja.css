@@ -1,0 +1,27 @@
+.nnavbar{
+    padding: 0 1rem;
+}
+
+.nrow {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  .ncontainer {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 50px auto 0 auto;
+  }
+
+  .ncontainer-interno{
+      margin: 0 2.5%;
+  }
+
+  .center{
+    width: 50%;
+    margin: auto;
+  }
