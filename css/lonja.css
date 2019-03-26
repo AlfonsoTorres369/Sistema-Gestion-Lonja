@@ -25,3 +25,11 @@
     width: 50%;
     margin: auto;
   }
+
+  .npadding{
+    padding: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
