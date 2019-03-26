@@ -28,8 +28,31 @@
 
   .npadding{
     padding: 1.5rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
+  }
+
+  .form-boton{
+    text-align: center;
+  }
+
+  .submit-boton{
+    padding: 1.5rem 0;
+  }
+
+  .div-inline{
+    display: inline;
+  }
+
+  .input-decorator-radius-right{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .input-decorator-radius-left{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .img-input-decorator{
+    width: 20px;
+    background: rgb(233, 236, 239);
   }

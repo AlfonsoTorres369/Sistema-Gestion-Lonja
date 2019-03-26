@@ -54,26 +54,6 @@
         </nav>
     </header>
 
-    <!--
-    <p>Zona de captura</p>
-    <select>
-        <option>Cantábrico</option>
-        <option>Atlántico</option>
-        <option>Mediterráneo</option>
-    </select>
-
-    <p>Producto</p>
-    <input type="text" name="Pescado">
-
-    <p>Peso</p>
-    <input type="number" name="Peso">
-
-    <p>Tamaño</p>
-    <input type="number" name="Tamaño">
-
-    <p>Barco</p>
-    <input type="text" name="Barco">
-    -->
     <!-- Page Content -->
     <div class="ncontainer">
         <div class="ncontainer-interno">
@@ -81,35 +61,56 @@
                 <div class="form-row center">
                     <div class="form-group col-md-12">
                         <label for="Zona captura">Zona captura:</label>
-                        <select class="form-control">
-                            <option>Cantábrico</option>
-                            <option>Atlántico</option>
-                            <option>Mediterráneo</option>
-                        </select>
+                        <div class="input-group-prepend">
+                            <div class="input-group-text input-decorator-radius-right"><img src="../images/location.png"
+                                    class="img-input-decorator"></div>
+                            <select class="form-control">
+                                <option>Cantábrico</option>
+                                <option>Atlántico</option>
+                                <option>Mediterráneo</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row center">
                     <div class="form-group col-md-12">
                         <label for="Producto">Producto:</label>
-                        <input class="form-control" type="text">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text input-decorator-radius-right">Kg</div>
+                            <input class="form-control input-decorator-radius-left" type="text">
+                        </div>
                     </div>
                 </div>
                 <div class="form-row center">
                     <div class="form-group col-md-12">
                         <label for="Producto">Peso:</label>
-                        <input class="form-control" type="number">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text input-decorator-radius-right">Kg</div>
+                            <input class="form-control input-decorator-radius-left" type="text">
+                        </div>
                     </div>
                 </div>
                 <div class="form-row center">
                     <div class="form-group col-md-12">
                         <label for="Producto">Tamaño:</label>
-                        <input class="form-control" type="number">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text input-decorator-radius-right">cm</div>
+                            <input class="form-control input-decorator-radius-left" type="text">
+                        </div>
                     </div>
                 </div>
                 <div class="form-row center">
                     <div class="form-group col-md-12">
                         <label for="Producto">Barco:</label>
-                        <input class="form-control" type="text">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text input-decorator-radius-right">Kg</div>
+                            <input class="form-control input-decorator-radius-left" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-boton center submit-boton">
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
             </form>
