@@ -1,35 +1,69 @@
-.nnavbar{
-    padding: 0 1rem;
+.nnavbar {
+  padding: 0 1rem;
 }
 
 .nrow {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-top: 50px;
-  }
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
 
-  .ncontainer {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin: 50px auto 0 auto;
-  }
+.ncontainer {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 50px auto 0 auto;
+}
 
-  .ncontainer-interno{
-      margin: 0 2.5%;
-  }
+.ncontainer-interno {
+  margin: 0 2.5%;
+}
 
-  .center{
-    width: 50%;
-    margin: auto;
-  }
+.center {
+  width: 50%;
+  margin: auto;
+}
 
-  .npadding{
-    padding: 1.5rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-  }
+.npadding {
+  padding: 1.5rem;
+}
+
+.form-boton {
+  text-align: center;
+}
+
+.submit-boton {
+  padding: 1.5rem 0;
+}
+
+.div-inline {
+  display: inline;
+}
+
+.input-decorator-radius-right {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-decorator-radius-left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.img-input-decorator {
+  width: 20px;
+  background: rgb(233, 236, 239);
+}
+
+select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+.nav-item-principal{
+  margin: 0 1rem;
+}
+
