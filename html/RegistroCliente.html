@@ -9,9 +9,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <title>Registro</title>
+    <title>REGISTRO</title>
+    <link rel="shortcut icon" href="../images/Aquabid.png">
     </head>
     <body onload="BotonPulsable()">
+        
+         <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+            <div id="header" class="container">
+                <a class="navbar-brand" href="principal.html"><img src="../images/Aquabid.png" width="55px"></a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal active">
+                            <a class="nav-link" href="principal.html">Home</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="captura.html">Captura</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="subastas.html">Subastas</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="#">Subastas Express</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Notificaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Perfil</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
         
         <div id="formularioCliente" class="container">
         <br>
@@ -34,7 +69,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="telefonoC">Teléfono:</label>
-                    <input type="number" class="form-control" placeholder="675871500" id="telefonoC">
+                    <input type="number" maxlength="9" class="form-control" placeholder="675871500" id="telefonoC">
                 </div>
             </div>
             <div class="form-row">
@@ -55,17 +90,17 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="cip">CIP:</label>
-                    <input type="cip" class="form-control" placeholder="exampleCIP" id="cip">
+                    <input type="number" maxlenght="6" class="form-control" placeholder="666666" id="cip">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="direccion">Dirección:</label>
-                    <input type="direccion" class="form-control" placeholder="C/Motilla del palancar,32" id="direccion">
+                    <input type="adress" class="form-control" placeholder="C/Motilla del palancar,32" id="direccion">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="telefonoE">Teléfono:</label>
-                    <input type="number" class="form-control" placeholder="913458761" id="telefonoE">
+                    <input type="number" maxlenght="9" class="form-control" placeholder="913458761" id="telefonoE">
                 </div>
             </div>
             <div class="form-boton">
@@ -73,6 +108,13 @@
             </div>
         </form>
         </div>
+         <!-- Footer -->
+    <footer class="npadding bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
     
     </body>
 
