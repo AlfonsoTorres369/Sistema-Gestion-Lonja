@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../css/RegistroCliente.css">
+     <link rel="stylesheet" href="../css/lonja.css">
+    <script src="../js/RegistroCliente.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <title>Registro</title>
+    </head>
+    <body onload="BotonPulsable()">
+        
+        <div id="formularioCliente" class="container">
+        <br>
+            <h1 class="text-center">Registro de Cliente</h1>
+        <form name="registrocliente" onsubmit="return Registro()" method="post">
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombreC">Nombre:</label>
+                <input type="text" class="form-control" placeholder="Daniel" name="nombreC">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" class="form-control" placeholder="Sánchez García" id="apellidos">
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" class="form-control" placeholder="Dani365" id="usuario">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefonoC">Teléfono:</label>
+                    <input type="number" class="form-control" placeholder="675871500" id="telefonoC">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" placeholder="example@mail.com" id="email">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+            </div>
+            <h1 class="text-center">Datos de la Empresa</h1>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nombreE">Nombre:</label>
+                    <input type="text" class="form-control" placeholder="Percebesa" id="nombreE">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cip">CIP:</label>
+                    <input type="cip" class="form-control" placeholder="exampleCIP" id="cip">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="direccion">Dirección:</label>
+                    <input type="direccion" class="form-control" placeholder="C/Motilla del palancar,32" id="direccion">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefonoE">Teléfono:</label>
+                    <input type="number" class="form-control" placeholder="913458761" id="telefonoE">
+                </div>
+            </div>
+            <div class="form-boton">
+            <button type="submit" class="btn btn-primary" id="BotonRegistro" >Registrarse</button>
+            </div>
+        </form>
+        </div>
+    
+    </body>
+
+</html>

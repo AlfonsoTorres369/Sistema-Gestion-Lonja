@@ -1,0 +1,10 @@
+
+.form-boton{
+    text-align: center;
+}
+
+@media (min-width: 992px){
+    .container{
+     max-width: 720px;
+}
+}
