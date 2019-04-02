@@ -67,3 +67,11 @@ select.form-control {
   margin: 0 1rem;
 }
 
+body{
+   background-image: url(../images/oceano.jpg);
+   background-position: 0% 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+   font-family: 'Comfortaa', cursive;
+}
+

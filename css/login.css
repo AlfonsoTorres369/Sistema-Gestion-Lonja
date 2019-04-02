@@ -1,9 +1,5 @@
 
 #fondoMar{
-   background-image: url(../images/oceano.jpg);
-   background-position: 0% 100%;
-   background-size: cover;
-   background-repeat: no-repeat;
    align-items: center;
    text-align: ;
    display: flex;
@@ -20,6 +16,9 @@
 
 #datosLogin{
   font-family: 'Comfortaa', cursive;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  background-color: white;
 }
 
 #logoAquabid{
@@ -58,3 +57,9 @@
   font-family: 'Comfortaa', cursive;
 }
 
+body{
+  background-image: url(../images/oceano.jpg);
+   background-position: 0% 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+}
