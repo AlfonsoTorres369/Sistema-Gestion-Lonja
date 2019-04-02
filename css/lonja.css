@@ -14,7 +14,7 @@
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-  margin: 50px auto 0 auto;
+  margin: 6.75rem auto 0 auto;
 }
 
 .ncontainer-interno {
@@ -67,3 +67,26 @@ select.form-control {
   margin: 0 1rem;
 }
 
+.mg-bot-1{
+  margin-bottom: 1rem;
+}
+
+.mg-top-1{
+  margin-top: 1rem;
+}
+
+.al-left{
+  text-align: left;
+}
+
+.al-right{
+  text-align: right;
+}
+
+.form-captura{
+  margin-bottom: 3rem;
+  margin-top: 6.75rem;
+  border-radius: 1rem;
+  padding-bottom: 0.5rem;
+  background-color:white;
+}
