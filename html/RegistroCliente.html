@@ -27,6 +27,10 @@
     </header>
 
     <div id="formularioCliente" class="shadow-lg container">
+    </head>
+    <body onload="BotonPulsable()" id="bprincipal">
+        
+        <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Registro de Cliente</h1>
         <p id="aviso">
@@ -64,6 +68,7 @@
                     <input type="password" class="form-control" id="password" placeholder="Contraseña">
                 </div>
             </div>
+            <br>
             <h1 class="text-center">Datos de la Empresa</h1>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -75,7 +80,7 @@
                     <input type="number" maxlenght="6" class="form-control" placeholder="CIP" id="cip">
                 </div>
             </div>
-            <div class="form-row">
+            <div id="ultimoscampos" class="form-row">
                 <div class="form-group col-md-6">
                     <label for="direccion">Dirección:</label>
                     <input type="adress" class="form-control" placeholder="Dirección" id="direccion">
