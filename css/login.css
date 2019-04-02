@@ -1,0 +1,60 @@
+
+#fondoMar{
+   background-image: url(../images/oceano.jpg);
+   background-position: 0% 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+   align-items: center;
+   text-align: ;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+   text-align: center;
+   min-height: 100vh;
+   align-items: center;
+   font-family: 'Comfortaa', cursive;
+   font-weight: 800;
+   color: #000000;
+ }
+
+#datosLogin{
+  font-family: 'Comfortaa', cursive;
+}
+
+#logoAquabid{
+  max-height: 48vh;
+  max-width: auto; 
+}
+
+.btn-login {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: : 0.75rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group>input{
+  padding: 0.8rem;
+  height: auto;
+}
+
+.form-label-group>label {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.npadding{
+  padding: 1.5rem;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  font-family: 'Comfortaa', cursive;
+}
+
