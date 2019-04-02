@@ -10,7 +10,13 @@
 }
 
 #formularioCliente{
+   
+    
     margin-bottom: 3rem;
+    margin-top: 6.75rem;
+    border-radius: 1rem;
+    padding-bottom: 0.5rem;
+    background-color:white;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -25,7 +31,24 @@ input[type=number] { -moz-appearance:textfield; }
     padding-left: 15px;
 }
 
+#bprincipal{
+    font-family: 'Comfortaa', cursive;
+}
 
+aviso{
+    color:firebrick;
+}
 
+.btn-login{
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem;
+}
+body{
+    background-image:url(../images/oceano.jpg);
+    background-position: 0% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 
