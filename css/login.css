@@ -1,29 +1,15 @@
 
-#fondoMar{
-   align-items: center;
-   text-align: ;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   width: 100%;
-   text-align: center;
-   min-height: 100vh;
-   align-items: center;
-   font-family: 'Comfortaa', cursive;
-   font-weight: 800;
-   color: #000000;
- }
-
-#datosLogin{
-  font-family: 'Comfortaa', cursive;
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
-  background-color: white;
-}
-
 #logoAquabid{
   max-height: 48vh;
-  max-width: auto; 
+  max-width: auto;
+  margin-top: 1rem; 
+}
+
+#subLogoAquabid{
+  max-height: 3vh;
+  max-width: auto;
+  margin-bottom: 3rem; 
+
 }
 
 .btn-login {
@@ -54,7 +40,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-  font-family: 'Comfortaa', cursive;
 }
 
 body{
@@ -62,4 +47,16 @@ body{
    background-position: 0% 100%;
    background-size: cover;
    background-repeat: no-repeat;
+   font-family: 'Comfortaa', cursive;
+}
+
+#formularioLogin{
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    background-color:white;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

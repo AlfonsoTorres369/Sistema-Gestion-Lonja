@@ -2,39 +2,40 @@
 <html lang="es">
   <head>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,800&effect=3d-float" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet"> 
 	<link href="../css/login.css" rel="stylesheet">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<link rel="shortcut icon" type="image/png" href="../images/Aquabid.png">
 </head>
-<title>LOGIN</title>
-<link rel="shortcut icon" type="image/png" href="../images/Aquabid.png">
+
 <body>
-	<div class="container-fluid">
-	  <div class="row no-gutter">
-	    <div id="fondoMar" class="d-none d-md-flex col-md-7 col-lg-7">
-	      <h1 class="font-effect-3d-float font-weight-bold"> AQUABID</h1>
-	      <h2 class="font-effect-3d-float"> El mar a un click de distancia</h2>
-	    </div>
-	    <div id="datosLogin" class="col-md-5 col-lg-5 pt-5">
-	      <img id="logoAquabid" class="img-fluid mx-auto d-block" src="../images/Aquabid.png">
-	      <div class="login d-flex align-items-center py-5">
+	<div id="formularioLogin" class="shadow-lg container">
+		<img id="logoAquabid" class="img-fluid mx-auto d-block" src="../images/Aquabid.png">
+		<img id="subLogoAquabid" class="img-fluid mx-auto d-block" src="../images/Aquabid sub.png">
+	      <div class="login align-items-center py-1">
 	        <div class="container">
 	          <div class="row">
-	            <div class="col-md-9 col-lg-8 mx-auto">
-	              <h3 class="login-heading mb-4">Bienvenido a Aquabid</h3>
+	            <div class="col-md-11 col-lg-11 mx-auto">
 	              <form>
-	                <div class="form-label-group">
-	                  <label for="inputPassword">Dirección de email:</label>
-	                  <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de email" required autofocus>
-	                </div>
-	                <div class="form-label-group mt-3">
-	                  <label for="inputPassword">Contraseña:</label>
-	                  <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
-	                </div>
+	              	<div class="row">
+	              		<div class="form-group col-md-6">
+	              			<div class="form-label-group">
+	                  			<label for="inputPassword">Dirección de email:</label>
+	                  			<input type="email" id="inputEmail" class="form-control" placeholder="Dirección de email" required autofocus>
+	                		</div>
+	                	</div>
+	                	<div class="col-md-6">
+	              			<div class="form-label-group">
+	                  			<label for="inputPassword">Contraseña:</label>
+	                  			<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+	                		</div>
+	                	</div>
+					</div>   
 	                <div class="custom-control custom-checkbox mb-3">
 	                  <input type="checkbox" class="custom-control-input" id="customCheck1">
 	                  <label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
@@ -44,15 +45,15 @@
 	                	<a href="RegistroCliente.html" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"> Registro </a>
 	                </div>
 	                <div class="text-center">
-	                  <a class="small" href="#">¿Ha olvidado su contraseña?</a></div>
-	              </form>
-	            </div>
+	                  <a class="small" href="RecuperarContraseña-Email.html">¿Ha olvidado su contraseña?</a>
+	              </div>
+	            </form>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
-	  </div>
 	</div>
+
 	<footer class="npadding bg-dark">
 	        <div class="container">
 	            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
