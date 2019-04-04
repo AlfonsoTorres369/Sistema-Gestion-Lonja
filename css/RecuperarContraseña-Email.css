@@ -1,0 +1,48 @@
+
+.form-boton{
+    text-align: center;
+}
+
+@media (min-width: 992px){
+    #formularioCliente{
+     max-width: 720px;
+}
+}
+
+#formularioCliente{
+    margin-bottom: 11.33rem;
+    margin-top: 11.33rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color:white;
+    padding-top: 1rem;
+}
+
+#header{
+    padding-left: 15px;
+}
+
+#bprincipal{
+    font-family: 'Comfortaa', cursive;
+}
+
+
+.btn-login{
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem;
+}
+body{
+    background-image:url(../images/oceano.jpg);
+    background-position: 0% 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1{
+    margin-bottom: 2rem;
+}
+
+#ultimoscampos{
+    margin-bottom: 1rem;
+}
