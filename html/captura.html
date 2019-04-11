@@ -11,6 +11,7 @@
     <title>AQUABID</title>
 
     <link rel="shortcut icon" href="../images/Aquabid.png">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
     <!-- JavaScript -->
     <script language="javascript" type="text/javascript" src="../js/main.js"></script>
@@ -18,11 +19,12 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="../css/lonja.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/RegistroCliente.css">
 
 
 </head>
 
-<body>
+<body id="bprincipal ">
     <!-- Navigation -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
@@ -59,29 +61,37 @@
     </header>
 
     <!-- Page Content -->
-        <div class="form-captura shadow-lg container">
-            <form>
-                <div class="form-row center">
+    <br>
+    <br>
+    <div id="formularioCliente" class="shadow-lg container">
+            <br>
+            <h1 class="text-center">Captura</h1>
+            <p id="aviso">
+                <font color="red"><strong>TODOS</strong></font> los campos son obligatorios
+            </p>
+            <form name="captura">
+                <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="Producto">Barco:</label>
                         <div class="input-group-prepend">
                             <div class="input-group-text input-decorator-radius-right"><img src="../images/barco.png"
                                     class="img-input-decorator"></div>
-                            <input class="form-control input-decorator-radius-left" type="text">
+                            <input class="form-control input-decorator-radius-left" placeholder="Barco" type="text">
                         </div>
                     </div>
                 </div>
 
                 <!-- LOTE 1 -->
                 <div>
-                    <h3 class="center mg-top-1 mg-bot-1">Lote 1</h3>
-                    <div class="form-row center">
+                    <h3 class="mg-top-1 mg-bot-1">Lote</h3>
+                    <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="Zona captura">Zona captura:</label>
                             <div class="input-group-prepend">
                                 <div class="input-group-text input-decorator-radius-right"><img
                                         src="../images/location.png" class="img-input-decorator"></div>
                                 <select class="form-control rounded-right">
+                                    <option disabled selected value> Zona captura </option>
                                     <option>Cantábrico</option>
                                     <option>Atlántico</option>
                                     <option>Mediterráneo</option>
@@ -89,200 +99,66 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row center">
+                    <div class="form-row ">
                         <div class="form-group col-md-12">
                             <label for="Producto">Producto:</label>
                             <div class="input-group-prepend">
                                 <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png"
                                         class="img-input-decorator"></div>
-                                <input class="form-control input-decorator-radius-left" type="text">
+                                <input class="form-control input-decorator-radius-left" placeholder="Producto" type="text">
                             </div>
                         </div>
                     </div>
-                    <div class="form-row center">
+                    <div class="form-row ">
                         <div class="form-group col-md-12">
                             <label for="Producto">Peso:</label>
                             <div class="input-group-prepend">
                                 <div class="input-group-text input-decorator-radius-right">Kg</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
+                                <input class="form-control input-decorator-radius-left" placeholder="Peso"  type="text">
                             </div>
                         </div>
                     </div>
-                    <div class="form-row center">
+                    <div class="form-row ">
                         <div class="form-group col-md-12">
                             <label for="Producto">Tamaño:</label>
                             <div class="input-group-prepend">
                                 <div class="input-group-text input-decorator-radius-right">cm</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
+                                <input class="form-control input-decorator-radius-left" placeholder="Tamaño" type="text">
                             </div>
                         </div>
                     </div>
 
                     <!-- BOTONES -->
-                    <div class="form-row center">
-                        <div id="añadir1" class="form-boton submit-boton al-left" style="display: block;">
+                    <div class="form-row">
+                       <!-- <div id="añadir1" class="form-boton submit-boton al-left" style="display: block;">
                             <div class="form-group col-md-12">
                                 <button type="button" class="btn btn-secondary"
                                     onclick="mostrarDIV('Lote2'); quitarDIV('añadir1'); quitarDIV('guardar1')">Añadir
                                     Lote</button>
                             </div>
                         </div>
-
-                        <div id="guardar1" class="form-boton submit-boton al-right" style="display: block;">
+                        -->
+                        <div id="guardar1" class="center form-boton submit-boton al-right" style="display: block;">
                             <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <button type="submit" class="btn btn-primary" onclick="guardarCapturas()">Guardar</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- LOTE 2 -->
-                <div id="Lote2" style="display: none;">
-                    <h3 class="center mg-top-1 mg-bot-1">Lote 2</h3>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Zona captura">Zona captura:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right"><img
-                                        src="../images/location.png" class="img-input-decorator"></div>
-                                <select class="form-control rounded-right">
-                                    <option>Cantábrico</option>
-                                    <option>Atlántico</option>
-                                    <option>Mediterráneo</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Producto:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png"
-                                        class="img-input-decorator"></div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Peso:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right">Kg</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Tamaño:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right">cm</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BOTONES -->
-                    <div class="form-row center">
-                        <div id="añadir2" class="form-boton submit-boton al-left" style="display: block;">
-                            <div class="form-group col-md-12">
-                                <button type="button" class="btn btn-secondary"
-                                    onclick="mostrarDIV('Lote3'); quitarDIV('añadir2'); quitarDIV('quitar2'); quitarDIV('guardar2') ">Añadir
-                                    Lote</button>
-                            </div>
-                        </div>
-                        <div id="quitar2" class="form-boton submit-boton al-left" style="display: block;">
-                            <div class="form-group col-md-12">
-                                <button type="button" class="btn btn-secondary"
-                                    onclick="quitarDIV('Lote2'); mostrarDIV('añadir1'); mostrarDIV('guardar1')">Quitar
-                                    Lote</button>
-                            </div>
-                        </div>
-                        <div id="guardar2" class="form-boton submit-boton al-right" style="display: block;">
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LOTE 3 -->
-                <div id="Lote3" style="display: none;">
-                    <h3 class="center mg-top-1 mg-bot-1">Lote 3</h3>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Zona captura">Zona captura:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right"><img
-                                        src="../images/location.png" class="img-input-decorator"></div>
-                                <select class="form-control rounded-right">
-                                    <option>Cantábrico</option>
-                                    <option>Atlántico</option>
-                                    <option>Mediterráneo</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Producto:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png"
-                                        class="img-input-decorator"></div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Peso:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right">Kg</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row center">
-                        <div class="form-group col-md-12">
-                            <label for="Producto">Tamaño:</label>
-                            <div class="input-group-prepend">
-                                <div class="input-group-text input-decorator-radius-right">cm</div>
-                                <input class="form-control input-decorator-radius-left" type="text">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BOTONES -->
-                    <div class="form-row center">
-
-                        <div id="quitar3" class="form-boton submit-boton al-left">
-                            <div class="form-group col-md-12">
-                                <button type="button" class="btn btn-secondary"
-                                    onclick="quitarDIV('Lote3'); mostrarDIV('añadir2'); mostrarDIV('quitar2'); mostrarDIV('guardar2')">Quitar
-                                    Lote</button>
-                            </div>
-                        </div>
-
-                        <div id="guardar3" class="form-boton submit-boton al-right">
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <!-- Aqui va toda la wea de los lotes que he quitado y guardado por si acaso -->
 
             </form>
         </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="npadding bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
-        </div>
         <!-- /.container -->
-    </footer>
+
+        <!-- Footer -->
+        <footer class="npadding bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
+            </div>
+            <!-- /.container -->
+        </footer>
 
 </body>
 
