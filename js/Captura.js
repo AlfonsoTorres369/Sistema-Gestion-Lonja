@@ -1,3 +1,5 @@
+
+/*
 function mostrarElem(id) {
     document.getElementById(id).style.display = 'block';
 }
@@ -5,7 +7,7 @@ function mostrarElem(id) {
 function quitarElem(id) {
     document.getElementById(id).style.display = 'none';
 }
-
+*/
 function guardarCapturas() {
 
     if (confirm("¿Desea introducir más capturas?")) {
