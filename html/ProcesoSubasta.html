@@ -14,17 +14,17 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
     <!-- JavaScript -->
-    <script language="javascript" type="text/javascript" src="../js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/ProcesoSubasta.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
     <link href="../css/lonja.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="../css/RegistroCliente.css">
 
 </head>
 
-<body>
+<body id="bprincipal ">
     <!-- Navigation -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
@@ -33,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal ">
                             <a class="nav-link" href="principal.html">Home</a>
                         </li>
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="captura.html">Captura</a>
                         </li>
-                        <li class="nav-item-principal active">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="subastas.html">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
@@ -65,11 +65,56 @@
     <br>
     <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <a type="button" href="ProcesoSubasta.html" >Subasta 1</a>
+        <h1 class="text-center">Proceso Subasta</h1>
+        <form name="procesoSubasta">
 
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="output">
+                        <p id="precio" class="text-center size-counter">999.99€</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="barco">Barco:</label>
+                    <output type="text" class="form-control" name="barco">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="zonaCaptura">Zona captura:</label>
+                    <output type="text" class="form-control" id="zonaCaptura">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="producto">Producto:</label>
+                    <output type="text" class="form-control" id="producto">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tamaño">Tamaño:</label>
+                    <output type="number" class="form-control" id="tamaño">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="peso">Peso:</label>
+                    <output type="text" class="form-control" id="peso">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="precioSalida">Precio salida:</label>
+                    <output type="text" class="form-control" id="precioSalida">
+                </div>
+            </div>
+            <br>
+
+            <div class="form-boton">
+                <button type="submit"
+                    class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                    id="botonComprar">COMPRAR</button>
+            </div>
+        </form>
     </div>
     <!-- /.container -->
-
 
     <!-- Footer -->
     <footer class="npadding bg-dark">
