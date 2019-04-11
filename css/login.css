@@ -51,6 +51,7 @@ body{
 }
 
 #formularioLogin{
+    max-width: 80vh;
     margin-bottom: 3rem;
     margin-top: 3rem;
     border-radius: 1rem;
