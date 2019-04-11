@@ -108,3 +108,9 @@ body{
 .size-counter{
   font-size: 7rem;
 }
+
+#logoAqBd{
+  max-height: 45vh;
+  max-width: auto;
+  margin-top: 1rem; 
+}
