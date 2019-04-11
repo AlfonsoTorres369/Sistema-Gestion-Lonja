@@ -20,14 +20,14 @@
         
         <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <h1 class="text-center">Registro de Cliente</h1>
+        <h1 class="text-center">Registro de Supervisor</h1>
         <p id="aviso">
             <font color="red"><strong>TODOS</strong></font> los campos son obligatorios
         </p>
         <form name="registrocliente" onsubmit="return Registro()" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="nombreC">Nombre del cliente:</label>
+                    <label for="nombreC">Nombre del supervisor:</label>
                     <input type="text" class="form-control" placeholder="Nombre del cliente" name="nombreC">
                 </div>
                 <div class="form-group col-md-6">
@@ -56,29 +56,12 @@
                     <input type="password" class="form-control" id="password" placeholder="Contraseña">
                 </div>
             </div>
+                <div class="form-group col-md-12">
+                    <label for="codigo">Código Supervisor:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Código">
+                </div>
             <br>
-            <h1 class="text-center">Datos de la Empresa</h1>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="nombreE">Nombre:</label>
-                    <input type="text" class="form-control" placeholder="Nombre de la empresa" id="nombreE">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="cip">CIP:</label>
-                    <input type="number" maxlenght="6" class="form-control" placeholder="CIP" id="cip">
-                </div>
-            </div>
-            <div id="ultimoscampos" class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="direccion">Dirección:</label>
-                    <input type="adress" class="form-control" placeholder="Dirección" id="direccion">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="telefonoE">Teléfono:</label>
-                    <input type="number" maxlenght="9" class="form-control" placeholder="Teléfono de la empresa"
-                        id="telefonoE">
-                </div>
-            </div>
+            
             <div class="form-boton">
                 <button type="submit"
                     class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/RecuperarContrase%C3%B1a-Email.css">
+    <link rel="stylesheet" href="../css/lonja.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <script src="../js/RecuperarContrase%C3%B1a-Email.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Recuperar Contraseña</title>
+    <link rel="shortcut icon" href="../images/Aquabid.png">
+</head>
+
+    
+    <body id="bprincipal">
+        
+        <div id="formularioCliente" class="shadow-lg container">
+        <br>
+        <h1 class="text-center">Recuperación de contraseña</h1>
+            <p>
+                Introduce la dirección de correo electrónico de tu cuenta para reestablecer tu contraseña.
+            </p>
+        <form name="recuperarpass"  action="RecuperarContraseña-Pass.html" method="POST">
+            
+                <div class="form-group col-md-12" id="margeninput">
+                    <label for="email">Dirección de email:</label>
+                    <input type="email" class="form-control" placeholder="Dirección de email" id="email" required>
+                </div>
+            <br>
+            <div class="form-boton">
+                <button type="submit" 
+                    class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                    id="BotonReestablecer">Recuperar</button>
+            </div>
+        </form>
+    </div>
+    <!-- Footer -->
+    <footer class="npadding bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+
+</html>
