@@ -104,3 +104,7 @@ body{
   z-index: 2;
   box-shadow: 2px 2px 2px #000;
 }
+
+.size-counter{
+  font-size: 7rem;
+}
