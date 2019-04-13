@@ -1,6 +1,6 @@
 var proceso;
 
-function BotonPulsable(){
+function BotonPulsablePass(){
     var boton = document.getElementById("BotonRegistro");
     var nombrec = document.forms["registrocliente"]["nombreC"].value;
     var apellidos = document.forms["registrocliente"]["apellidos"].value;
@@ -9,10 +9,8 @@ function BotonPulsable(){
     var email = document.forms["registrocliente"]["email"].value;
     var pass1 = document.forms["registrocliente"]["password"].value;
     var pass2 = document.forms["registrocliente"]["password2"].value;
-    var nombreE = document.forms["registrocliente"]["nombreE"].value;
-    var cip = document.forms["registrocliente"]["cip"].value;
-    var direccion = document.forms["registrocliente"]["direccion"].value;
-    var telefonoE = document.forms["registrocliente"]["telefonoE"].value;
+    var message = document.getElementById("message");
+    var passOK = false;
     
     boton.disabled = true;
     
@@ -25,12 +23,13 @@ function BotonPulsable(){
         passOK = false;   
     }
     
-    if((nombrec != "" && apellidos != "" && usuario !="" && telefonoc != "" && email != "" && nombreE != "" && cip != "" && direccion != "" && telefonoE != "") && passOK){
+    if((nombrec != "" && apellidos != "" && usuario !="" && telefonoc != "" && email != "") && passOK){
         boton.disabled = false;
     }
     else{
         boton.disabled = true;
     }
-    proceso=setInterval(BotonPulsable, 1000);
+    
+    
+    proceso=setInterval(BotonPulsablePass, 1000);
 }
-
