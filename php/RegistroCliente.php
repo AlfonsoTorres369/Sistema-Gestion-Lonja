@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['id_usuario'])){
     header("Location:principal.php");
 }
-include_once 'conexion.php';
+include_once 'Conexion.php';
 
 //Error validacion
 $error=false;
@@ -81,8 +81,12 @@ if(strlen($cuentaBancaria)!=20){
 	$cuentaBancaria_error="El numero de cuenta bancaria es erróneo";
 }
 if(!$error){
-	$sql=mysqli_query($con, "INSERT INTO Clientes (id_usuario, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cip) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cip."')");
-        $successmsg= '
+	$sql=mysqli_query($con, "INSERT INTO Clientes (id_usuario, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."')");
+    if(false==$sql){
+		printf("error: %s\n", mysqli_error($con));
+	}    
+        
+    $successmsg= '
              <div class="alert alert-success alert-dismissable fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>EXITO.!</strong> ¡Registrado exitosamente!

@@ -14,6 +14,9 @@ if (isset($_POST['guardar'])) {
     $sql = "INSERT INTO captura (barco, zona_captura, producto, peso, tamaño) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamaño . "')";
 
     $sql = mysqli_query($con, $sql);
+    if(false==$sql){
+		printf("error: %s\n", mysqli_error($con));
+	}   
     $successmsg = '
         <div class="alert alert-success alert-dismissable fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
