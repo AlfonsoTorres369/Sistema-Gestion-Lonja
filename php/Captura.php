@@ -1,29 +1,34 @@
 <?php
 
 include_once 'Conexion.php';
-
 if (isset($_POST['guardar'])) {
-
     $barco = mysqli_real_escape_string($con, $_POST['barco']);
     $zona_captura = mysqli_real_escape_string($con, $_POST['zona_captura']);
     $producto = mysqli_real_escape_string($con, $_POST['producto']);
     $peso = mysqli_real_escape_string($con, $_POST['peso']);
-    $tamaño = mysqli_real_escape_string($con, $_POST['tamaño']);
+    $tamanio = mysqli_real_escape_string($con, $_POST['tamanio']);
+	$archivo=$_FILES['file-input']['tmp_name'];
+	$size=$_FILES['file-input']['size'];
+		if($archivo !="none"){
+			$fp=fopen($archivo, "rb");
+			$contenido=fread($fp, $size);
+			$contenido=addslashes($contenido);
+			fclose($fp);
+		}
 
-
-    $sql = "INSERT INTO captura (barco, zona_captura, producto, peso, tamaño) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamaño . "')";
+    $sql = "INSERT INTO Captura (barco, zona_captura, producto, peso, tamanio, imagen) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamanio . "', '".$contenido."')";
 
     $sql = mysqli_query($con, $sql);
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
-	}   
+	}
     $successmsg = '
         <div class="alert alert-success alert-dismissable fade in">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             <strong>EXITO.!</strong> Captura guardada exitosamente!
         </div>';
     echo $successmsg;
-    header("Location:Captura.php");
+    //header("Location:Captura.php");
 }
 ?>
 
@@ -50,13 +55,15 @@ if (isset($_POST['guardar'])) {
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
     <link href="../css/lonja.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/RegistroCliente.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+	<link href="css/bootstrap-imgupload.css" rel="stylesheet">
 
 
 </head>
 
 <body id="bprincipal ">
     <!-- Navigation -->
-    <header>
+   <!-- <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
@@ -88,7 +95,7 @@ if (isset($_POST['guardar'])) {
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
 
     <!-- Page Content -->
     <br>
@@ -99,11 +106,12 @@ if (isset($_POST['guardar'])) {
         <p id="aviso">
             <font color="red"><strong>TODOS</strong></font> los campos son obligatorios
         </p>
-        <form name="captura" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form name="captura" enctype="multipart/form-data" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<fieldset>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Barco">Barco:</label>
-                    <div class="input-group-prepend">
+                    <div class="form-input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/barco.png" class="img-input-decorator"></div>
                         <input name="barco" class="form-control input-decorator-radius-left" placeholder="Barco" type="text">
                     </div>
@@ -113,7 +121,7 @@ if (isset($_POST['guardar'])) {
                 <div class="form-group col-md-12">
                     <label for="Zona captura">Zona captura:</label>
                     <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right"><img src="../images/location.png" class="img-input-decorator"></div>
+                        <div class="form-input-group-text input-decorator-radius-right"><img src="../images/location.png" class="img-input-decorator"></div>
                         <select name="zona_captura" class="form-control rounded-right">
                             <option disabled selected value> Zona captura </option>
                             <option>Cantábrico</option>
@@ -127,7 +135,7 @@ if (isset($_POST['guardar'])) {
                 <div class="form-group col-md-12">
                     <label for="Producto">Producto:</label>
                     <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png" class="img-input-decorator"></div>
+                        <div class="form-input-group-text input-decorator-radius-right"><img src="../images/pez.png" class="img-input-decorator"></div>
                         <input name="producto" class="form-control input-decorator-radius-left" placeholder="Producto" type="text">
                     </div>
                 </div>
@@ -136,7 +144,7 @@ if (isset($_POST['guardar'])) {
                 <div class="form-group col-md-12">
                     <label for="Peso">Peso:</label>
                     <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right">Kg</div>
+                        <div class="form-input-group-text input-decorator-radius-right">Kg</div>
                         <input name="peso" class="form-control input-decorator-radius-left" placeholder="Peso" type="text">
                     </div>
                 </div>
@@ -145,32 +153,41 @@ if (isset($_POST['guardar'])) {
                 <div class="form-group col-md-12">
                     <label for="Tamaño">Tamaño:</label>
                     <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right">cm</div>
-                        <input name="tamaño" class="form-control input-decorator-radius-left" placeholder="Tamaño" type="text">
+                        <div class="form-input-group-text input-decorator-radius-right">cm</div>
+                        <input name="tamanio" class="form-control input-decorator-radius-left" placeholder="Tamaño" type="text">
                     </div>
                 </div>
             </div>
             <div class="form-row ">
                 <div class="form-group col-md-12">
-                    <label for="Tamaño">Tamaño:</label>
+                    <label for="Tamaño">Imagen:</label>
                     <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right"><img src="../images/carpeta.png" class="img-input-decorator"></div>
-                        <div class="custom-file">
-                            <input type="file" class="form-control input-decorator-radius-left" id="imagen">
-                            <label class="custom-file-label" for="imagen">Seleccione archivo</label>
-                        </div>
+                        <div class="form-input-group-text input-decorator-radius-right"><img src="../images/carpeta.png" class="img-input-decorator"></div>
+                     <div class="form-group">
+						<div class="imgupload panel panel-default">
+							<div class="panel-heading clearfix">
+						</div>
+						<div class="file-tab panel-body">
+							<div>
+								<button type="button" class="btn btn-default btn-file">
+									<input type="file" name="file-input">
+								</button>
+							</div>
+						</div>
+						</div>
                     </div>
                 </div>
             </div>
+                    <!-- BOTONES -->
+			<div class="form-row">
+				
+					<div class="form-group center-block col-md-12">
+						<button input type="submit" name="guardar" class="btn  btn-primary center-block">Guardar</button>
+					</div>
+			</div>
+           </fieldset>
         </form>
-        <!-- BOTONES -->
-        <div class="form-row">
-            <div id="guardar" class="center form-boton submit-boton al-right" style="display: block;">
-                <div class="form-group col-md-12">
-                    <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- /.container -->
 
@@ -181,6 +198,9 @@ if (isset($_POST['guardar'])) {
         </div>
         <!-- /.container -->
     </footer>
+    <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
+	<script src="js/bootstrap-imgupload.js"></script>
+	<script	$('.img-upload').imgupload();</script>
 
 </body>
 
