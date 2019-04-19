@@ -5,7 +5,7 @@
 
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamaño, peso, precio_salida, precio_minimo, imagen FROM lote';
+$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE subastado = 0';
 
 $result = mysqli_query($con, $sql);
     if (false == $result) {
@@ -20,17 +20,17 @@ if ($num_rows > 0) {
         $barco[] = $row["barco"];
         $zona_captura[] = $row["zona_captura"];
         $producto[] = $row["producto"];
-        $tamaño[] = $row["tamaño"];
+        $tamaño[] = $row["tamanio"];
         $peso[] = $row["peso"];
         $precio_salida[] = $row["precio_salida"];
         $precio_minimo[] = $row["precio_minimo"];
-        $imagen[] = $row["imagen"];
+        //$imagen[] = $row["imagen"];
     }
 } 
 
 
 $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
-
+/*
 //Codigo de prueba
 $num_rows = 3;
 $barco = array('barco1', 'barco2', 'barco3');
@@ -41,7 +41,7 @@ $peso = array('peso1', 'peso2', 'peso3');
 $precio_salida = array('precio_salida1', 'precio_salida2', 'precio_salida3');
 $precio_minimo = 'precio_minimo';
 $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/oceano.jpg');
-
+*/
 ?>
 
 
@@ -117,7 +117,6 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
         <h1 class="text-center">Subastas</h1>
 
         <?php
-
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {

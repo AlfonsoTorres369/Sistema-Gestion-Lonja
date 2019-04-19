@@ -1,13 +1,14 @@
 <?php
 
 //Conexion base de datos
-
-/*
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamaño, peso, precio_salida, precio_minimo, imagen FROM lote';
+$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE ID_Cliente IS NULL AND subastado = 1';
 
 $result = mysqli_query($con, $sql);
+if (false == $result) {
+    printf("error: %s\n", mysqli_error($con));
+}
 
 $num_rows = mysqli_num_rows($result);
 
@@ -17,17 +18,18 @@ if ($num_rows > 0) {
         $barco[] = $row["barco"];
         $zona_captura[] = $row["zona_captura"];
         $producto[] = $row["producto"];
-        $tamaño[] = $row["tamaño"];
+        $tamaño[] = $row["tamanio"];
         $peso[] = $row["peso"];
         $precio_salida[] = $row["precio_salida"];
         $precio_minimo[] = $row["precio_minimo"];
-        $imagen[] = $row["imagen"];
+        //$imagen[] = $row["imagen"];
     }
-} 
-*/
+}
 
-$sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 
+$sin_subastas = '<p>No hay subastas express disponibles en estos momentos.</p>';
+
+/*
 //Codigo de prueba
 $num_rows = 3;
 $barco = array('barco1', 'barco2', 'barco3');
@@ -38,7 +40,7 @@ $peso = array('peso1', 'peso2', 'peso3');
 $precio_salida = array('precio_salida1', 'precio_salida2', 'precio_salida3');
 $precio_minimo = 'precio_minimo';
 $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/oceano.jpg');
-
+*/
 ?>
 
 
@@ -89,7 +91,7 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal active">
-                            <a class="nav-link" href="SubastaExpress.php">Subastas Express</a>
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
 
