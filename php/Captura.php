@@ -16,7 +16,8 @@ if (isset($_POST['guardar'])) {
         fclose($fp);
     }
 
-    $sql = "INSERT INTO Lote (barco, zona_captura, producto, peso, tamanio, imagen) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamanio . "', '" . $contenido . "')";
+
+    $sql = "INSERT INTO Lote (barco, zona_captura, producto, peso, tamanio, imagen, subastado) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamanio . "', '" . $contenido . "', '0')";
 
     $sql = mysqli_query($con, $sql);
     if (false == $sql) {
@@ -58,11 +59,11 @@ if (isset($_POST['guardar'])) {
     <link rel="stylesheet" href="bootstrap.min.css">
     <link href="css/bootstrap-imgupload.css" rel="stylesheet">
 
-
 </head>
 
 <body id="bprincipal ">
     <!-- Navigation -->
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
@@ -96,6 +97,7 @@ if (isset($_POST['guardar'])) {
             </div>
         </nav>
     </header>
+
 
     <!-- Page Content -->
     <br>
@@ -184,9 +186,8 @@ if (isset($_POST['guardar'])) {
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    </form>
-
 
     <!-- /.container -->
 
@@ -197,6 +198,7 @@ if (isset($_POST['guardar'])) {
         </div>
         <!-- /.container -->
     </footer>
+
     <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
     <script src="js/bootstrap-imgupload.js"></script>
     <script $('.img-upload').imgupload();</script> </body> </html>
