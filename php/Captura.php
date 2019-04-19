@@ -172,7 +172,7 @@ if (isset($_POST['guardar'])) {
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/carpeta.png" class="img-input-decorator"></div>
                         <div class="custom-file">
-                            <input type="file" class="form-control input-decorator-radius-left" id="imagen">
+                            <input type="file" class="form-control input-decorator-radius-left" id="imagen" name="file-input">
                         </div>
                     </div>
                 </div>
