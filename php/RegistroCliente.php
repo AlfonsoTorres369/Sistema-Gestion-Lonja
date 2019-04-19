@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['id_usuario'])){
+if(isset($_SESSION['ID_Cliente'])){
     header("Location:principal.php");
 }
 include_once 'Conexion.php';
@@ -27,12 +27,12 @@ if(isset($_POST['signup'])){
 
 
 //Comprobaciones nombre, apellidos, nombreE, direccionE
-if(!preg_match("/^[a-zA-z]+$/",$nombre)){
+if(!preg_match("/^[a-zA-Z ]+$/",$nombre)){
     $error=true;
     $nombre_error="El nombre debe contener solo caracteres del alfabeto y espacio";
 }
 
-if(!preg_match("/^[a-zA-z]+$/",$apellidos)){
+if(!preg_match("/^[a-zA-Z ]+$/",$apellidos)){
     $error=true;
     $apellidos_error="El apellido debe contener solo caracteres del alfabeto y espacio";
 }
@@ -81,7 +81,7 @@ if(strlen($cuentaBancaria)!=20){
 	$cuentaBancaria_error="El numero de cuenta bancaria es erróneo";
 }
 if(!$error){
-	$sql=mysqli_query($con, "INSERT INTO Clientes (id_usuario, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."')");
+	$sql=mysqli_query($con, "INSERT INTO Cliente (ID_Cliente, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."')");
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
 	}    

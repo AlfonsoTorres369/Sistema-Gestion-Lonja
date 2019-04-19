@@ -16,7 +16,7 @@ if (isset($_POST['guardar'])) {
 			fclose($fp);
 		}
 
-    $sql = "INSERT INTO Captura (barco, zona_captura, producto, peso, tamanio, imagen) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamanio . "', '".$contenido."')";
+    $sql = "INSERT INTO Lote (barco, zona_captura, producto, peso, tamanio, imagen,subastado) VALUES('" . $barco . "', '" . $zona_captura . "', '" . $producto . "', '" . $peso . "', '" . $tamanio . "', '".$contenido."', '0')";
 
     $sql = mysqli_query($con, $sql);
     if(false==$sql){
@@ -58,12 +58,11 @@ if (isset($_POST['guardar'])) {
     <link rel="stylesheet" href="bootstrap.min.css">
 	<link href="css/bootstrap-imgupload.css" rel="stylesheet">
 
-
 </head>
 
 <body id="bprincipal ">
     <!-- Navigation -->
-   <!-- <header>
+   <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
@@ -95,7 +94,7 @@ if (isset($_POST['guardar'])) {
                 </div>
             </div>
         </nav>
-    </header> -->
+    </header> 
 
     <!-- Page Content -->
     <br>
@@ -180,9 +179,10 @@ if (isset($_POST['guardar'])) {
             </div>
                     <!-- BOTONES -->
 			<div class="form-row">
-				
-					<div class="form-group center-block col-md-12">
-						<button input type="submit" name="guardar" class="btn  btn-primary center-block">Guardar</button>
+					<div class="form-group col-md-12">
+						<div class="form-boton">
+							<button input type="submit" name="guardar" class="btn btn-primary center-block" >Guardar</button>
+						</div>
 					</div>
 			</div>
            </fieldset>
