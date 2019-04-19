@@ -1,19 +1,14 @@
 <?php
 
 //Conexion base de datos
-    session_start();
-    if(isset($_SESSION['ID_Cliente'])==""){
-        header("Location:../index.php");
-    }
-
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE subastado = 0';
+$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE ID_Cliente IS NULL AND subastado = 1';
 
 $result = mysqli_query($con, $sql);
-    if (false == $result) {
-        printf("error: %s\n", mysqli_error($con));
-    }
+if (false == $result) {
+    printf("error: %s\n", mysqli_error($con));
+}
 
 $num_rows = mysqli_num_rows($result);
 
@@ -27,13 +22,25 @@ if ($num_rows > 0) {
         $peso[] = $row["peso"];
         $precio_salida[] = $row["precio_salida"];
         $precio_minimo[] = $row["precio_minimo"];
-        $imagen[] = $row["imagen"];
+        //$imagen[] = $row["imagen"];
     }
-} 
+}
 
 
-$sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
+$sin_subastas = '<p>No hay subastas express disponibles en estos momentos.</p>';
 
+/*
+//Codigo de prueba
+$num_rows = 3;
+$barco = array('barco1', 'barco2', 'barco3');
+$zona_captura = array('zona_captura1', 'zona_captura2', 'zona_captura3');
+$producto = array('producto1', 'producto2', 'producto3');
+$tamaño = array('tamaño1', 'tamaño2', 'tamaño3');
+$peso = array('peso1', 'peso2', 'peso3');
+$precio_salida = array('precio_salida1', 'precio_salida2', 'precio_salida3');
+$precio_minimo = 'precio_minimo';
+$imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/oceano.jpg');
+*/
 ?>
 
 
@@ -45,7 +52,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Página principal de Aquabid">
+    <meta name="description" content="Página de subastas express de Aquabid">
     <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
 
     <title>Subastas</title>
@@ -80,10 +87,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
-                        <li class="nav-item-principal active">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
@@ -94,9 +101,6 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Perfil.php">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -109,9 +113,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
     <br>
     <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <h1 class="text-center">Subastas</h1>
+        <h1 class="text-center">Subastas express</h1>
 
         <?php
+
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
@@ -119,7 +124,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                 <a href="ProcesoSubasta.php" class="shadow-lg card h-100">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
-                            <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode( $imagen[$x]) . '" alt="Foto del lote">
+                            <img style="width: 100%; height: 100%" src=' . $imagen[$x] . ' alt="Foto del lote">
                         </div>
                         <div class="card-body">
                             <div class="col-md-12">

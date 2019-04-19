@@ -64,7 +64,7 @@ $imagen = '../images/captura.jpg';
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
 

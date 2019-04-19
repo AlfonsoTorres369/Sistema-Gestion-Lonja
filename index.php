@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(isset($_SESSION['ID_Cliente'])!=""){
-        header("Location:php/principal.php");
+        header("Location:php/Principal.php");
     }
     include_once 'php/Conexion.php';
 
@@ -16,7 +16,7 @@
         if($row=mysqli_fetch_array($result)) {
             $_SESSION['ID_Cliente']=$row['ID_Cliente'];
             $_SESSION['usuario']=$row['usuario'];        
-            header("Location:php/principal.php");
+            header("Location:php/Principal.php");
         }
         else if($row=mysqli_fetch_array($result2)){
 				$_SESSION['ID_Admin']=$row['ID_Admin'];

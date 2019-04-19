@@ -33,16 +33,7 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal active">
-                            <a class="nav-link" href="Principal.html">Home</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.html">Captura</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.html">Subastas</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="Principal.html">Revisión</a>
                         </li>
                     </ul>
 
@@ -68,41 +59,17 @@
 
         <div class="ncontainer-interno">
             <!-- Content Row -->
-            <div class="row">
+            <div id="filaPrincipal" class="row d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
                     <a href="Captura.html" class="shadow-lg card h-100">
-                    	<img class="card-img-top" src="../images/captura.jpg" alt="Card image">
+                    	<img class="card-img-top" src="../images/verificar.jpg" alt="Card image">
                         <div class="card-body">
-                            <h1 class="card-title text-center">Captura</h1>
-                            <p class="card-text text-center">Registra los datos de una captura para su venta en la lonja</p>
+                            <h1 class="card-title text-center">Revisión</h1>
+                            <p class="card-text text-center">Revisa las capturas para aprobar su venta en la lonja</p>
                         </div>
                     </a>
                 </div>
                 <!-- /.col-md-4 -->
-                <div class="col-md-4 mb-5">
-                    <a href="Subastas.html" class="shadow-lg card h-100">
-                    	<img class="card-img-top" src="../images/lonja.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h1 class="card-title text-center">Subasta</h1>
-                            <p class="card-text text-center">Accede a las subastas en curso en la lonja</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- /.col-md-4 -->
-                <div class="col-md-4 mb-5">
-                    <a href="#" class="shadow-lg card h-100 overlay">
-						<img class="card-img-top" src="../images/subastaExpress.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h1 class="card-title text-center">Subasta Express</h1>
-                            <p class="card-text text-center">Accede a las subastas express con precios mínimos</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- /.col-md-4 -->
-
-            </div>
-            <!-- /.row -->
-            <div class="d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
                     <a href="Perfil.html" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/perfil.jpg" alt="Card image">
@@ -113,6 +80,7 @@
                     </a>
                 </div>
                 <!-- /.col-md-4 -->
+
                 <div class="col-md-4 mb-5">
                     <a href="Informacion.html" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/informacion.jpg" alt="Card image">
@@ -122,7 +90,7 @@
                         </div>
                     </a>
                 </div>
-                <!-- /.col-md-4 -->
+
             </div>
         </div>
     </div>
