@@ -1,11 +1,14 @@
 <?php
 
 //Conexion base de datos
-
+    session_start();
+    if(isset($_SESSION['ID_Cliente'])==""){
+        header("Location:../index.php");
+    }
 
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamaño, peso, precio_salida, precio_minimo, imagen FROM lote';
+$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote';
 
 $result = mysqli_query($con, $sql);
     if (false == $result) {
@@ -30,17 +33,6 @@ if ($num_rows > 0) {
 
 
 $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
-
-//Codigo de prueba
-$num_rows = 3;
-$barco = array('barco1', 'barco2', 'barco3');
-$zona_captura = array('zona_captura1', 'zona_captura2', 'zona_captura3');
-$producto = array('producto1', 'producto2', 'producto3');
-$tamaño = array('tamaño1', 'tamaño2', 'tamaño3');
-$peso = array('peso1', 'peso2', 'peso3');
-$precio_salida = array('precio_salida1', 'precio_salida2', 'precio_salida3');
-$precio_minimo = 'precio_minimo';
-$imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/oceano.jpg');
 
 ?>
 
@@ -103,6 +95,9 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
                         <li class="nav-item">
                             <a class="nav-link" href="Perfil.php">Perfil</a>
                         </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -125,7 +120,7 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
                 <a href="ProcesoSubasta.php" class="shadow-lg card h-100">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
-                            <img style="width: 100%; height: 100%" src=' . $imagen[$x] . ' alt="Foto del lote">
+                            <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode( $imagen[$x]) . '" alt="Foto del lote">
                         </div>
                         <div class="card-body">
                             <div class="col-md-12">
