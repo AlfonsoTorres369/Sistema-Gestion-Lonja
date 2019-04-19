@@ -16,7 +16,7 @@
         if($row=mysqli_fetch_array($result)) {
             $_SESSION['ID_Cliente']=$row['ID_Cliente'];
             $_SESSION['usuario']=$row['usuario'];        
-            //header("Location:php/principal.php");
+            header("Location:php/principal.php");
         }
         else if($row=mysqli_fetch_array($result2)){
 				$_SESSION['ID_Admin']=$row['ID_Admin'];

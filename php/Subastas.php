@@ -2,12 +2,15 @@
 
 //Conexion base de datos
 
-/*
+
 include_once 'Conexion.php';
 
 $sql = 'SELECT barco, zona_captura, producto, tamaño, peso, precio_salida, precio_minimo, imagen FROM lote';
 
 $result = mysqli_query($con, $sql);
+    if (false == $result) {
+        printf("error: %s\n", mysqli_error($con));
+    }
 
 $num_rows = mysqli_num_rows($result);
 
@@ -24,7 +27,7 @@ if ($num_rows > 0) {
         $imagen[] = $row["imagen"];
     }
 } 
-*/
+
 
 $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 
