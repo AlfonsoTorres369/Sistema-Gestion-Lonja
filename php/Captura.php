@@ -70,7 +70,7 @@ if (isset($_POST['guardar'])) {
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
 
@@ -149,12 +149,11 @@ if (isset($_POST['guardar'])) {
             </div>
             <div class="form-row ">
                 <div class="form-group col-md-12">
-                    <label for="Tamaño">Tamaño:</label>
+                    <label for="Tamaño">Imagen:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/carpeta.png" class="img-input-decorator"></div>
                         <div class="custom-file">
                             <input type="file" class="form-control input-decorator-radius-left" id="imagen">
-                            <label class="custom-file-label" for="imagen">Seleccione archivo</label>
                         </div>
                     </div>
                 </div>
