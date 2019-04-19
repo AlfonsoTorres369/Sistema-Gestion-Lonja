@@ -1,16 +1,14 @@
 <?php
 
 //Conexion base de datos
-
-
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE subastado = 0';
+$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, precio_salida, precio_minimo, imagen FROM Lote WHERE ID_Cliente IS NULL AND subastado = 1';
 
 $result = mysqli_query($con, $sql);
-    if (false == $result) {
-        printf("error: %s\n", mysqli_error($con));
-    }
+if (false == $result) {
+    printf("error: %s\n", mysqli_error($con));
+}
 
 $num_rows = mysqli_num_rows($result);
 
@@ -26,10 +24,11 @@ if ($num_rows > 0) {
         $precio_minimo[] = $row["precio_minimo"];
         //$imagen[] = $row["imagen"];
     }
-} 
+}
 
 
-$sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
+$sin_subastas = '<p>No hay subastas express disponibles en estos momentos.</p>';
+
 /*
 //Codigo de prueba
 $num_rows = 3;
@@ -53,7 +52,7 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Página principal de Aquabid">
+    <meta name="description" content="Página de subastas express de Aquabid">
     <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
 
     <title>Subastas</title>
@@ -88,10 +87,10 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
-                        <li class="nav-item-principal active">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
@@ -114,9 +113,10 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
     <br>
     <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <h1 class="text-center">Subastas</h1>
+        <h1 class="text-center">Subastas express</h1>
 
         <?php
+
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
