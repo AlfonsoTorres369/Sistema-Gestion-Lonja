@@ -93,7 +93,7 @@ if(!$error){
               </div>
               ';
          echo $successmsg;
-        header("Location:principal.php");
+        header("Location: Principal.php");
 }else {
             $errormsg = '
             <div class="alert alert-danger alert-dismissable fade in">
