@@ -32,30 +32,27 @@ $row=mysqli_fetch_array($sql);
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
-                <a class="navbar-brand" href="Principal.html"><img src="../images/Aquabid.png" width="55px"></a>
+                <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Principal.html">Home</a>
+                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.html">Captura</a>
+                            <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.html">Subastas</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="Informacion.html">Información</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.html">Información</a>
+                            <a class="nav-link active" href="PerfilAdmin.php" > Perfil</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="Perfil.html">Perfil</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

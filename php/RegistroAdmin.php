@@ -106,6 +106,38 @@ if(!$error){
     
     <body onload="BotonPulsablePass()" id="bprincipal">
         
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+                <div class="container">
+                    <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item-principal">
+                                <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            </li>
+                            <li class="nav-item-principal">
+                                <a class="nav-link active" href="RegistroAdmin.php">Registrar admin.</a>
+                            </li>
+                            <li class="nav-item-principal">
+                                <a class="nav-link" href="Informacion.html">Información</a>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="PerfilAdmin.php" > Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <br>
+    <br>
         <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Registro de Supervisor</h1>
