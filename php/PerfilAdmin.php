@@ -71,41 +71,21 @@ $row=mysqli_fetch_array($sql);
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombreC">Nombre:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['nombre']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="nombre"><?php echo $row['nombre']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="apellidos">Apellidos:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['apellidos']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="apellidos"><?php echo $row['telefono']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="usuario">Usuario:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['usuario']; ?>
-                    </strong>
+                    <label for="usuario">Teléfono:</label>
+                    <output type="text" class="form-control" name="telefono"><?php echo $row['telefono']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="telefonoC">Teléfono:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['telefono']; ?>
-                    </strong>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
                     <label for="email">Dirección de email:</label>
-                    <strong>
-                    <?php echo $row['email']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
                 </div>
             </div>
     
