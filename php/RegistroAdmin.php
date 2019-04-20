@@ -39,18 +39,18 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 
 if(strlen($contrasenia)< 6){
     $error=true;
-    $error_contrasenia="La contraseña debe comprender entre 6 y 30 caracteres";
+    $contrasenia_error="La contraseña debe comprender entre 6 y 30 caracteres";
 }
 else if(strlen($contrasenia)>30){
     $error=true;
-    $error_contrasenia2="La contraseña supera los 30 caracteres";
+    $contrasenia_error2="La contraseña supera los 30 caracteres";
 
 }
 
 //Comprobacion coincidencia de contraseñas
 if($contrasenia!=$conContrasenia){
 	$error=true;
-	$error_conContrasenia="Las contraseñas deben de coincidir";
+	$conContrasenia_error="Las contraseñas deben de coincidir";
 }
 
 if(!$error){
