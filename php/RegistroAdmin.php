@@ -184,9 +184,6 @@ if($contrasenia!=$conContrasenia){
                     <span class="text-danger"><?php if (isset($conContrasenia_error)) echo $conContrasenia_error; ?></span>
                 </div>
             </div>
-            <p id="message" cstyle="display: none;">
-                <font color="red"><strong>Las contraseñas deben coincidir.</strong></font>
-            </p>
             <br>
 
             <div class="form-boton">
