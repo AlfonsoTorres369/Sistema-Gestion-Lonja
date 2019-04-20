@@ -37,16 +37,16 @@ $row=mysqli_fetch_array($sql);
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Principal.html">Home</a>
+                            <a class="nav-link" href="Principal.php">Home</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.html">Captura</a>
+                            <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.html">Subastas</a>
+                            <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
 
@@ -55,7 +55,7 @@ $row=mysqli_fetch_array($sql);
                             <a class="nav-link" href="Informacion.html">Información</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="Perfil.html">Perfil</a>
+                            <a class="nav-link" href="PerfilAdmin.html">Perfil</a>
                         </li>
                     </ul>
                 </div>

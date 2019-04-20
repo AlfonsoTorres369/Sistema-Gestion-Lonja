@@ -37,25 +37,28 @@ $row=mysqli_fetch_array($sql);
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Principal.html">Home</a>
+                            <a class="nav-link" href="Principal.php">Home</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.html">Captura</a>
+                            <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.html">Subastas</a>
+                            <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.html">Información</a>
+                            <a class="nav-link" href="InformacionCliente.php">Información</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="Perfil.html">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

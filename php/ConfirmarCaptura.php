@@ -67,7 +67,10 @@ $tamanio = 117;
                             <a class="nav-link" href="Informacion.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilAdmin.php">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

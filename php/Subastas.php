@@ -90,10 +90,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.php">Información</a>
+                            <a class="nav-link" href="InformacionCliente.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                         <li class="nav-item">
 							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>

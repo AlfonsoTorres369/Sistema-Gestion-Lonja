@@ -73,7 +73,7 @@ $imagen = '../images/captura.jpg';
                             <a class="nav-link" href="Informacion.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                     </ul>
                 </div>
