@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['ID_Cliente'])){
-    header("Location:principal.php");
+    header("Location:Principal.php");
 }
 include_once 'Conexion.php';
 
@@ -93,7 +93,7 @@ if(!$error){
               </div>
               ';
          echo $successmsg;
-        header("Location:principal.php");
+        header("Location:Principal.php");
 }else {
             $errormsg = '
             <div class="alert alert-danger alert-dismissable fade in">
@@ -213,6 +213,8 @@ if(!$error){
             </div>
             </fieldset>
         </form>
+        <span class="text-success"><?php if (isset($successmsg)) { echo $successmsg; } ?></span>
+        <span class="text-danger"><?php if (isset($errormsg)) { echo $errormsg; } ?></span>
     </div>
     <!-- Footer -->
     <footer class="npadding bg-dark">

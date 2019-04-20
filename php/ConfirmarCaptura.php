@@ -158,7 +158,7 @@ $tamanio = 117;
                     <label for="Producto">Precio minimo:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/dolar.png" class="img-input-decorator"></div>
-                        <input name="pracio_minimo" class="form-control input-decorator-radius-left" placeholder="Precio minimo" type="number">
+                        <input name="precio_minimo" class="form-control input-decorator-radius-left" placeholder="Precio minimo" type="number">
                     </div>
                 </div>
             </div>
