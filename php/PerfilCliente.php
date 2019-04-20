@@ -66,89 +66,60 @@ $row=mysqli_fetch_array($sql);
         <br>
         <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <h1 class="text-center">Perfil de usuario</h1>
+        <h1 class="text-center">Perfil de Usuario</h1>
         <form name="registrocliente" onsubmit="return Registro()" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombreC">Nombre:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['nombre']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="nombre"><?php echo $row['nombre']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="apellidos">Apellidos:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['apellidos']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="apellidos"><?php echo $row['apellidos']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="usuario">Usuario:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['usuario']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="usuario"><?php echo $row['usuario']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="telefonoC">Teléfono:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['telefono']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="telefono"><?php echo $row['telefono']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="email">Dirección de email:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['email']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
                 </div>
             </div>
+            <br>
             <h1 class="text-center">Datos de la Empresa</h1>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombreE">Nombre:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['nombreE']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="nombreE"><?php echo $row['nombreE']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nombreE">Dirección:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['direccionE']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="direccionE"><?php echo $row['direccionE']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombreE">Telefono:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['telefonoE']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="telefonoE"><?php echo $row['telefonoE']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="nombreE">CIF:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['cif']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="cif"><?php echo $row['cif']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="nombreE">Cuenta Bancaria:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['cuentaBancaria']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="cuentaBancaria"><?php echo $row['cuentaBancaria']; ?></output>
                 </div>
             </div>
     
