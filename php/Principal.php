@@ -70,7 +70,7 @@
             <!-- Content Row -->
             <div class="row">
                 <div class="col-md-4 mb-5">
-                    <a href="Captura.php" class="shadow-lg card h-100">
+                    <a href="Captura.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                     	<img class="card-img-top" src="../images/captura.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Captura</h1>
@@ -80,7 +80,7 @@
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-4 mb-5">
-                    <a href="Subastas.php" class="shadow-lg card h-100">
+                    <a href="Subastas.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                     	<img class="card-img-top" src="../images/lonja.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Subasta</h1>
@@ -90,7 +90,7 @@
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-4 mb-5">
-                    <a href="SubastasExpress.php" class="shadow-lg card h-100 overlay">
+                    <a href="SubastasExpress.php" id="tarjetaPrincipal" class="shadow-lg card h-100 overlay">
 						<img class="card-img-top" src="../images/subastaExpress.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Subasta Express</h1>
@@ -104,7 +104,7 @@
             <!-- /.row -->
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
-                    <a href="Perfil.php" class="shadow-lg card h-100">
+                    <a href="Perfil.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/perfil.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Perfil</h1>
@@ -114,7 +114,7 @@
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-4 mb-5">
-                    <a href="Informacion.php" class="shadow-lg card h-100">
+                    <a href="Informacion.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/informacion.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Información</h1>

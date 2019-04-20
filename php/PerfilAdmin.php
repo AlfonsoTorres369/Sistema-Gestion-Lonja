@@ -2,8 +2,8 @@
 include_once 'Conexion.php';
 //if(isset($_SESSION['ID_Cliente']))
 session_start();
-$sql=mysqli_query($con, "SELECT * FROM Administrador WHERE ID_Admin='".$_SESSION['ID_Admin']."'");
-$row=mysqli_fetch_array($sql);
+$sql = mysqli_query($con, "SELECT * FROM Administrador WHERE ID_Admin='" . $_SESSION['ID_Admin'] . "'");
+$row = mysqli_fetch_array($sql);
 
 
 
@@ -27,44 +27,40 @@ $row=mysqli_fetch_array($sql);
     <link rel="shortcut icon" href="../images/Aquabid.png">
 </head>
 
-    
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
-                <a class="navbar-brand" href="Principal.html"><img src="../images/Aquabid.png" width="55px"></a>
+                <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Principal.php">Home</a>
+                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.php">Captura</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.php">Subastas</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
+                            <a class="nav-link" href="ConfirmarCaptura.php">Registrar admin.</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.html">Información</a>
+                            <a class="nav-link" href="InformacionAdmin.php">Información</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="PerfilAdmin.html">Perfil</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PerfilAdmin.php"> Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-        <br>
-        <br>
-        <div id="formularioCliente" class="shadow-lg container">
+    <br>
+    <br>
+    <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Perfil de Administrador</h1>
         <form name="registrocliente" onsubmit="return Registro()" method="post">
@@ -88,9 +84,9 @@ $row=mysqli_fetch_array($sql);
                     <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
                 </div>
             </div>
-    
+
             <br>
-            
+
         </form>
     </div>
     <!-- Footer -->
