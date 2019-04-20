@@ -35,12 +35,12 @@
                         <li class="nav-item-principal active">
                             <a class="nav-link" href="Principal.html">Revisión</a>
                         </li>
-                    </ul>
-
-                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="Informacion.html">Información</a>
                         </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="Perfil.html" >Perfil</a>
                         </li>
@@ -61,7 +61,7 @@
             <!-- Content Row -->
             <div id="filaPrincipal" class="row d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
-                    <a href="Captura.html" class="shadow-lg card h-100">
+                    <a href="Captura.html" id="tarjetaPrincipal" class="shadow-lg card h-100">
                     	<img class="card-img-top" src="../images/verificar.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Revisión</h1>
@@ -71,7 +71,7 @@
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-4 mb-5">
-                    <a href="Perfil.html" class="shadow-lg card h-100">
+                    <a href="Perfil.html" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/perfil.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Perfil</h1>
@@ -82,7 +82,7 @@
                 <!-- /.col-md-4 -->
 
                 <div class="col-md-4 mb-5">
-                    <a href="Informacion.html" class="shadow-lg card h-100">
+                    <a href="Informacion.html" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/informacion.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Información</h1>
