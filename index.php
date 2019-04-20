@@ -77,7 +77,7 @@
 	                	<a href="php/RegistroCliente.php" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"> Registro </a>
 	                </div>
 	                <div class="text-center">
-	                  <a class="small" href="html/RecuperarContraseña-Email.html">¿Ha olvidado su contraseña?</a>
+	                  <a class="small" href="php/RecuperarPass.php">¿Ha olvidado su contraseña?</a>
 	              </div>
 	              </fieldset>
 	            </form>

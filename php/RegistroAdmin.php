@@ -37,13 +37,13 @@ if (isset($_POST['signup'])) {
         $email_error = "Ingresa un correo electrónico válido";
     }
 
-    if (strlen($contrasenia) < 6) {
-        $error = true;
-        $error_contrasenia = "La contraseña debe comprender entre 6 y 30 caracteres";
-    } else if (strlen($contrasenia) > 30) {
-        $error = true;
-        $error_contrasenia2 = "La contraseña supera los 30 caracteres";
-    }
+if(strlen($contrasenia)< 6){
+    $error=true;
+    $contrasenia_error="La contraseña debe comprender entre 6 y 30 caracteres";
+}
+else if(strlen($contrasenia)>30){
+    $error=true;
+    $contrasenia_error2="La contraseña supera los 30 caracteres";
 
     //Comprobacion coincidencia de contraseñas
     if ($contrasenia != $conContrasenia) {
@@ -51,11 +51,11 @@ if (isset($_POST['signup'])) {
         $error_conContrasenia = "Las contraseñas deben de coincidir";
     }
 
-    if (!$error) {
-        $sql = mysqli_query($con, "INSERT INTO administrador (ID_Admin, nombre, apellidos, telefono, email, contrasenia) VALUES(NULL,'" . $nombre . "','" . $apellidos . "','" . $telefonoc . "','" . $email . "','" . $contrasenia . "')");
-        if (false == $sql) {
-            printf("error: %s\n", mysqli_error($con));
-        }
+//Comprobacion coincidencia de contraseñas
+if($contrasenia!=$conContrasenia){
+	$error=true;
+	$conContrasenia_error="Las contraseñas deben de coincidir";
+}
 
         $successmsg = '
              <div class="alert alert-success alert-dismissable fade in">
@@ -132,7 +132,7 @@ if (isset($_POST['signup'])) {
             </div>
         </nav>
     </header>
-    
+
     <br>
     <br>
     <div id="formularioCliente" class="shadow-lg container">
