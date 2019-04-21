@@ -2,7 +2,7 @@
 
 //Conexion base de datos
 session_start();
-if (isset($_SESSION['ID_Cliente']) != "") {
+if (isset($_SESSION['ID_Admin']) == "") {
     header("Location:../index.php");
 }
 
