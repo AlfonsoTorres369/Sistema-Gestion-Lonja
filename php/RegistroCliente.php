@@ -84,7 +84,8 @@ if(!$error){
 	$sql=mysqli_query($con, "INSERT INTO Cliente (ID_Cliente, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."')");
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
-	}    
+	}
+    mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Web: localhost/Sistema-Gestion-Lonja/index.php");
         
     $successmsg= '
              <div class="alert alert-success alert-dismissable fade in">

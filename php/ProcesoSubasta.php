@@ -17,6 +17,14 @@ if(false==$result3){
 	printf("\n error:. %s\n",mysqli_error($con));
 }
 
+//Funcion e-mail
+$mail = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+if(false==$mail){
+    printf("error: %s\n",mysqli_error($con));
+}
+$maildef = mysqli_fetch_array($mail);
+mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta:\nBarco: ".$subasta[0]."...");
+
 ?>
 
 <!DOCTYPE html>
