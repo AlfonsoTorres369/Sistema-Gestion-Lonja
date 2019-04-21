@@ -7,24 +7,9 @@ if (isset($_SESSION['ID_Admin']) == "") {
 }
 
 include_once 'Conexion.php';
-
+//Estrucutra captura 0 id lote, 1 barco, 2 zona, 3 producto, 4 peso, 5 tamaño 
+$captura=$_GET['captura'];
 //el ID_Lote tiene que ser el pasado desde la pagina Revision.php
-$sql = 'SELECT barco, zona_captura, producto, peso, tamanio, imagen FROM Lote WHERE ID_Lote = 1';
-
-$result = mysqli_query($con, $sql);
-
-if (false == $result) {
-    printf("error: %s\n", mysqli_error($con));
-}
-
-$row = mysqli_fetch_assoc($result);
-
-$barco = $row["barco"];
-$zona_captura = $row["zona_captura"];
-$producto = $row["producto"];
-$peso = $row["peso"];
-$tamanio = $row["tamanio"];
-$imagen = $row["imagen"];
 
 if (isset($_POST['confirmar'])) {
 
@@ -36,29 +21,47 @@ if (isset($_POST['confirmar'])) {
     $precio_salida = mysqli_real_escape_string($con, $_POST['precio_salida']);
     $precio_minimo = mysqli_real_escape_string($con, $_POST['precio_minimo']);
     $fecha = mysqli_real_escape_string($con, $_POST['fecha']);
-
+    $id_lote=mysqli_real_escape_string($con, $_POST['id_lote']);
+    $error=false;
+	if($precio_minimo>$precio_salida){
+			$error=true;
+			$precio_error="El precio minimo debe ser menor que el precio de salida";
+		}
     //Insert en Subasta
-    $sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada) VALUES('" . $fecha . "', '0', '0')";
-    $result1 = mysqli_query($con, $sql_subasta);
-    if (false == $result1) {
-        printf("error: %s\n", mysqli_error($con));
-    }
+	if(!$error){
+		$sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada) VALUES('" . $fecha . "', '0', '0')";
+		$result1 = mysqli_query($con, $sql_subasta);
+		if (false == $result1) {
+			printf("errorA: %s\n", mysqli_error($con));
+		}
+		
+		$sql_ID="SELECT MAX(ID_Subasta) FROM Subasta";
+		$res=mysqli_query($con,$sql_ID);
+		if(false==$res){
+			printf("errorB: %s\n", mysqli_error($con));
+			
+		}
+		$id_Subasta=mysqli_fetch_assoc($res);
+		//Update en Lote
+		$sql_lote="UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."', ID_Subasta='".$id_Subasta["MAX(ID_Subasta)"]."' 
+		WHERE ID_Lote = '".$id_lote."'";
+		$result2 = mysqli_query($con,$sql_lote);
+		if (false == $result2) {
+			printf("errorC: %s\n", mysqli_error($con));
+			
+		}
 
-    //Update en Lote
-    $sql_lote = "UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."' WHERE ID_LOTE = 1";
-    $result2 = mysqli_query($con, $sql_lote);
-    if (false == $result2) {
-        printf("error: %s\n", mysqli_error($con));
-    }
+		$successmsg = '
+			<div class="alert alert-success alert-dismissable fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>EXITO.!</strong> Captura guardada exitosamente!
+			</div>';
+		echo $successmsg;
 
-    $successmsg = '
-        <div class="alert alert-success alert-dismissable fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>EXITO.!</strong> Captura guardada exitosamente!
-        </div>';
-    echo $successmsg;
-
-    header("Location: principalAdmin.php");
+		header("Location: Revision.php");
+	}else{
+		header('Location:' . getenv('HTTP_REFERER'));
+	}
 }
 
 
@@ -95,7 +98,7 @@ if (isset($_POST['confirmar'])) {
 <body id="bprincipal ">
     <!-- Navigation -->
     
-    <header>
+   <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
@@ -137,24 +140,24 @@ if (isset($_POST['confirmar'])) {
         </p>
 
         <form name="captura" enctype="multipart/form-data" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-
+			<fieldset>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Barco">Barco:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/barco.png" class="img-input-decorator"></div>
-                        <input name="barco" class="form-control input-decorator-radius-left" value="<?php echo $barco ?>" type="text">
+                        <input name="barco" class="form-control input-decorator-radius-left" value="<?php echo $captura[1] ?>" type="text">
+                        
                     </div>
                 </div>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="Zona captura">Zona captura:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/location.png" class="img-input-decorator"></div>
                         <select name="zona_captura" class="form-control rounded-right">
-                            <option disabled selected value> <?php echo $zona_captura ?> </option>
+                            <option disabled selected value> <?php echo $captura[2] ?> </option>
                             <option>Cantábrico</option>
                             <option>Atlántico</option>
                             <option>Mediterráneo</option>
@@ -168,7 +171,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Producto">Producto:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png" class="img-input-decorator"></div>
-                        <input name="producto" class="form-control input-decorator-radius-left" value="<?php echo $producto ?>" type="text">
+                        <input name="producto" class="form-control input-decorator-radius-left" value="<?php echo $captura[3] ?>" type="text">
                     </div>
                 </div>
             </div>
@@ -178,7 +181,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Peso">Peso:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right">Kg</div>
-                        <input name="peso" class="form-control input-decorator-radius-left" value="<?php echo $peso ?>" type="number">
+                        <input name="peso" class="form-control input-decorator-radius-left" value="<?php echo $captura[4]; ?>" type="number">
                     </div>
                 </div>
             </div>
@@ -188,7 +191,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Tamaño">Tamaño:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right">cm</div>
-                        <input name="tamanio" class="form-control input-decorator-radius-left" value="<?php echo $tamanio ?>" type="number">
+                        <input name="tamanio" class="form-control input-decorator-radius-left" value="<?php echo $captura[5] ?>" type="number">
                     </div>
                 </div>
             </div>
@@ -210,6 +213,7 @@ if (isset($_POST['confirmar'])) {
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/dolar.png" class="img-input-decorator"></div>
                         <input name="precio_minimo" class="form-control input-decorator-radius-left" placeholder="Precio minimo" type="number">
                     </div>
+						<span class="text-danger"> <?php if (isset($precio_error)) echo $precio_error;?></span>
                 </div>
             </div>
 
@@ -231,6 +235,8 @@ if (isset($_POST['confirmar'])) {
                     </div>
                 </div>
             </div>
+            <input type="number" value="<?php echo $captura[0]?>" name="id_lote" style="visibility:hidden">
+            </fieldset>
         </form>
     </div>
 

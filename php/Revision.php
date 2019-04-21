@@ -2,13 +2,13 @@
 
 //Conexion base de datos
 session_start();
-if (isset($_SESSION['ID_Cliente']) == "") {
+if (isset($_SESSION['ID_Cliente']) != "") {
     header("Location:../index.php");
 }
 
 include_once 'Conexion.php';
 
-$sql = 'SELECT barco, zona_captura, producto, tamanio, peso, imagen FROM Lote WHERE ID_Admin IS NULL';
+$sql = 'SELECT ID_Lote, barco, zona_captura, producto, tamanio, peso, imagen FROM Lote WHERE ID_Admin IS NULL';
 
 $result = mysqli_query($con, $sql);
 if (false == $result) {
@@ -26,10 +26,9 @@ if ($num_rows > 0) {
         $tamaño[] = $row["tamanio"];
         $peso[] = $row["peso"];
         $imagen[] = $row["imagen"];
+        $id_lote[]=$row["ID_Lote"];
     }
 }
-
-
 $sin_subastas = '<p>No hay lotes disponibles para revisar en estos momentos.</p>';
 
 ?>
@@ -107,8 +106,10 @@ $sin_subastas = '<p>No hay lotes disponibles para revisar en estos momentos.</p>
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
+				//Estrucutra captura 0 id lote, 1 barco, 2 zona, 3 producto, 4 peso, 5 tamaño 
+				$captura=array($id_lote[$x], $barco[$x], $zona_captura[$x], $producto[$x], $peso[$x], $tamaño[$x]);
                 echo '<div class="col-md-12 mb-5">
-                <a href="ConfirmarCaptura.php" class="shadow-lg card h-100">
+                <a href="ConfirmarCaptura.php?'. http_build_query(array('captura' => $captura)) .'" class="shadow-lg card h-100">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
                             <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($imagen[$x]) . '" alt="Foto del lote">
