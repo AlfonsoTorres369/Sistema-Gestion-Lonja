@@ -60,7 +60,7 @@ $row = mysqli_fetch_array($sql);
     </header>
     <br>
     <br>
-    <div id="formularioCliente" class="shadow-lg container">
+    <div id="perfilAdmin" class="shadow-lg container">
         <br>
         <h1 class="text-center">Perfil de Administrador</h1>
         <form name="registrocliente" onsubmit="return Registro()" method="post">
