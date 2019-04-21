@@ -92,12 +92,12 @@ body{
 }
 
 
-.card{
+#tarjetaPrincipal{
   transition: transform 0.4s;
   color: black;
 }
 
-.card:hover{
+#tarjetaPrincipal:hover{
   transition: transform 0.4s;
   color: black;
   transform: scale(1.05);

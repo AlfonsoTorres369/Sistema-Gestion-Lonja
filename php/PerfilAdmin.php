@@ -2,8 +2,8 @@
 include_once 'Conexion.php';
 //if(isset($_SESSION['ID_Cliente']))
 session_start();
-$sql=mysqli_query($con, "SELECT * FROM Administrador WHERE ID_Admin='".$_SESSION['ID_Admin']."'");
-$row=mysqli_fetch_array($sql);
+$sql = mysqli_query($con, "SELECT * FROM Administrador WHERE ID_Admin='" . $_SESSION['ID_Admin'] . "'");
+$row = mysqli_fetch_array($sql);
 
 
 
@@ -27,90 +27,66 @@ $row=mysqli_fetch_array($sql);
     <link rel="shortcut icon" href="../images/Aquabid.png">
 </head>
 
-    
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
-                <a class="navbar-brand" href="Principal.html"><img src="../images/Aquabid.png" width="55px"></a>
+                <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Principal.html">Home</a>
+                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Captura.html">Captura</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="Subastas.html">Subastas</a>
-                        </li>
-                        <li class="nav-item-principal">
-                            <a class="nav-link" href="#">Subastas Express</a>
+                            <a class="nav-link" href="ConfirmarCaptura.php">Registrar admin.</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.html">Información</a>
+                            <a class="nav-link" href="InformacionAdmin.php">Información</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="Perfil.html">Perfil</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PerfilAdmin.php"> Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-        <br>
-        <br>
-        <div id="formularioCliente" class="shadow-lg container">
+    <br>
+    <br>
+    <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Perfil de Administrador</h1>
         <form name="registrocliente" onsubmit="return Registro()" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nombreC">Nombre:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['nombre']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="nombre"><?php echo $row['nombre']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="apellidos">Apellidos:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['apellidos']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="apellidos"><?php echo $row['telefono']; ?></output>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="usuario">Usuario:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['usuario']; ?>
-                    </strong>
+                    <label for="usuario">Teléfono:</label>
+                    <output type="text" class="form-control" name="telefono"><?php echo $row['telefono']; ?></output>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="telefonoC">Teléfono:</label>
-                    <br>
-                    <strong>
-                    <?php echo $row['telefono']; ?>
-                    </strong>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
                     <label for="email">Dirección de email:</label>
-                    <strong>
-                    <?php echo $row['email']; ?>
-                    </strong>
+                    <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
                 </div>
             </div>
-    
+
             <br>
-            
+
         </form>
     </div>
     <!-- Footer -->

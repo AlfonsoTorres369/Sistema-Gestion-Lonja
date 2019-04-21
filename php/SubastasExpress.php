@@ -97,10 +97,13 @@ $imagen = array('../images/captura.jpg', '../images/lonja.jpg', '../images/ocean
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.php">Información</a>
+                            <a class="nav-link" href="InformacionCliente.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

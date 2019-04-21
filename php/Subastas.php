@@ -8,7 +8,7 @@
 
 include_once 'Conexion.php';
 
-$sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, S.ID_Subasta
+$sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
 		FROM Lote L INNER JOIN Subasta S ON L.ID_Subasta=S.ID_Subasta 
 		WHERE L.ID_Admin IS NOT NULL AND L.ID_Subasta IS NOT NULL';
 
@@ -32,7 +32,7 @@ if ($num_rows > 0) {
         $imagen[] = $row["imagen"];
         $lote[]=$row["ID_Lote"];
         $fecha[]=$row["fecha"];
-        $ID_Subasta["ID_Subasta"];
+        $ID_Subasta[]=$row["ID_Subasta"];
     }
 } 
 
@@ -72,7 +72,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 
 <body>
     <!-- Navigation -->
-    <!--<header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
@@ -95,10 +95,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="Informacion.php">Información</a>
+                            <a class="nav-link" href="InformacionCliente.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                         <li class="nav-item">
 							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
@@ -123,7 +123,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote
 				$subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x]);
                 echo '<div class="col-md-12 mb-5">
-                <a href="ProcesoSubasta.php?'. http_build_query(array('subasta' => $subasta)) .'" class="shadow-lg card h-100">
+                <a href="ProcesoSubasta.php?'. http_build_query(array('subasta' => $subasta)) .'" class="shadow-lg card h-100" id="tarjetaPrincipal">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
                             <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode( $imagen[$x]) . '" alt="Foto del lote">
@@ -152,6 +152,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                             <div class="col-md-12">
                                 <label for="precioSalida">Fecha:</label>
                                 <p class="list-inline-item">' . $fecha[$x] . '</p>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="precioSalida">Subasta:</label>
+                                <p class="list-inline-item">' . $ID_Subasta[$x] . '</p>
                             </div>
                         </div>
                     </div>

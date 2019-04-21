@@ -57,17 +57,17 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 //Comprobacion contraseña
 if(strlen($contrasenia)< 6){
     $error=true;
-    $error_contrasenia="La contraseña debe comprender entre 6 y 30 caracteres";
+    $contrasenia_error="La contraseña debe comprender entre 6 y 30 caracteres";
 }
 else if(strlen($contrasenia)>30){
     $error=true;
-    $error_contrasenia2="La contraseña supera los 30 caracteres";
+    $contrasenia_error2="La contraseña supera los 30 caracteres";
 
 }
 //Comprobacion coincidencia de contraseñas
 if($contrasenia!=$conContrasenia){
 	$error=true;
-	$error_conContrasenia="Las contraseñas deben de coincidir";
+	$conContrasenia_error="Las contraseñas deben de coincidir";
 }
 
 //Comprobacion cif
@@ -94,6 +94,7 @@ if(!$error){
               ';
          echo $successmsg;
         header("Location:Principal.php");
+
 }else {
             $errormsg = '
             <div class="alert alert-danger alert-dismissable fade in">
@@ -172,7 +173,7 @@ if(!$error){
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password2">Contraseña:</label>
-                    <input type="password" class="form-control" id="password2" placeholder="Repite la contraseña" name="conContrasenia">
+                    <input type="password" class="form-control" id="password2" placeholder="Repite la contraseña" name="conContrasenia" required value="<?php if($error) echo $conContrasenia ?>">
                     <span class="text-danger"><?php if (isset($conContrasenia_error)) echo $conContrasenia_error; ?></span>
                 </div>
             </div>

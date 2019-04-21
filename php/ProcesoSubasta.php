@@ -1,7 +1,7 @@
 <?php
 
 //Conexion base de datos
-
+session_start();
 include_once 'Conexion.php';
 //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta
 $subasta=$_GET['subasta'];
@@ -14,7 +14,7 @@ $result = mysqli_query($con, $sql);
 $row=mysqli_fetch_assoc($result);
 $result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
 if(false==$result3){
-	printf("error:. %s\n",mysqli_error($con));
+	printf("\n error:. %s\n",mysqli_error($con));
 }
 
 ?>
@@ -47,7 +47,7 @@ if(false==$result3){
 
 <body id="bprincipal ">
     <!-- Navigation -->
-   <!-- <header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
@@ -73,7 +73,10 @@ if(false==$result3){
                             <a class="nav-link" href="Informacion.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Perfil</a>
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

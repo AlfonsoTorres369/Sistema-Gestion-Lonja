@@ -70,6 +70,6 @@ CREATE TABLE `Participa`(
 	`ID_Subasta` int NOT NULL,
     `ID_Cliente` int NOT NULL,
     PRIMARY KEY(`ID_Subasta`, `ID_Cliente`),
-    FOREIGN KEY(`ID_Subasta`) REFERENCES Subasta(`ID_Subasta`),
-    FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`)
+    FOREIGN KEY(`ID_Subasta`) REFERENCES Subasta(`ID_Subasta`) ON UPDATE CASCADE,
+    FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
 )
