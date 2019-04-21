@@ -33,10 +33,10 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Registrar admin.</a>
+                            <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
                         </li>
                     </ul>
 

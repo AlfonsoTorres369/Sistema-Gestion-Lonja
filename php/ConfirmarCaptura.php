@@ -1,14 +1,68 @@
 <?php
 
-$barco = 'barco_consulta';
-$zona_captura = 'zona_captura_consulta';
-$producto = 'producto_consulta';
-$peso = 116;
-$tamanio = 117;
+//Conexion base de datos
+session_start();
+if (isset($_SESSION['ID_Admin']) == "") {
+    header("Location: ../index.php");
+}
+
+include_once 'Conexion.php';
+
+//el ID_Lote tiene que ser el pasado desde la pagina Revision.php
+$sql = 'SELECT barco, zona_captura, producto, peso, tamanio, imagen FROM Lote WHERE ID_Lote = 1';
+
+$result = mysqli_query($con, $sql);
+
+if (false == $result) {
+    printf("error: %s\n", mysqli_error($con));
+}
+
+$row = mysqli_fetch_assoc($result);
+
+$barco = $row["barco"];
+$zona_captura = $row["zona_captura"];
+$producto = $row["producto"];
+$peso = $row["peso"];
+$tamanio = $row["tamanio"];
+$imagen = $row["imagen"];
+
+if (isset($_POST['confirmar'])) {
+
+    $barco = mysqli_real_escape_string($con, $_POST['barco']);
+    $zona_captura = mysqli_real_escape_string($con, $_POST['zona_captura']);
+    $producto = mysqli_real_escape_string($con, $_POST['producto']);
+    $peso = mysqli_real_escape_string($con, $_POST['peso']);
+    $tamanio = mysqli_real_escape_string($con, $_POST['tamanio']);
+    $precio_salida = mysqli_real_escape_string($con, $_POST['precio_salida']);
+    $precio_minimo = mysqli_real_escape_string($con, $_POST['precio_minimo']);
+    $fecha = mysqli_real_escape_string($con, $_POST['fecha']);
+
+    //Insert en Subasta
+    $sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada) VALUES('" . $fecha . "', '0', '0')";
+    $result1 = mysqli_query($con, $sql_subasta);
+    if (false == $result1) {
+        printf("error: %s\n", mysqli_error($con));
+    }
+
+    //Update en Lote
+    $sql_lote = "UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."' WHERE ID_LOTE = 1";
+    $result2 = mysqli_query($con, $sql_lote);
+    if (false == $result2) {
+        printf("error: %s\n", mysqli_error($con));
+    }
+
+    $successmsg = '
+        <div class="alert alert-success alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>EXITO.!</strong> Captura guardada exitosamente!
+        </div>';
+    echo $successmsg;
+
+    header("Location: principalAdmin.php");
+}
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +94,8 @@ $tamanio = 117;
 
 <body id="bprincipal ">
     <!-- Navigation -->
+    
+    <!--
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
@@ -47,10 +103,10 @@ $tamanio = 117;
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Registrar admin.</a>
+                            <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
                         </li>
                     </ul>
 
@@ -59,10 +115,10 @@ $tamanio = 117;
                             <a class="nav-link" href="InformacionAdmin.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="PerfilAdmin.php" > Perfil</a>
+                            <a class="nav-link" href="PerfilAdmin.php"> Perfil</a>
                         </li>
                         <li class="nav-item">
-							<a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -70,7 +126,7 @@ $tamanio = 117;
         </nav>
     </header>
 
-
+-->
     <!-- Page Content -->
     <br>
     <br>
@@ -140,7 +196,7 @@ $tamanio = 117;
 
             <div class="form-row ">
                 <div class="form-group col-md-12">
-                    <label for="Producto">Precio salida:</label>
+                    <label for="PrecioSalida">Precio salida:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/dolar.png" class="img-input-decorator"></div>
                         <input name="precio_salida" class="form-control input-decorator-radius-left" placeholder="Precio salida" type="number">
@@ -150,17 +206,27 @@ $tamanio = 117;
 
             <div class="form-row ">
                 <div class="form-group col-md-12">
-                    <label for="Producto">Precio minimo:</label>
+                    <label for="PrecioMinimo">Precio minimo:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/dolar.png" class="img-input-decorator"></div>
-                        <input name="pracio_minimo" class="form-control input-decorator-radius-left" placeholder="Precio minimo" type="number">
+                        <input name="precio_minimo" class="form-control input-decorator-radius-left" placeholder="Precio minimo" type="number">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row ">
+                <div class="form-group col-md-12">
+                    <label for="Fecha">Fecha:</label>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text input-decorator-radius-right"><img src="../images/calendario.png" class="img-input-decorator"></div>
+                        <input name="fecha" class="form-control input-decorator-radius-left" type="datetime-local">
                     </div>
                 </div>
             </div>
 
             <!-- BOTONES -->
             <div class="form-row">
-                <div id="guardar" class="center form-boton submit-boton al-right" style="display: block;">
+                <div id="confirmar" class="center form-boton submit-boton al-right" style="display: block;">
                     <div class="form-group col-md-12">
                         <button type="submit" name="confirmar" class="btn btn-primary">Confirmar</button>
                     </div>
@@ -181,7 +247,7 @@ $tamanio = 117;
 
     <script src="//code.jquery.com/jquery-1.12.2.min.js"></script>
     <script src="js/bootstrap-imgupload.js"></script>
-    <script $('.img-upload').imgupload();></script> 
+    <script $('.img-upload').imgupload();></script>
 </body>
 
 </html>
