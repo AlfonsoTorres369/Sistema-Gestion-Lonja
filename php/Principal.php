@@ -104,7 +104,7 @@
             <!-- /.row -->
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
-                    <a href="Perfil.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
+                    <a href="PerfilCliente.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/perfil.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Perfil</h1>
@@ -114,7 +114,7 @@
                 </div>
                 <!-- /.col-md-4 -->
                 <div class="col-md-4 mb-5">
-                    <a href="Informacion.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
+                    <a href="InformacionCliente.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                         <img class="card-img-top" src="../images/informacion.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Información</h1>
