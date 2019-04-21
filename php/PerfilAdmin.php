@@ -48,7 +48,7 @@ $row = mysqli_fetch_array($sql);
                             <a class="nav-link" href="InformacionAdmin.php">Información</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="PerfilAdmin.php"> Perfil</a>
+                            <a class="nav-link active" href="PerfilAdmin.php"> Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>

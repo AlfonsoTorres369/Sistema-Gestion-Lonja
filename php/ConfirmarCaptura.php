@@ -95,7 +95,6 @@ if (isset($_POST['confirmar'])) {
 <body id="bprincipal ">
     <!-- Navigation -->
     
-    <!--
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
@@ -126,7 +125,7 @@ if (isset($_POST['confirmar'])) {
         </nav>
     </header>
 
--->
+
     <!-- Page Content -->
     <br>
     <br>

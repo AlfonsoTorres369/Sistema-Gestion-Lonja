@@ -44,6 +44,7 @@ if(strlen($contrasenia)< 6){
 else if(strlen($contrasenia)>30){
     $error=true;
     $contrasenia_error2="La contraseña supera los 30 caracteres";
+}
 
     //Comprobacion coincidencia de contraseñas
     if ($contrasenia != $conContrasenia) {
@@ -56,6 +57,12 @@ if($contrasenia!=$conContrasenia){
 	$error=true;
 	$conContrasenia_error="Las contraseñas deben de coincidir";
 }
+    
+if(!$error){
+	$sql=mysqli_query($con, "INSERT INTO Administrador (ID_Admin, nombre,apellidos,telefono,email,contrasenia) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$email."', '".$contrasenia."')");
+    if(false==$sql){
+		printf("error: %s\n", mysqli_error($con));
+	} 
 
         $successmsg = '
              <div class="alert alert-success alert-dismissable fade in">
@@ -113,7 +120,7 @@ if($contrasenia!=$conContrasenia){
                             <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
+                            <a class="nav-link active" href="RegistroAdmin.php">Registrar admin.</a>
                         </li>
                     </ul>
 

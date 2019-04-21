@@ -21,7 +21,7 @@
         else if($row=mysqli_fetch_array($result2)){
 				$_SESSION['ID_Admin']=$row['ID_Admin'];
 				$_SESSION['nombre']=$row['nombre'];
-				//header("Location:php/principal.php");
+				header("Location:php/principalAdmin.php");
 			}
 			else {
 				$errormsg="El email o contraseña no han sido introducidos correctamente";    
