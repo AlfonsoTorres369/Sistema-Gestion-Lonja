@@ -9,7 +9,7 @@ if (isset($_SESSION['ID_Admin']) == "") {
 include_once 'Conexion.php';
 
 //el ID_Lote tiene que ser el pasado desde la pagina Revision.php
-$sql = 'SELECT barco, zona_captura, producto, peso, tamanio, imagen FROM Lote WHERE ID_Lote = 1';
+$sql = 'SELECT barco, zona_captura, producto, peso, tamanio, imagen FROM Lote WHERE ID_Lote = 2';
 
 $result = mysqli_query($con, $sql);
 
@@ -45,7 +45,8 @@ if (isset($_POST['confirmar'])) {
     }
 
     //Update en Lote
-    $sql_lote = "UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."' WHERE ID_LOTE = 1";
+    //el ID_Lote tiene que ser el pasado desde la pagina Revision.php
+    $sql_lote = "UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."' WHERE ID_LOTE = 2";
     $result2 = mysqli_query($con, $sql_lote);
     if (false == $result2) {
         printf("error: %s\n", mysqli_error($con));
