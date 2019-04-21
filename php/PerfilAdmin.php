@@ -22,9 +22,9 @@ $row = mysqli_fetch_array($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
     <title>Perfil</title>
     <link rel="shortcut icon" href="../images/Aquabid.png">
+
 </head>
 
 
@@ -36,7 +36,7 @@ $row = mysqli_fetch_array($sql);
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
@@ -58,6 +58,7 @@ $row = mysqli_fetch_array($sql);
             </div>
         </nav>
     </header>
+
     <br>
     <br>
     <div id="perfilAdmin" class="shadow-lg container">
@@ -74,6 +75,7 @@ $row = mysqli_fetch_array($sql);
                     <output type="text" class="form-control" name="apellidos"><?php echo $row['telefono']; ?></output>
                 </div>
             </div>
+            
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="usuario">Teléfono:</label>
@@ -84,11 +86,10 @@ $row = mysqli_fetch_array($sql);
                     <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
                 </div>
             </div>
-
             <br>
-
         </form>
     </div>
+
     <!-- Footer -->
     <footer class="npadding bg-dark">
         <div class="container">

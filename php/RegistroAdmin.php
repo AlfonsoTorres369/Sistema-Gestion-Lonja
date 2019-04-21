@@ -62,7 +62,11 @@ if(!$error){
 	$sql=mysqli_query($con, "INSERT INTO Administrador (ID_Admin, nombre,apellidos,telefono,email,contrasenia) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$email."', '".$contrasenia."')");
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
-	} 
+	}
+    mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Usted es un nuevo administrador. Aquí tiene los datos de su cuenta:
+    Usuario:".$nombre."
+    Contraseña:".$contrasenia."
+    Web: localhost/Sistema-Gestion-Lonja/index.php");
 
         $successmsg = '
              <div class="alert alert-success alert-dismissable fade in">
@@ -117,7 +121,7 @@ if(!$error){
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
                             <a class="nav-link active" href="RegistroAdmin.php">Registrar admin.</a>

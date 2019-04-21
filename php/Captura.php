@@ -29,7 +29,7 @@ if (isset($_POST['guardar'])) {
             <strong>EXITO.!</strong> Captura guardada exitosamente!
         </div>';
     echo $successmsg;
-    //header("Location:Captura.php");
+    header("Location: Principal.php");
 }
 ?>
 

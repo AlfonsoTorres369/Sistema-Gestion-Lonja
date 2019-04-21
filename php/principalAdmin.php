@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
+                            <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>
@@ -64,7 +64,7 @@
             <!-- Content Row -->
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4 mb-5">
-                    <a href="ConfirmarCaptura.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
+                    <a href="Revision.php" id="tarjetaPrincipal" class="shadow-lg card h-100">
                     	<img class="card-img-top" src="../images/verificar.jpg" alt="Card image">
                         <div class="card-body">
                             <h1 class="card-title text-center">Revisión</h1>
