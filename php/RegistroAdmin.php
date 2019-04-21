@@ -113,7 +113,7 @@ if($contrasenia!=$conContrasenia){
                             <a class="nav-link" href="ConfirmarCaptura.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="ConfirmarCaptura.php">Registrar admin.</a>
+                            <a class="nav-link active" href="RegistroAdmin.php">Registrar admin.</a>
                         </li>
                     </ul>
 
