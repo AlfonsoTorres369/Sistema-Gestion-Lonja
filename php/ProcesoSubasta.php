@@ -4,10 +4,11 @@
 session_start();
 include_once 'Conexion.php';
 
+
 //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
 $subasta = $_GET['subasta'];
 
-$sql = 'SELECT imagen FROM Lote WHERE ID_Lote=' . $subasta[7] . '';
+$sql = "SELECT imagen FROM Lote WHERE ID_Lote=".$subasta[7];
 
 $result = mysqli_query($con, $sql);
 
@@ -29,14 +30,30 @@ if($numrow == 0){
     }
     $maildef = mysqli_fetch_array($mail);
     mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta\nBarco: ".$subasta[0]."\nZona de Captura:".$subasta[1]."\nProducto:".$subasta[2]."\nTamaño:".$subasta[3]." cm\nPeso:".$subasta[4]." kg\nPrecio de Salida:".$subasta[5]."\nFecha:".$subasta[6]."\n\n¡Gracias por apuntarse!");
+    $result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
+    if(false==$result3){
+	   printf("\n error:. %s\n",mysqli_error($con));
+    }
 }
 
 
 $row=mysqli_fetch_assoc($result);
-$result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
-if(false==$result3){
-	printf("\n error:. %s\n",mysqli_error($con));
-}
+
+//Funcion Comprar
+/*if(isset($_POST['botonComprar'])){
+    
+    $precio_actual = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $precio = mysqli_fetch_array($precio_actual);
+    $actu = "UPDATE lote SET precio_venta=".$precio['precio_actual'].", ID_Cliente=".$_SESSION['ID_Cliente'].", subastado=true WHERE ID_Lote=".$subasta[7];
+    $actu2 = "UPDATE Subasta SET actual=false, realizada=true WHERE ID_Subasta=".$subasta[8];
+    $ejec2 = mysqli_query($con, $actu2);
+    $ejec=mysqli_query($con, $actu);
+    if(false == $ejec){
+        printf("error: %s\n", mysqli_error($con));
+    }
+    header("Location:Principal.php");
+}*/
+
 
 
 
@@ -59,6 +76,28 @@ if(false==$result3){
 
     <!-- JavaScript -->
     <script language="javascript" type="text/javascript" src="../js/ProcesoSubasta.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    
+    <!-- Script de Contador de Precio -->
+    
+    <script type="text/javascript">
+$(document).ready(function() {
+    function changeNumber() {
+        value = $('#precio').text();
+        $.ajax({
+            type: "POST",
+            url: "Contador.php",
+            success: function(data) {
+                $('#precio').text(data);
+            }
+        });
+    }
+    setInterval(changeNumber, 3000);
+});
+function Detener(){
+    clearInterval(changeNumber);
+}
+</script>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -104,7 +143,7 @@ if(false==$result3){
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> 
     </header>
 
     <!-- Page Content -->
@@ -159,9 +198,15 @@ if(false==$result3){
                     </div>
                 </div>
             </div>
+            
+           <!-- <div class="form-boton">
+            <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
+        </div>-->
+            
         </form>
+        
         <div class="form-boton">
-            <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar">COMPRAR</button>
+            <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
         </div>
     </div>
     <!-- /.container -->
