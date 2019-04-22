@@ -71,8 +71,11 @@ $sin_subastas = '<p>No hay lotes disponibles para revisar en estos momentos.</p>
                 <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal ">
+                            <a class="nav-link" href="principalAdmin.php">Home</a>
+                        </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="Revision.php">Revisión</a>
+                            <a class="nav-link active" href="Revision.php">Revisión</a>
                         </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="RegistroAdmin.php">Registrar admin.</a>

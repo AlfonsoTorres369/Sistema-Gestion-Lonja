@@ -55,6 +55,10 @@ $row=mysqli_fetch_assoc($result);
 }*/
 
 
+//Proceso de compra y descuentos
+if(isset($_POST['comprar'])){
+	
+}
 
 
 ?>
@@ -206,7 +210,9 @@ function Detener(){
         </form>
         
         <div class="form-boton">
-            <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
+
+            <button type="submit" name= "comprar" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar">COMPRAR</button>
+
         </div>
     </div>
     <!-- /.container -->
