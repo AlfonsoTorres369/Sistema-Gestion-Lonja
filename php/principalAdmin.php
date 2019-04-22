@@ -32,6 +32,9 @@
                 <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal ">
+                            <a class="nav-link active" href="principalAdmin.php">Home</a>
+                        </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>

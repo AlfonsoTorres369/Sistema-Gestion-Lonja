@@ -36,6 +36,9 @@
                 <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal ">
+                            <a class="nav-link" href="principalAdmin.php">Home</a>
+                        </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Revision.php">Revisión</a>
                         </li>
@@ -91,19 +94,6 @@
             <div id="card2" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
                     Al acceder a esta funcionalidad se mostrará un formulario para dar de alta a un nuevo administrador introduciendo los siguientes datos: <strong>nombre, apellidos, teléfono, correo electrónico y contraseña.</strong>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <h5 class="card-header">
-                <a class="collapsed d-block" data-toggle="collapse" href="#card3" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
-                    <i class="fa fa-chevron-down pull-right"></i>
-                    Perfil
-                </a>
-            </h5>
-            <div id="card3" class="collapse" aria-labelledby="heading-collapsed">
-                <div class="card-body">
-                    A través de está página se pueden consultar los datos de la cuenta de administrador desde la que se ha accedido a Aquabid
                 </div>
             </div>
         </div>
