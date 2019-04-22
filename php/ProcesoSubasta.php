@@ -10,14 +10,35 @@ $subasta = $_GET['subasta'];
 $sql = 'SELECT imagen FROM Lote WHERE ID_Lote=' . $subasta[7] . '';
 
 $result = mysqli_query($con, $sql);
-if (false == $result) {
+
+    if (false == $result) {
+        printf("error: %s\n", mysqli_error($con));
+	}
+
+//Funcion e-mail
+$consultaaux = mysqli_query($con, "SELECT * FROM Participa WHERE ID_Cliente='".$_SESSION['ID_Cliente']."' AND ID_Subasta='".$subasta[8]."'");
+if(false==$consultaaux){
     printf("error: %s\n", mysqli_error($con));
 }
-$row = mysqli_fetch_assoc($result);
-$result3 = mysqli_query($con, "INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('" . $_SESSION['ID_Cliente'] . "', '" . $subasta[8] . "')");
-if (false == $result3) {
-    printf("\n error:. %s\n", mysqli_error($con));
+$numrow = mysqli_num_rows($consultaaux);
+if($numrow == 0){
+
+    $mail = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    if(false==$mail){
+        printf("error: %s\n",mysqli_error($con));
+    }
+    $maildef = mysqli_fetch_array($mail);
+    mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta\nBarco: ".$subasta[0]."\nZona de Captura:".$subasta[1]."\nProducto:".$subasta[2]."\nTamaño:".$subasta[3]." cm\nPeso:".$subasta[4]." kg\nPrecio de Salida:".$subasta[5]."\nFecha:".$subasta[6]."\n\n¡Gracias por apuntarse!");
 }
+
+
+$row=mysqli_fetch_assoc($result);
+$result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
+if(false==$result3){
+	printf("\n error:. %s\n",mysqli_error($con));
+}
+
+
 
 ?>
 

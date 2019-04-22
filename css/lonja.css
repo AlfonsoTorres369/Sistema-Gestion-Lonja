@@ -119,3 +119,16 @@ body{
   margin-top: 11rem;
   margin-bottom: 7rem
 }
+
+
+#perfilAdmin{
+    max-width: 100vh;
+    margin-bottom: 14rem;
+    margin-top: 16rem;
+    border-radius: 1rem;
+    background-color:white;
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
