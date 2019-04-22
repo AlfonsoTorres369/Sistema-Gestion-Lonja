@@ -66,59 +66,99 @@
     <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Información</h1>
-        <h2>F.A.Q. y tutorial de uso:</h2>
+        <h2>Tutorial de uso (administradores):</h2>
         <br>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Revisión de capturas
-                </button>
-              </h5>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card1" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Revisión de capturas
+                </a>
+            </h5>
+            <div id="card1" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    Mediante esta funcionalidad, el administrador verifica si los datos de una captura introducida por un cliente son correctos antes de su puesta a la venta, estableciendo un <strong>precio de partida</strong> y un <strong>precio mínimo</strong> para el lote, y una <strong>fecha</strong> para la subasta.
+                </div>
             </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                Mediante esta funcionalidad cualquiera de los administradores de Aquabid puede verificar si los datos de una captura introducida por un cliente son correctos antes de su puesta a la venta en una subasta, estableciendo un precio de partida y un precio mínimo para el lote.
-              </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card2" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Registro de administrador
+                </a>
+            </h5>
+            <div id="card2" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    Al acceder a esta funcionalidad se mostrará un formulario para dar de alta a un nuevo administrador introduciendo los siguientes datos: <strong>nombre, apellidos, teléfono, correo electrónico y contraseña.</strong>
+                </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Registro de administrador
-                </button>
-              </h5>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card3" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Perfil
+                </a>
+            </h5>
+            <div id="card3" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    A través de está página se pueden consultar los datos de la cuenta de administrador desde la que se ha accedido a Aquabid
+                </div>
             </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                Al acceder esta funcionalidad se mostrará un formulario en el que se introducirán los datos necesarios para dar de alta a un nuevo administrador: <strong>nombre, apellidos, teléfono, correo electrónico y contraseña.</strong>
-              </div>
+        </div>
+        <br>
+        <h2>FAQs:</h2>
+        <br>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card4" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Usuarios
+                </a>
+            </h5>
+            <div id="card4" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    En Aquabid existen dos tipos de usuarios: los clientes, que pueden registrar capturas para su venta y comprar lotes de otros clientes; y los administradores o supervisores, que son los encargados de verificar las capturas registradas por un cliente. Los dos tipos de usuarios tienen tipos distintos de cuentas con funcionalidades exclusivas.
+                </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingThree">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Perfil
-                </button>
-              </h5>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card5" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Capturas y lotes
+                </a>
+            </h5>
+            <div id="card5" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    Una vez un cliente realice el registro de una captura en la web, esta pasará a estado de revisión hasta que un administrador la apruebe y le asigne la fecha, momento a partir del cual cualquiera de los clientes podrá apuntarse accediendo a la subasta.
+                </div>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                A través de está página se pueden consultar los datos de la cuenta de administrador desde la que se ha accedido a Aquabid
-              </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card6" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Descuentos
+                </a>
+            </h5>
+            <div id="card6" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    Aquabid ofrece a los clientes una serie de descuentos como programa de fidelidad. Cuando un cliente participe en al menos 3 subastas y compre por lo menos en una de ellas, al mes siguiente dispondrá de un descuento en sus tres siguientes compras del 15% para la primera, 10% para la segunda, y 5% para la tercera. Además, si un cliente participa y compra en cinco subastas el mismo día, se aplicará un descuento del 5% en su próxima compra.
+                </div>
             </div>
-          </div>
-
         </div>
         <br>
         <h2>Sobre nosotros:</h2>
         <img id="logoAqBd" class="img-fluid mx-auto d-block" src="../images/Aquabid.png">
         <br>
         <p>AQUABID es una lonja online en la que podrá realizar la compraventa de lotes de productos del mar de una forma sencilla y accesible.</p>
-        <p>Registre una captura para venderla en una subasta o acceda a cualquier subasta en progreso y compre aquellos lotes que usted quiera. AQUABID le permite todo esto de forma gratuita.</p>
+        <p>Todos los derechos de autor pertenecen a:</p>
+        <strong>Miguel Ángel Pérez Souza</strong><br>
+        <strong>Eric Romero Andrés</strong><br>
+        <strong>Alberto Sastre Gallardo</strong><br>
+        <strong>Alfonso Torres Sánchez</strong>
     </div>
     <!-- /.container -->
 
