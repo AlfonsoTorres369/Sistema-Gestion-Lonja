@@ -31,9 +31,14 @@
 <body id="bprincipal ">
     <!-- Navigation -->
     <header>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+
             <div class="container">
                 <a class="navbar-brand" href="principalAdmin.php"><img src="../images/Aquabid.png" width="55px"></a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item-principal ">
@@ -48,7 +53,7 @@
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link active" href="InformacionAdmin.php">Información</a>
                         </li>
                         <li class="nav-item">
