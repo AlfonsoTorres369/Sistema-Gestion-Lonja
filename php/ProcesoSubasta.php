@@ -40,7 +40,7 @@ if(false==$result3){
 
 //Proceso de compra y descuentos
 if(isset($_POST['comprar'])){
-	
+
 }
 
 
