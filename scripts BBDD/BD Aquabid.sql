@@ -39,6 +39,7 @@ CREATE TABLE `Subasta`(
     `fecha` DATETIME NOT NULL,
     `actual` boolean NOT NULL,
     `realizada` boolean NOT NULL,
+    `precio_actual` float,
     PRIMARY KEY(`ID_Subasta`)
 );
 
@@ -54,6 +55,7 @@ CREATE TABLE `Lote`(
     `imagen` MEDIUMBLOB NOT NULL,
     `precio_salida` float,
     `precio_minimo` float,
+    `precio_venta` float,
     `subastado` boolean NOT NULL,
     `ID_Subasta` int,
     `ID_Cliente` int,
@@ -71,5 +73,14 @@ CREATE TABLE `Participa`(
     `ID_Cliente` int NOT NULL,
     PRIMARY KEY(`ID_Subasta`, `ID_Cliente`),
     FOREIGN KEY(`ID_Subasta`) REFERENCES Subasta(`ID_Subasta`) ON UPDATE CASCADE,
+    FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
+)
+--Tabla Descuentos --
+DROP TABLE IF EXISTS `Descuentos`;
+CREATE TABLE `Descuentos`(
+    `ID_Cliente`int NOT NULL,
+    `num_desc`int NOT NULL,
+    `fecha_ult_comp` DATETIME NOT NULL,
+    PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
 )

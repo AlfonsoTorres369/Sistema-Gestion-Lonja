@@ -10,7 +10,7 @@ include_once 'Conexion.php';
 
 $sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
 		FROM Lote L INNER JOIN Subasta S ON L.ID_Subasta=S.ID_Subasta 
-		WHERE L.ID_Admin IS NOT NULL AND L.ID_Subasta IS NOT NULL';
+		WHERE L.ID_Admin IS NOT NULL AND L.ID_Subasta IS NOT NULL AND S.realizada=0';
 
 $result = mysqli_query($con, $sql);
     if (false == $result) {
@@ -120,8 +120,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
-				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote
-				$subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x]);
+                
+				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
+                $subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
+                
                 echo '<div class="col-md-12 mb-5">
                 <a href="ProcesoSubasta.php?'. http_build_query(array('subasta' => $subasta)) .'" class="shadow-lg card h-100" id="tarjetaPrincipal">
                     <div class="d-flex flex-row">
@@ -152,10 +154,6 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                             <div class="col-md-12">
                                 <label for="precioSalida">Fecha:</label>
                                 <p class="list-inline-item">' . $fecha[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="precioSalida">Subasta:</label>
-                                <p class="list-inline-item">' . $ID_Subasta[$x] . '</p>
                             </div>
                         </div>
                     </div>
