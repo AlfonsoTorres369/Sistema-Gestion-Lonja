@@ -6,8 +6,9 @@ include_once 'Conexion.php';
 
 
 //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
-$subasta = $_GET['subasta'];
 
+if(isset($_GET['subasta'])){
+$subasta = $_GET['subasta'];
 $sql = "SELECT imagen FROM Lote WHERE ID_Lote=".$subasta[7];
 
 $result = mysqli_query($con, $sql);
@@ -38,9 +39,11 @@ if($numrow == 0){
 
 
 $row=mysqli_fetch_assoc($result);
-
+}
 //Funcion Comprar
-/*if(isset($_POST['botonComprar'])){
+if(isset($_POST['botonComprar'])){
+    
+    $fix=mysqli_real_escape_string($con, $_POST['fix']);
     
     $precio_actual = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
     $precio = mysqli_fetch_array($precio_actual);
@@ -51,13 +54,14 @@ $row=mysqli_fetch_assoc($result);
     if(false == $ejec){
         printf("error: %s\n", mysqli_error($con));
     }
-    header("Location:Principal.php");
-}*/
-
-
-//Proceso de compra y descuentos
-if(isset($_POST['botonComprar'])){
-	$sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
+    $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    $mailrow = mysqli_fetch_array($mail2);
+    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
+    
+    
+    
+    //Funcion aplicar descuentos
+    $sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
 	$result_desc=mysqli_query($con, $sql_desc);
 	if(false==$result_desc){
 		printf("\n error: %s\n", mysqli_error($con));
@@ -66,7 +70,6 @@ if(isset($_POST['botonComprar'])){
 	$fecha_act=date("Y-m-d");
 	$fecha_comp=$row_desc["fecha_ult_comp"];
 	$num_desc=$row_desc["num_desc"];
-	$precio_actual=100;
 	if((strtotime($fecha_act)>=strtotime($fecha_comp))&&(strtotime($fecha_act)<=strtotime($fecha_comp."+ 1 month"))){
 		if($num_desc==3){
 			$precio_actual=$precio_actual-($precio_actual*0.15);
@@ -126,7 +129,10 @@ if(isset($_POST['botonComprar'])){
 	$row_buy=mysqli_fetch_assoc($res_buy);
 	if($row_buy["COUNT(*)"]>5){
 		$precio_actual=$precio_actual-($precio_actual*0.05);
-	}	
+	}
+    
+    
+    header("Location:Principal.php");
 }
 
 
@@ -170,7 +176,11 @@ $(document).ready(function() {
 function Detener(){
     clearInterval(changeNumber);
 }
-</script>
+</script> 
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -186,6 +196,9 @@ function Detener(){
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
@@ -225,7 +238,7 @@ function Detener(){
     <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Proceso Subasta</h1>
-        <form name="procesoSubasta">
+        <form name="procesoSubasta" method="post">
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <div class="text-right">
@@ -272,17 +285,15 @@ function Detener(){
                 </div>
             </div>
             
-           <!-- <div class="form-boton">
+            <div class="form-boton">
             <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
-        </div>-->
+        </div>
+            
+            <input type="number" value="<?php echo $subasta[8]?>" name="fix" style="visibility:hidden">
             
         </form>
         
-        <div class="form-boton">
-
-            <button type="submit" name= "comprar" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar">COMPRAR</button>
-
-        </div>
+        
     </div>
     <!-- /.container -->
 
