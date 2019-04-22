@@ -3,11 +3,14 @@
 //Conexion base de datos
 session_start();
 include_once 'Conexion.php';
-//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta
-$subasta=$_GET['subasta'];
-$sql='SELECT imagen FROM Lote WHERE ID_Lote='.$subasta[7].'';
-//Codigo de prueba, hay que igualar las variables al resultado de la consulta sql
+
+//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
+$subasta = $_GET['subasta'];
+
+$sql = 'SELECT imagen FROM Lote WHERE ID_Lote=' . $subasta[7] . '';
+
 $result = mysqli_query($con, $sql);
+
     if (false == $result) {
         printf("error: %s\n", mysqli_error($con));
 	}
@@ -100,7 +103,7 @@ if(isset($_POST['comprar'])){
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                         <li class="nav-item">
-							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -117,8 +120,8 @@ if(isset($_POST['comprar'])){
         <form name="procesoSubasta">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <div class="text-right" >
-                       <?php echo ' <img class="rounded d-block" style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode($row["imagen"]) . '" alt="Foto del lote">'?>
+                    <div class="text-right">
+                        <?php echo ' <img class="rounded d-block" style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($row["imagen"]) . '" alt="Foto del lote">' ?>
                     </div>
                 </div>
             </div>
@@ -149,7 +152,7 @@ if(isset($_POST['comprar'])){
                 </div>
                 <div class="form-group col-md-6">
                     <label for="precioSalida">Precio salida:</label>
-                    <output type="text" class="form-control" id="precioSalida"><?php echo $subasta[5]. "€"; ?></output>
+                    <output type="text" class="form-control" id="precioSalida"><?php echo $subasta[5] . "€"; ?></output>
                 </div>
             </div>
             <br>

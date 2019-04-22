@@ -32,7 +32,7 @@ $row=mysqli_fetch_array($sql);
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
-                <a class="navbar-brand" href="Principal.html"><img src="../images/Aquabid.png" width="55px"></a>
+                <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">

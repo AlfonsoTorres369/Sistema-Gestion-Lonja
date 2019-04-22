@@ -39,6 +39,7 @@ CREATE TABLE `Subasta`(
     `fecha` DATETIME NOT NULL,
     `actual` boolean NOT NULL,
     `realizada` boolean NOT NULL,
+    `precio_actual` float,
     PRIMARY KEY(`ID_Subasta`)
 );
 
@@ -54,6 +55,7 @@ CREATE TABLE `Lote`(
     `imagen` MEDIUMBLOB NOT NULL,
     `precio_salida` float,
     `precio_minimo` float,
+    `precio_venta` float,
     `subastado` boolean NOT NULL,
     `ID_Subasta` int,
     `ID_Cliente` int,

@@ -1,0 +1,1 @@
+var precio_salida = <?php echo $subasta[5]; ?>; 
