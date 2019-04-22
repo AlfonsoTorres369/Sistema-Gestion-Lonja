@@ -85,8 +85,19 @@ if(!$error){
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
 	}
-    mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Web: localhost/Sistema-Gestion-Lonja/index.php");
-        
+    //mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Web: localhost/Sistema-Gestion-Lonja/index.php");
+    $sql_ID="SELECT MAX(ID_Cliente) FROM Cliente";
+	$res=mysqli_query($con,$sql_ID);
+	if(false==$res){
+		printf("errorB: %s\n", mysqli_error($con));	
+	}
+	
+	$fecha=date("Y-m-d");
+	$id_Cliente=mysqli_fetch_assoc($res);
+	$sql2=mysqli_query($con, "INSERT INTO Descuentos (ID_Cliente, num_desc, fecha_ult_comp) VALUES ('".$id_Cliente["MAX(ID_Cliente)"]."',0 , '".$fecha."' )");
+    if(false==$sql2){
+		printf("errorB: %s\n", mysqli_error($con));	
+	}
     $successmsg= '
              <div class="alert alert-success alert-dismissable fade in">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -94,7 +105,7 @@ if(!$error){
               </div>
               ';
          echo $successmsg;
-        header("Location:Principal.php");
+         header("Location:Principal.php");
 
 }else {
             $errormsg = '
