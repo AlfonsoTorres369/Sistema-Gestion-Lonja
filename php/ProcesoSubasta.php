@@ -6,8 +6,9 @@ include_once 'Conexion.php';
 
 
 //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
-$subasta = $_GET['subasta'];
 
+if(isset($_GET['subasta'])){
+$subasta = $_GET['subasta'];
 $sql = "SELECT imagen FROM Lote WHERE ID_Lote=".$subasta[7];
 
 $result = mysqli_query($con, $sql);
@@ -38,9 +39,11 @@ if($numrow == 0){
 
 
 $row=mysqli_fetch_assoc($result);
-
+}
 //Funcion Comprar
-/*if(isset($_POST['botonComprar'])){
+if(isset($_POST['botonComprar'])){
+    
+    $fix=mysqli_real_escape_string($con, $_POST['fix']);
     
     $precio_actual = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
     $precio = mysqli_fetch_array($precio_actual);
@@ -51,14 +54,14 @@ $row=mysqli_fetch_assoc($result);
     if(false == $ejec){
         printf("error: %s\n", mysqli_error($con));
     }
+    $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    $mailrow = mysqli_fetch_array($mail2);
+    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
     header("Location:Principal.php");
-}*/
-
-
-//Proceso de compra y descuentos
-if(isset($_POST['comprar'])){
-	
 }
+
+
+
 
 
 ?>
@@ -101,7 +104,7 @@ $(document).ready(function() {
 function Detener(){
     clearInterval(changeNumber);
 }
-</script>
+</script> 
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -156,7 +159,7 @@ function Detener(){
     <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Proceso Subasta</h1>
-        <form name="procesoSubasta">
+        <form name="procesoSubasta" method="post">
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <div class="text-right">
@@ -203,17 +206,15 @@ function Detener(){
                 </div>
             </div>
             
-           <!-- <div class="form-boton">
+            <div class="form-boton">
             <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
-        </div>-->
+        </div>
+            
+            <input type="number" value="<?php echo $subasta[8]?>" name="fix" style="visibility:hidden">
             
         </form>
         
-        <div class="form-boton">
-
-            <button type="submit" name= "comprar" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar">COMPRAR</button>
-
-        </div>
+        
     </div>
     <!-- /.container -->
 
