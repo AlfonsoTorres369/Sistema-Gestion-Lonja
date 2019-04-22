@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `Descuentos`;
 CREATE TABLE `Descuentos`(
     `ID_Cliente`int NOT NULL,
     `num_desc`int NOT NULL,
-    `fecha_ult_comp` DATETIME NOT NULL,
+    `fecha_ult_comp` DATE NOT NULL,
     PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
 )
