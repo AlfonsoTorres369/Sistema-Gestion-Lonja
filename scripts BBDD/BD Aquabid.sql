@@ -51,6 +51,7 @@ CREATE TABLE `Subasta`(
     `realizada` boolean NOT NULL,
     `precio_actual` float,
     `ID_Lonja` int NOT NULL,
+    `express_no` boolean,
     PRIMARY KEY(`ID_Subasta`),
     FOREIGN KEY(`ID_Lonja`) REFERENCES Lonja(`ID_Lonja`) ON UPDATE CASCADE
 );
