@@ -69,6 +69,7 @@ CREATE TABLE `Lote`(
     `precio_minimo` float,
     `precio_venta` float,
     `subastado` boolean NOT NULL,
+    `pagado` boolean NOT NULL,
     `ID_Subasta` int,
     `ID_Cliente` int,
     `ID_Admin` int,
