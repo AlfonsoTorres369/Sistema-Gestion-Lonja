@@ -53,13 +53,13 @@ $row = mysqli_fetch_array($sql);
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="InformacionAdmin.php">Información</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link active" href="PerfilAdmin.php"> Perfil</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>
