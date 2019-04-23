@@ -2,9 +2,11 @@
 include_once 'Conexion.php';
 //if(isset($_SESSION['ID_Cliente']))
 session_start();
-$sql=mysqli_query($con, "SELECT * FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
-$row=mysqli_fetch_array($sql);
+$sql = mysqli_query($con, "SELECT * FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+$row = mysqli_fetch_array($sql);
 
+$sql1 = mysqli_query($con, "SELECT l.nombre FROM Lonja l INNER JOIN Cliente c ON l.ID_Lonja = c.ID_Lonja WHERE c.ID_Cliente = '".$_SESSION['ID_Cliente']."'");
+$row1 = mysqli_fetch_array($sql1);
 
 
 
@@ -101,9 +103,13 @@ $row=mysqli_fetch_array($sql);
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="email">Dirección de email:</label>
                     <output type="text" class="form-control" name="email"><?php echo $row['email']; ?></output>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lonje">Lonja de preferencia:</label>
+                    <output type="text" class="form-control" name="telefono"><?php echo $row1['nombre']; ?></output>
                 </div>
             </div>
             <br>
