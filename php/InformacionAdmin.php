@@ -85,7 +85,7 @@
             </h5>
             <div id="card1" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Mediante esta funcionalidad, el administrador verifica si los datos de una captura introducida por un cliente son correctos antes de su puesta a la venta, estableciendo un <strong>precio de partida</strong> y un <strong>precio mínimo</strong> para el lote, y una <strong>fecha</strong> para la subasta.
+                    Mediante esta funcionalidad, un administrador podrá verificar si los datos de tamaño y peso de una captura introducida por un cliente son correctos antes de su puesta a la venta y, en caso contrario, podrá corregirlos. Durante la revisión, el administrador establecerá además un <strong>precio de partida</strong> y un <strong>precio mínimo</strong> para el lote, y una <strong>fecha</strong> para la subasta.
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
             </h5>
             <div id="card2" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Al acceder a esta funcionalidad se mostrará un formulario para dar de alta a un nuevo administrador introduciendo los siguientes datos: <strong>nombre, apellidos, teléfono, correo electrónico y contraseña.</strong>
+                    Al acceder a esta funcionalidad se mostrará un formulario para dar de alta a un nuevo administrador en la plataforma introduciendo los siguientes datos: <strong>nombre, apellidos, teléfono, correo electrónico y contraseña.</strong>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
             </h5>
             <div id="card5" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Una vez un cliente realice el registro de una captura en la web, esta pasará a estado de revisión hasta que un administrador la apruebe y le asigne la fecha, momento a partir del cual cualquiera de los clientes podrá apuntarse accediendo a la subasta.
+                    Una vez un cliente realice el registro de una captura en la web, esta pasará a estado de revisión hasta que un administrador la apruebe y le asigne un precio de partida, un precio mínimo y una fecha, momento a partir del cual los clientes podrán apuntarse accediendo a la subasta.
                 </div>
             </div>
         </div>
