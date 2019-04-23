@@ -90,7 +90,7 @@
             </h5>
             <div id="card1" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Mediante esta funcionalidad, cualquier cliente de Aquabid será capaz de registrar una captura introduciendo los siguientes datos: <strong>barco, zona de captura, tipo de producto, peso, tamaño e imagen</strong> de la captura
+                    Mediante el registro de capturas, cualquier cliente de Aquabid será capaz de registrar una captura introduciendo los siguientes datos: <strong>barco, zona de captura, tipo de producto, peso, tamaño e imagen</strong> de la captura. Una registrada, la captura pasará a estado de revisión, donde un administrador la verificará para ponerla a la venta en una subasta.
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
             </h5>
             <div id="card2" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Al acceder a esta funcionalidad, se mostrará un listado con todas las subastas que se realizarán proximamente. Si un cliente desea apuntarse a una subasta, únicamente tiene que hacer click sobre la misma y se le enviará un correo de confirmación y se accederá a la subasta, donde el cliente podrá comprar el lote. Una vez realizada la compra se le enviará otro correo para confirmar la adquisición. Si un lote llega al precio mínimo sin que nadie lo compre pasará a subasta express.
+                    Al acceder a esta funcionalidad, se mostrará un listado con todas las subastas que se realizarán proximamente. Si un cliente desea apuntarse a una subasta, únicamente tiene que hacer click sobre la misma, de tal modo que accederá a esta y se le enviará un correo de confirmación. Una vez la subasta comience, el cliente podrá adquirir el lote cuando este alcance el precio deseado, siempre y cuando no se alcance antes el precio mínimo u otro cliente se le adelante. Al adquirir el lote, el cliente recibirá un correo de confirmacion y el producto pasará a la cesta a la espera de ser pagado. En caso de que un lote llegue al precio mínimo sin que nadie lo compre, este pasará a subastarse 5 minutos mas tarde en una subasta express.
                 </div>
             </div>
         </div>
@@ -116,7 +116,20 @@
             </h5>
             <div id="card3" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    A través de las subastas express se venderán los lotes descartados de las subastas normales, partiendo del precio mínimo en estas y reduciendo el precio hasta que un cliente lo compre o hasta que llegue a cero, en cuyo caso volverá a ponerse a la venta desde el precio mínimo como otra subasta express. El proceso para acceder a estas subastas es el mismo que el de las subastas normales y la confirmacíón por apuntarse y por comprar se realiza también por correo.
+                    A través de las subastas express se venderán los lotes descartados de las subastas normales, partiendo del precio mínimo en estas y reduciendo el precio hasta que un cliente adquiera el lote o hasta que llegue a cero el precio, en cuyo caso el lote se descartará. La forma de participar en este tipo de subastas es exactamente la misma que para las subastas normales y las notificaciones serán del mismo modo enviadas por correo.
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                <a class="collapsed d-block" data-toggle="collapse" href="#card7" aria-expanded="true" aria-controls="collapse-collapsed" id="heading-collapsed">
+                    <i class="fa fa-chevron-down pull-right"></i>
+                    Cesta de la compra
+                </a>
+            </h5>
+            <div id="card7" class="collapse" aria-labelledby="heading-collapsed">
+                <div class="card-body">
+                    La cesta de la compra mostrará a cada cliente un listado con todos los lotes obtenidos en subastas que se encuentran pendientes de pago, permitiendoles pagar cada uno individualmente y enviando un correo de confirmación cada vez que uno de los lotes es pagado.
                 </div>
             </div>
         </div>
@@ -145,7 +158,7 @@
             </h5>
             <div id="card5" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Una vez un cliente realice el registro de una captura en la web, esta pasará a estado de revisión hasta que un administrador la apruebe y le asigne la fecha, momento a partir del cual cualquiera de los clientes podrá apuntarse accediendo a la subasta.
+                    Una vez un cliente realice el registro de una captura en la web, esta pasará a estado de revisión hasta que un administrador la apruebe y le asigne un precio de partida, un precio mínimo y una fecha, momento a partir del cual los clientes podrán apuntarse accediendo a la subasta.
                 </div>
             </div>
         </div>
