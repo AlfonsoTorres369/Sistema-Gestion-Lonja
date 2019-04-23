@@ -10,7 +10,7 @@ include_once 'Conexion.php';
 
 $sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
 		FROM Lote L INNER JOIN Subasta S ON L.ID_Subasta=S.ID_Subasta 
-		WHERE L.ID_Admin IS NOT NULL AND L.ID_Subasta IS NOT NULL AND S.realizada=0';
+		WHERE L.ID_Cliente = '.$_SESSION['ID_Cliente'].' AND L.pagado = false';
 
 $result = mysqli_query($con, $sql);
     if (false == $result) {
@@ -134,7 +134,8 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
 				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
                 $subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
                 
-                echo '<div class="col-md-10 mb-5">
+                echo '
+                <div class="col-md-12 mb-5">
                 <a class="shadow-lg card h-100">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
@@ -166,14 +167,12 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
                                 <p class="list-inline-item">' . $fecha[$x] . '</p>
                             </div>
                         </div>
+                        <div class="row justify-content-center">
+                            <button type="submit" name="Pagar" class="btn btn-primary align-right">Pagar</button>
+                        </div>
                     </div>
                 </a>
             </div>
-
-
-
-
-
             ';
             }
         } else {

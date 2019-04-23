@@ -69,6 +69,7 @@ CREATE TABLE `Lote`(
     `precio_minimo` float,
     `precio_venta` float,
     `subastado` boolean NOT NULL,
+    `pagado` boolean NOT NULL,
     `ID_Subasta` int,
     `ID_Cliente` int,
     `ID_Admin` int,
@@ -96,4 +97,7 @@ CREATE TABLE `Descuentos`(
     PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
 );
+INSERT INTO `Lonja` VALUES(1, 'Santander');
+INSERT INTO `Lonja` VALUES(2, 'Cádiz');
+INSERT INTO `Lonja` VALUES(3, 'Cartagena');
 
