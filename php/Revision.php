@@ -45,7 +45,7 @@ $sin_subastas = '<p>No hay lotes disponibles para revisar en estos momentos.</p>
     <meta name="description" content="Página principal de Aquabid">
     <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
 
-    <title>Subastas</title>
+    <title>Revision de lotes</title>
 
     <link rel="shortcut icon" href="../images/Aquabid.png">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
