@@ -1,21 +1,21 @@
 <?php
 
 //Conexion base de datos
-    session_start();
-    if(isset($_SESSION['ID_Cliente'])==""){
-        header("Location:../index.php");
-    }
+session_start();
+if (isset($_SESSION['ID_Cliente']) == "") {
+    header("Location:../index.php");
+}
 
 include_once 'Conexion.php';
 
 $sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
 		FROM Lote L INNER JOIN Subasta S ON L.ID_Subasta=S.ID_Subasta 
-		WHERE L.ID_Cliente = '.$_SESSION['ID_Cliente'].' AND L.pagado = false';
+		WHERE L.ID_Cliente = ' . $_SESSION['ID_Cliente'] . ' AND L.pagado = false';
 
 $result = mysqli_query($con, $sql);
-    if (false == $result) {
-        printf("error: %s\n", mysqli_error($con));
-    }
+if (false == $result) {
+    printf("error: %s\n", mysqli_error($con));
+}
 
 $num_rows = mysqli_num_rows($result);
 
@@ -30,11 +30,11 @@ if ($num_rows > 0) {
         $precio_salida[] = $row["precio_salida"];
         $precio_minimo[] = $row["precio_minimo"];
         $imagen[] = $row["imagen"];
-        $lote[]=$row["ID_Lote"];
-        $fecha[]=$row["fecha"];
-        $ID_Subasta[]=$row["ID_Subasta"];
+        $lote[] = $row["ID_Lote"];
+        $fecha[] = $row["fecha"];
+        $ID_Subasta[] = $row["ID_Subasta"];
     }
-} 
+}
 
 
 $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
@@ -111,7 +111,7 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                         <li class="nav-item-principal">
-							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -130,50 +130,49 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
-                
-				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
-                $subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
-                
+
+                //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
+                $subasta = array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
+
                 echo '
                 <div class="col-md-12 mb-5">
-                <a class="shadow-lg card h-100">
-                    <div class="d-flex flex-row">
-                        <div style="width: 50%">
-                            <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode( $imagen[$x]) . '" alt="Foto del lote">
+                    <a class="shadow-lg card h-100">
+                        <div class="d-flex flex-row">
+                            <div style="width: 50%">
+                                <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($imagen[$x]) . '" alt="Foto del lote">
+                            </div>
+                            <div class="card-body">
+                                <div class="col-md-12">
+                                    <label for="barco">Barco:</label>
+                                    <p class="list-inline-item">' . $barco[$x] . '</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="producto">Producto:</label>
+                                    <p class="list-inline-item">' . $producto[$x] . '</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tamaño">Tamaño:</label>
+                                    <p class="list-inline-item">' . $tamaño[$x] . '</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="peso">Peso:</label>
+                                    <p class="list-inline-item">' . $peso[$x] . '</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="precioSalida">Precio salida:</label>
+                                    <p class="list-inline-item">' . $precio_salida[$x] . '</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="precioSalida">Fecha:</label>
+                                    <p class="list-inline-item">' . $fecha[$x] . '</p>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="submit" name="Pagar" class="btn btn-primary align-right">Pagar</button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="col-md-12">
-                                <label for="barco">Barco:</label>
-                                <p class="list-inline-item">' . $barco[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="producto">Producto:</label>
-                                <p class="list-inline-item">' . $producto[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="tamaño">Tamaño:</label>
-                                <p class="list-inline-item">' . $tamaño[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="peso">Peso:</label>
-                                <p class="list-inline-item">' . $peso[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="precioSalida">Precio salida:</label>
-                                <p class="list-inline-item">' . $precio_salida[$x] . '</p>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="precioSalida">Fecha:</label>
-                                <p class="list-inline-item">' . $fecha[$x] . '</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <button type="submit" name="Pagar" class="btn btn-primary align-right">Pagar</button>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            ';
+                    </a>
+                </div>';
             }
         } else {
             echo $sin_subastas;
