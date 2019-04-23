@@ -58,23 +58,12 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
     
     $fix=mysqli_real_escape_string($con, $_POST['fix']);
     
-    $precio_actual = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
-    $precio = mysqli_fetch_array($precio_actual);
-    $actu = "UPDATE lote SET precio_venta=".$precio['precio_actual'].", ID_Cliente=".$_SESSION['ID_Cliente'].", subastado=true WHERE ID_Lote=".$subasta[7];
-    $actu2 = "UPDATE Subasta SET actual=false, realizada=true WHERE ID_Subasta=".$subasta[8];
-    $ejec2 = mysqli_query($con, $actu2);
-    $ejec=mysqli_query($con, $actu);
-    if(false == $ejec){
-        printf("error: %s\n", mysqli_error($con));
-    }
-    $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
-    $mailrow = mysqli_fetch_array($mail2);
-    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
-    
-    
+    $precio_actual1 = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $precio = mysqli_fetch_array($precio_actual1);
+    $precio_actual=$precio['precio_actual'];
     
     //Funcion aplicar descuentos
-    /*$sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
+    $sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
 	$result_desc=mysqli_query($con, $sql_desc);
 	if(false==$result_desc){
 		printf("\n error: %s\n", mysqli_error($con));
@@ -142,13 +131,27 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
 	$row_buy=mysqli_fetch_assoc($res_buy);
 	if($row_buy["COUNT(*)"]>5){
 		$precio_actual=$precio_actual-($precio_actual*0.05);
-	}*/
+	}
+    
+    $actu = "UPDATE lote SET precio_venta=".$precio['precio_actual'].", ID_Cliente=".$_SESSION['ID_Cliente'].", subastado=true WHERE ID_Lote=".$subasta[7];
+    $actu2 = "UPDATE Subasta SET actual=false, realizada=true WHERE ID_Subasta=".$subasta[8];
+    $ejec2 = mysqli_query($con, $actu2);
+    $ejec=mysqli_query($con, $actu);
+    if(false == $ejec){
+        printf("error: %s\n", mysqli_error($con));
+    }
+    $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    $mailrow = mysqli_fetch_array($mail2);
+    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
     
     
     header("Location:SubastaFinalizada.php");
     }
     if($ejec3row['actual']==false && $ejec3row['realizada']==true){
         header("Location:SubastaExpirada.php");
+    }
+    if($ejec3row['actual']==false &&$ejec3row['realizada']==false){
+        header("Location:Subastas.php");
     }
 }
 
@@ -217,7 +220,7 @@ $(document).ready(function() {
 <body id="bprincipal ">
     <!-- Navigation -->
     <header>
-      <!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
@@ -256,7 +259,7 @@ $(document).ready(function() {
                     </ul>
                 </div>
             </div>
-        </nav> -->
+        </nav> 
     </header>
 
     <!-- Page Content -->
