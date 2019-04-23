@@ -12,6 +12,7 @@ $precio_actual=$compra[5];
 	}
 	$row_desc=mysqli_fetch_assoc($result_desc);
 	$fecha_act=date("Y-m-d");
+    $fecha = getdate();
 	$fecha_comp=$row_desc["fecha_ult_comp"];
 	$num_desc=$row_desc["num_desc"];
 	if((strtotime($fecha_act)>=strtotime($fecha_comp))&&(strtotime($fecha_act)<=strtotime($fecha_comp."+ 1 month"))){
@@ -67,20 +68,20 @@ $precio_actual=$compra[5];
 			}
 		}
 	}
-	$sql_buy="SELECT COUNT(*) FROM Participa P INNER JOIN Subasta S ON P.ID_Subasta=S.ID_Subasta INNER JOIN Lote L ON P.ID_Subasta=L.ID_Subasta WHERE P.ID_Cliente='".$_SESSION['ID_Cliente']."' 
-		AND S.fecha='".$fecha_act."'";
+	$sql_buy="SELECT COUNT(*) FROM   Subasta S  INNER JOIN Lote L ON S.ID_Subasta=L.ID_Subasta WHERE L.ID_Cliente='".$_SESSION['ID_Cliente']."' 
+		AND YEAR(S.fecha)=".$fecha['year']." AND MONTH(S.fecha)=".$fecha['mon']." AND DAY(S.fecha)=".$fecha['mday'];
 	$res_buy=mysqli_query($con,$sql_buy);
 	if($res_buy==false){
 		printf("error7: %s", mysqli_error($con));
 	}
 	$row_buy=mysqli_fetch_assoc($res_buy);
-	if($row_buy["COUNT(*)"]>5){
+	if($row_buy["COUNT(*)"]>=5){
 		$precio_actual=$precio_actual-($precio_actual*0.05);
 		$text_desc2="Aplicado descuento del 5%";
 	}
 if(isset($_POST['botonComprar'])){
     
-    
+    $pagadito=mysqli_query("UPDATE Lote SET pagado=true, precio_venta=".$precio_actual." WHERE ID_Lote=".$compra[7]);
     
     header("Location: Principal.php");
 }
@@ -168,8 +169,9 @@ if(isset($_POST['botonComprar'])){
     <!-- Page Content -->
     <br>
     <br>
-	<form>
+	
     <div id="formularioCliente" class="shadow-lg container">
+        <form method="post">
         <br>
         <h1 class="text-center">Factura</h1>
         <h3>Precio de adquisición: <?php echo $compra[5]; ?></h3>
