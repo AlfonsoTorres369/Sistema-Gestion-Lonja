@@ -7,8 +7,11 @@ include_once 'Conexion.php';
 
 //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
 
+
+$_SESSION['expirada']=false;
 if(isset($_GET['subasta'])){
 $subasta = $_GET['subasta'];
+$_SESSION['subasta']=$subasta[8];
 $sql = "SELECT imagen FROM Lote WHERE ID_Lote=".$subasta[7];
 
 $result = mysqli_query($con, $sql);
@@ -39,9 +42,19 @@ if($numrow == 0){
 
 
 $row=mysqli_fetch_assoc($result);
+    
+    $subasta1= mysqli_query($con, "SELECT ID_Subasta, precio_actual, YEAR(fecha), MONTH(fecha), DAY(fecha), HOUR(fecha), MINUTE(fecha), SECOND(fecha) FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $subastarow= mysqli_fetch_array($subasta1);
+    
 }
+
+
 //Funcion Comprar
-if(isset($_POST['botonComprar'])){
+if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
+    
+    $ejec3=mysqli_query($con, "SELECT actual, realizada FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $ejec3row=mysqli_fetch_array($ejec3);
+    if($ejec3row['actual']==true && ejec3row['realizada']==false){
     
     $fix=mysqli_real_escape_string($con, $_POST['fix']);
     
@@ -61,7 +74,7 @@ if(isset($_POST['botonComprar'])){
     
     
     //Funcion aplicar descuentos
-    $sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
+    /*$sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
 	$result_desc=mysqli_query($con, $sql_desc);
 	if(false==$result_desc){
 		printf("\n error: %s\n", mysqli_error($con));
@@ -129,11 +142,16 @@ if(isset($_POST['botonComprar'])){
 	$row_buy=mysqli_fetch_assoc($res_buy);
 	if($row_buy["COUNT(*)"]>5){
 		$precio_actual=$precio_actual-($precio_actual*0.05);
-	}
+	}*/
     
     
     header("Location:Principal.php");
+    }
+    if($ejec3row['actual']==false && $ejec3row['realizada']==true){
+        header("Location:SubastaExpirada.php");
+    }
 }
+
 
 
 ?>
@@ -152,14 +170,18 @@ if(isset($_POST['botonComprar'])){
 
     <link rel="shortcut icon" href="../images/Aquabid.png">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <!-- JavaScript -->
-    <script language="javascript" type="text/javascript" src="../js/ProcesoSubasta.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+    <link href="../css/lonja.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/RegistroCliente.css">
+    
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    
-    <!-- Script de Contador de Precio -->
-    
-    <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
     function changeNumber() {
         value = $('#precio').text();
@@ -171,29 +193,31 @@ $(document).ready(function() {
             }
         });
     }
-    setInterval(changeNumber, 3000);
+    setInterval(changeNumber, 2000);
 });
-function Detener(){
-    clearInterval(changeNumber);
-}
-</script> 
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
-    <link href="../css/lonja.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/RegistroCliente.css">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    function changeNumber() {
+        value = $('#botonComprar').text();
+        $.ajax({
+            type: "POST",
+            url: "Exit.php",
+            success: function(data) {
+                $('#botonComprar').text(data);
+            }
+        });
+    }
+    setInterval(changeNumber, 500);
+});
+</script>
 
 </head>
 
 <body id="bprincipal ">
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+      <!--  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
                 <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
@@ -229,7 +253,7 @@ function Detener(){
                     </ul>
                 </div>
             </div>
-        </nav> 
+        </nav> -->
     </header>
 
     <!-- Page Content -->
