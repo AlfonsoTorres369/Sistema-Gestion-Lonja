@@ -66,7 +66,7 @@ if (isset($_POST['confirmar'])) {
 			</div>';
 		echo $successmsg;
 
-		//header("Location: Revision.php");
+		header("Location: Revision.php");
 	}else{
 		header('Location:' . getenv('HTTP_REFERER'));
 	}

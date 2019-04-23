@@ -7,14 +7,7 @@ if (isset($_POST['guardar'])) {
     $producto = mysqli_real_escape_string($con, $_POST['producto']);
     $peso = mysqli_real_escape_string($con, $_POST['peso']);
     $tamanio = mysqli_real_escape_string($con, $_POST['tamanio']);
-    $lonja = mysqli_real_escape_string($con, $_POST['lonja']);
-    if ($lonja == "Santander") {
-        $id_lonja = 1;
-    } else if ($lonja == "Cádiz") {
-        $id_lonja = 2;
-    } else if ($lonja == "Cartagena") {
-        $id_lonja = 3;
-    }
+   
     $archivo = $_FILES['file-input']['tmp_name'];
     $size = $_FILES['file-input']['size'];
     if ($archivo != "none") {
@@ -131,20 +124,6 @@ if (isset($_POST['guardar'])) {
         </p>
 
         <form name="captura" enctype="multipart/form-data" role="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="Zona captura">Lonja:</label>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text input-decorator-radius-right"><img src="../images/Lonja.png" class="img-input-decorator"></div>
-                        <select name="lonja" class="form-control rounded-right">
-                            <option disabled selected value> Seleccione una lonja </option>
-                            <option>Santander</option>
-                            <option>Cádiz</option>
-                            <option>Cartagena</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
 
             <div class="form-row">
                 <div class="form-group col-md-12">
