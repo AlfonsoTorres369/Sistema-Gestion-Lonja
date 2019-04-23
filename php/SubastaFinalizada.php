@@ -75,6 +75,9 @@ $row2 = mysqli_fetch_array($consulta2);
                         <li class="nav-item-principal">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Cesta.php">Cesta</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
