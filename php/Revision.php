@@ -119,7 +119,7 @@ $sin_subastas = '<p>No hay lotes disponibles para revisar en estos momentos.</p>
 				//Estrucutra captura 0 id lote, 1 barco, 2 zona, 3 producto, 4 peso, 5 tamaño 
 				$captura=array($id_lote[$x], $barco[$x], $zona_captura[$x], $producto[$x], $peso[$x], $tamaño[$x]);
                 echo '<div class="col-md-12 mb-5">
-                <a href="ConfirmarCaptura.php?'. http_build_query(array('captura' => $captura)) .'" class="shadow-lg card h-100">
+                <a href="ConfirmarCaptura.php?'. http_build_query(array('captura' => $captura)) .'" class="shadow-lg card h-100" id="tarjetaPrincipal">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
                             <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($imagen[$x]) . '" alt="Foto del lote">

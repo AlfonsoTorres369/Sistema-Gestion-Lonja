@@ -37,7 +37,7 @@ if ($num_rows > 0) {
 } 
 
 
-$sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
+$sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
 
 ?>
 
@@ -134,8 +134,8 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
 				//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
                 $subasta= array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
                 
-                echo '<div class="col-md-12 mb-5">
-                <a href="ProcesoSubasta.php?'. http_build_query(array('subasta' => $subasta)) .'" class="shadow-lg card h-100" id="tarjetaPrincipal">
+                echo '<div class="col-md-10 mb-5">
+                <a class="shadow-lg card h-100">
                     <div class="d-flex flex-row">
                         <div style="width: 50%">
                             <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' .base64_encode( $imagen[$x]) . '" alt="Foto del lote">
@@ -168,7 +168,13 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                         </div>
                     </div>
                 </a>
-            </div>';
+            </div>
+
+
+
+
+
+            ';
             }
         } else {
             echo $sin_subastas;
