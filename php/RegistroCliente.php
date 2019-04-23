@@ -105,7 +105,7 @@ if(!$error){
               </div>
               ';
          echo $successmsg;
-         header("Location:Principal.php");
+         header("Location: ../index.php");
 
 }else {
             $errormsg = '
