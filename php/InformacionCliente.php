@@ -171,7 +171,7 @@
             </h5>
             <div id="card6" class="collapse" aria-labelledby="heading-collapsed">
                 <div class="card-body">
-                    Aquabid ofrece a los clientes una serie de descuentos como programa de fidelidad. Cuando un cliente participe en al menos 3 subastas y compre por lo menos en una de ellas, al mes siguiente dispondrá de un descuento en sus tres siguientes compras del 15% para la primera, 10% para la segunda, y 5% para la tercera. Además, si un cliente participa y compra en cinco subastas el mismo día, se aplicará un descuento del 5% en su próxima compra.
+                    Aquabid ofrece a los clientes una serie de descuentos como programa de fidelidad. Cuando un cliente participe y compre en 1 subasta, recibirá tres descuentos que se aplicarán automáticamente en las tres primeras compras que realice un mes despues de esta. Estos descuentos serán del 15% para la primera, 10% para la segunda, y 5% para la tercera. Además, si un cliente participa y compra en cinco subastas el mismo día, se aplicará un descuento del 5% en su próxima compra.
                 </div>
             </div>
         </div>
