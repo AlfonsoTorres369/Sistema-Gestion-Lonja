@@ -71,6 +71,9 @@ $sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_
 	if($row_buy["COUNT(*)"]>5){
 		$precio_actual=$precio_actual-($precio_actual*0.05);
 	}	
-
+	$lonja="Cádiz";
+	if($lonja=="Cádiz"){
+		echo "true";
+	}
 	
 ?>
