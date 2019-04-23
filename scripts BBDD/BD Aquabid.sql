@@ -96,4 +96,7 @@ CREATE TABLE `Descuentos`(
     PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
 );
+INSERT INTO `Lonja` VALUES(1, 'Santander');
+INSERT INTO `Lonja` VALUES(2, 'Cádiz');
+INSERT INTO `Lonja` VALUES(3, 'Cartagena');
 

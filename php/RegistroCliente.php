@@ -24,6 +24,7 @@ if(isset($_POST['signup'])){
     $cif=mysqli_real_escape_string($con, $_POST['cif']);
     $conContrasenia=mysqli_real_escape_string($con, $_POST['conContrasenia']);
     $cuentaBancaria=mysqli_real_escape_string($con, $_POST['cuentaBancaria']);
+    $lonja= mysqli_real_escape_string($con, $_POST['lonja']);
 
 
 //Comprobaciones nombre, apellidos, nombreE, direccionE
@@ -171,10 +172,21 @@ if(!$error){
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="email">Dirección de email:</label>
                     <input type="email" class="form-control" placeholder="Dirección de email" id="email" name="email" required value="<?php if ($error) echo $email ?>">
                     <span class="text-danger"> <?php if (isset($email_error)) echo $email_error;?></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Zona captura">Lonja:</label>
+                    <div class="input-group-prepend">
+                        <select name="lonja" class="form-control rounded-right">
+                            <option disabled selected value> Seleccione una opción </option>
+                            <option>Santander</option>
+                            <option>Cádiz</option>
+                            <option>Cartagena</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
