@@ -1,0 +1,346 @@
+<?php
+
+//Conexion base de datos
+session_start();
+include_once 'Conexion.php';
+
+
+//Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8:ID_Subasta, 9:precio_minimo
+
+
+$_SESSION['expirada']=false;
+if(isset($_GET['subasta'])){
+$subasta = $_GET['subasta'];
+$_SESSION['subasta']=$subasta[8];
+$sql = "SELECT imagen FROM Lote WHERE ID_Lote=".$subasta[7];
+
+$result = mysqli_query($con, $sql);
+
+    if (false == $result) {
+        printf("error: %s\n", mysqli_error($con));
+	}
+
+//Funcion e-mail
+$consultaaux = mysqli_query($con, "SELECT * FROM Participa WHERE ID_Cliente='".$_SESSION['ID_Cliente']."' AND ID_Subasta='".$subasta[8]."'");
+if(false==$consultaaux){
+    printf("error: %s\n", mysqli_error($con));
+}
+$numrow = mysqli_num_rows($consultaaux);
+if($numrow == 0){
+
+    $mail = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    if(false==$mail){
+        printf("error: %s\n",mysqli_error($con));
+    }
+    $maildef = mysqli_fetch_array($mail);
+    mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta\nBarco: ".$subasta[0]."\nZona de Captura:".$subasta[1]."\nProducto:".$subasta[2]."\nTamaño:".$subasta[3]." cm\nPeso:".$subasta[4]." kg\nPrecio de Salida:".$subasta[5]."\nFecha:".$subasta[6]."\n\n¡Gracias por apuntarse!");
+    $result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
+    if(false==$result3){
+	   printf("\n error:. %s\n",mysqli_error($con));
+    }
+}
+
+
+$row=mysqli_fetch_assoc($result);
+    
+    $subasta1= mysqli_query($con, "SELECT ID_Subasta, precio_actual, YEAR(fecha), MONTH(fecha), DAY(fecha), HOUR(fecha), MINUTE(fecha), SECOND(fecha) FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $subastarow= mysqli_fetch_array($subasta1);
+    
+}
+
+
+//Funcion Comprar
+if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
+    
+    $ejec3=mysqli_query($con, "SELECT actual, realizada FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $ejec3row=mysqli_fetch_array($ejec3);
+    if($ejec3row['actual']==true && $ejec3row['realizada']==false){
+    
+    $fix=mysqli_real_escape_string($con, $_POST['fix']);
+    
+    $precio_actual1 = mysqli_query($con, "SELECT precio_actual FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+    $precio = mysqli_fetch_array($precio_actual1);
+    $precio_actual=$precio['precio_actual'];
+    
+    //Funcion aplicar descuentos
+    $sql_desc='SELECT num_desc, fecha_ult_comp FROM Descuentos WHERE ID_Cliente='.$_SESSION['ID_Cliente'].'';
+	$result_desc=mysqli_query($con, $sql_desc);
+	if(false==$result_desc){
+		printf("\n error: %s\n", mysqli_error($con));
+	}
+	$row_desc=mysqli_fetch_assoc($result_desc);
+	$fecha_act=date("Y-m-d");
+	$fecha_comp=$row_desc["fecha_ult_comp"];
+	$num_desc=$row_desc["num_desc"];
+	if((strtotime($fecha_act)>=strtotime($fecha_comp))&&(strtotime($fecha_act)<=strtotime($fecha_comp."+ 1 month"))){
+		if($num_desc==3){
+			$precio_actual=$precio_actual-($precio_actual*0.15);
+			$sql_act="UPDATE Descuentos SET num_desc=2, fecha_ult_comp='".$fecha_act."' WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'";
+			$res_act=mysqli_query($con, $sql_act);
+			if(false==$res_act){
+				printf("error1: $s", mysqli_error($con));
+			}
+		}
+		if($num_desc==2){
+			$precio_actual=$precio_actual-($precio_actual*0.10);
+			$sql_act="UPDATE Descuentos SET num_desc=1, fecha_ult_comp='".$fecha_act."' WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'";
+			$res_act=mysqli_query($con, $sql_act);
+			if(false==$res_act){
+				printf("error2: $s", mysqli_error($con));
+			}
+		}
+		if($num_desc==1){
+			$precio_actual=$precio_actual-($precio_actual*0.05);
+			$sql_act="UPDATE Descuentos SET num_desc=0, fecha_ult_comp='".$fecha_act."' WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'";
+			$res_act=mysqli_query($con, $sql_act);
+			if(false==$res_act){
+				printf("error3: $s", mysqli_error($con));
+			}
+		}
+	}
+	else if(strtotime($fecha_act)>strtotime($fecha_comp."+ 1 month")){
+		$mes_anterior=date("Y-m-d",strtotime($fecha_act."- 1 month"));
+		$sql_comp="SELECT COUNT(*) FROM Participa P INNER JOIN Subasta S ON P.ID_Subasta=S.ID_Subasta INNER JOIN Lote L ON P.ID_Subasta=L.ID_Subasta WHERE P.ID_Cliente='".$_SESSION['ID_Cliente']."' 
+		AND S.fecha BETWEEN '".$mes_anterior."' AND '".$fecha_act."'";
+		$res_comp=mysqli_query($con,$sql_comp);
+		if($res_comp==false){
+			printf("error4: %s", mysqli_error($con));
+		}
+		$row_comp=mysqli_fetch_assoc($res_comp);
+		if($row_comp["COUNT(*)"]>1){
+			$sql_act="UPDATE Descuentos SET num_desc=2, fecha_ult_comp='".$fecha_act."' WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'";
+			$res_act=mysqli_query($con, $sql_act);
+			if(false==$res_act){
+				printf("error5: $s", mysqli_error($con));
+			}
+			$precio_actual=$precio_actual-($precio_actual*0.15);
+		}else{
+			$sql_act="UPDATE Descuentos SET num_desc=0, fecha_ult_comp='".$fecha_act."' WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'";
+			$res_act=mysqli_query($con, $sql_act);
+			if(false==$res_act){
+				printf("error6: $s", mysqli_error($con));
+			}
+		}
+	}
+	$sql_buy="SELECT COUNT(*) FROM Participa P INNER JOIN Subasta S ON P.ID_Subasta=S.ID_Subasta INNER JOIN Lote L ON P.ID_Subasta=L.ID_Subasta WHERE P.ID_Cliente='".$_SESSION['ID_Cliente']."' 
+		AND S.fecha='".$fecha_act."'";
+	$res_buy=mysqli_query($con,$sql_buy);
+	if($res_buy==false){
+		printf("error7: %s", mysqli_error($con));
+	}
+	$row_buy=mysqli_fetch_assoc($res_buy);
+	if($row_buy["COUNT(*)"]>5){
+		$precio_actual=$precio_actual-($precio_actual*0.05);
+	}
+    
+    $actu = "UPDATE lote SET precio_venta=".$precio['precio_actual'].", ID_Cliente=".$_SESSION['ID_Cliente'].", subastado=true WHERE ID_Lote=".$subasta[7];
+    $actu2 = "UPDATE Subasta SET actual=false, realizada=true, express_no=true WHERE ID_Subasta=".$subasta[8];
+    $ejec2 = mysqli_query($con, $actu2);
+    $ejec=mysqli_query($con, $actu);
+    if(false == $ejec){
+        printf("error: %s\n", mysqli_error($con));
+    }
+    $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
+    $mailrow = mysqli_fetch_array($mail2);
+    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
+    
+    
+    header("Location:SubastaFinalizada.php");
+    }
+    if($ejec3row['actual']==false && $ejec3row['realizada']==true){
+        /*$fechote=mysqli_query($con, "SELECT fecha FROM Subasta WHERE express_no=false AND ID_Subasta=".$subasta[8]);
+        $fechote1=mysqli_fetch_assoc($fechote);
+        $fechote2=date("Y-m-d H:i:s", strtotime($fechote1['fecha']."+5 minute"));*/
+        
+        $fecht3=mysqli_query($con, "UPDATE Subasta SET express_no=true WHERE ID_Subasta=".$subasta[8]);
+        header("Location:SubastaExpirada.php");
+        
+    }
+    if($ejec3row['actual']==false &&$ejec3row['realizada']==false){
+        header("Location:Subastas.php");
+    }
+}
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Página principal de Aquabid">
+    <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
+
+    <title>AQUABID</title>
+
+    <link rel="shortcut icon" href="../images/Aquabid.png">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+    <link href="../css/lonja.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/RegistroCliente.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    function changeNumber() {
+        value = $('#precio').text();
+        $.ajax({
+            type: "POST",
+            url: "ContadorExpress.php",
+            success: function(data) {
+                $('#precio').text(data);
+            }
+        });
+    }
+    setInterval(changeNumber, 2000);
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    function changeNumber() {
+        value = $('#botonComprar').text();
+        $.ajax({
+            type: "POST",
+            url: "Exit.php",
+            success: function(data) {
+                $('#botonComprar').text(data);
+            }
+        });
+    }
+    setInterval(changeNumber, 500);
+});
+</script>
+
+</head>
+
+<body id="bprincipal ">
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
+            <div class="container">
+                <a class="navbar-brand" href="Principal.php"><img src="../images/Aquabid.png" width="55px"></a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Principal.php">Home</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Captura.php">Captura</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Subastas.php">Subastas</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Cesta.php">Cesta</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="InformacionCliente.php">Info</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="PerfilCliente.php">Perfil</a>
+                        </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+    </header>
+
+    <!-- Page Content -->
+    <br>
+    <br>
+    <div id="formularioCliente" class="shadow-lg container">
+        <br>
+        <h1 class="text-center">Proceso Subasta</h1>
+        <form name="procesoSubasta" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="text-right">
+                        <?php echo ' <img class="rounded d-block" style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($row["imagen"]) . '" alt="Foto del lote">' ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="barco">Barco:</label>
+                    <output type="text" class="form-control" name="barco"><?php echo $subasta[0]; ?></output>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="zonaCaptura">Zona captura:</label>
+                    <output type="text" class="form-control" id="zonaCaptura"><?php echo $subasta[1]; ?></output>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="producto">Producto:</label>
+                    <output type="text" class="form-control" id="producto"><?php echo $subasta[2]; ?></output>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="tamaño">Tamaño:</label>
+                    <output type="number" class="form-control" id="tamaño"><?php echo $subasta[3]; ?></output>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="peso">Peso:</label>
+                    <output type="text" class="form-control" id="peso"><?php echo $subasta[4]; ?></output>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="precioSalida">Precio salida:</label>
+                    <output type="text" class="form-control" id="precioSalida"><?php echo $subasta[5] . "€"; ?></output>
+                </div>
+            </div>
+            <br>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="output">
+                        <p id="precio" class="text-center size-counter"><?php echo $subasta[5] . "€"; ?></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-boton">
+            <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">COMPRAR</button>
+        </div>
+            
+            <input type="number" value="<?php echo $subasta[8]?>" name="fix" style="visibility:hidden">
+            
+        </form>
+        
+        
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="npadding bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Aquabid 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+
+</html>

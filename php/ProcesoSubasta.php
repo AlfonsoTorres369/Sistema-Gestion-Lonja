@@ -79,7 +79,13 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
     header("Location:SubastaFinalizada.php");
     }
     if($ejec3row['actual']==false && $ejec3row['realizada']==true){
+        $fechote=mysqli_query($con, "SELECT fecha FROM Subasta WHERE ID_Subasta=".$subasta[8]);
+        $fechote1=mysqli_fetch_assoc($fechote);
+        $fechote2=date("Y-m-d H:i:s", strtotime($fechote1['fecha']."+5 minute"));
+        
+        $fecht3=mysqli_query($con, "UPDATE Subasta SET fecha='".$fechote2."' WHERE ID_Subasta=".$subasta[8]);
         header("Location:SubastaExpirada.php");
+        
     }
     if($ejec3row['actual']==false &&$ejec3row['realizada']==false){
         header("Location:Subastas.php");

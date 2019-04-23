@@ -98,7 +98,9 @@ if(isset($_POST['botonComprar'])){
         <br>
         <h4 class="text-center">Gracias por participar</h4>
         <br>
+        <form method="post">
         <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">Salir</button>
+        </form>
     </div>
     <!-- /.container -->
 
