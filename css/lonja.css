@@ -132,3 +132,15 @@ body{
     padding-left: 2rem;
     padding-right: 2rem;
 }
+
+#expirada{
+    max-width: 100vh;
+    margin-bottom: 13rem;
+    margin-top: 15rem;
+    border-radius: 1rem;
+    background-color:white;
+    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
