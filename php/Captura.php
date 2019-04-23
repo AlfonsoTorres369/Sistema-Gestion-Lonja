@@ -43,7 +43,7 @@ if (isset($_POST['guardar'])) {
     <meta name="description" content="Página principal de Aquabid">
     <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
 
-    <title>AQUABID</title>
+    <title>Captura</title>
 
     <link rel="shortcut icon" href="../images/Aquabid.png">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
@@ -78,7 +78,7 @@ if (isset($_POST['guardar'])) {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item-principal ">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Principal.php">Home</a>
                         </li>
                         <li class="nav-item-principal active">
@@ -90,17 +90,20 @@ if (isset($_POST['guardar'])) {
                         <li class="nav-item-principal">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Cesta.php">Cesta</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="InformacionCliente.php">Información</a>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="InformacionCliente.php">Info</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
-                        <li class="nav-item">
-							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

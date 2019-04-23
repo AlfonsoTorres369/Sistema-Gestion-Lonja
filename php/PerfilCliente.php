@@ -54,17 +54,20 @@ $row=mysqli_fetch_array($sql);
                         <li class="nav-item-principal">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Cesta.php">Cesta</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="InformacionCliente.php">Información</a>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="InformacionCliente.php">Info</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
-                        <li class="nav-item">
-							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>

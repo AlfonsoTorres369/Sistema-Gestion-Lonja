@@ -8,7 +8,7 @@
     <meta name="description" content="Página principal de Aquabid">
     <meta name="author" content="Miguel Ángel Pérez, Eric Romero, Alberto Sastre, Alfonso Torres">
 
-    <title>AQUABID</title>
+    <title>Información</title>
 
     <link rel="shortcut icon" href="../images/Aquabid.png">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
@@ -53,13 +53,13 @@
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item-principal">
                             <a class="nav-link active" href="InformacionAdmin.php">Información</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="PerfilAdmin.php" > Perfil</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
 							<a class="nav-link" href="logout-admin.php">Cerrar Sesión</a>
                         </li>
                     </ul>

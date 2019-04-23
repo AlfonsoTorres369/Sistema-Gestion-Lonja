@@ -24,7 +24,14 @@ if(isset($_POST['signup'])){
     $cif=mysqli_real_escape_string($con, $_POST['cif']);
     $conContrasenia=mysqli_real_escape_string($con, $_POST['conContrasenia']);
     $cuentaBancaria=mysqli_real_escape_string($con, $_POST['cuentaBancaria']);
-
+    $lonja= mysqli_real_escape_string($con, $_POST['lonja']);
+if($lonja=="Santander"){
+	$id_lonja=1;
+}else if($lonja=="Cádiz"){
+		$id_lonja=2;
+	}else if($lonja=="Cartagena"){
+			$id_lonja=3;
+		}
 
 //Comprobaciones nombre, apellidos, nombreE, direccionE
 if(!preg_match("/^[a-zA-Z ]+$/",$nombre)){
@@ -81,7 +88,7 @@ if(strlen($cuentaBancaria)!=20){
 	$cuentaBancaria_error="El numero de cuenta bancaria es erróneo";
 }
 if(!$error){
-	$sql=mysqli_query($con, "INSERT INTO Cliente (ID_Cliente, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."')");
+	$sql=mysqli_query($con, "INSERT INTO Cliente (ID_Cliente, nombre,apellidos,telefono,usuario,email,contrasenia, nombreE, direccionE,telefonoE,cif,cuentaBancaria, ID_Lonja) VALUES(NULL, '".$nombre."', '".$apellidos."', '".$telefonoc."', '".$usuario."', '".$email."', '".$contrasenia."', '".$nombreE."', '".$direccionE."', '".$telefonoE."', '".$cif."','".$cuentaBancaria."', '".$id_lonja."')");
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
 	}
@@ -105,7 +112,7 @@ if(!$error){
               </div>
               ';
          echo $successmsg;
-         header("Location:Principal.php");
+         header("Location: ../index.php");
 
 }else {
             $errormsg = '
@@ -171,10 +178,21 @@ if(!$error){
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label for="email">Dirección de email:</label>
                     <input type="email" class="form-control" placeholder="Dirección de email" id="email" name="email" required value="<?php if ($error) echo $email ?>">
                     <span class="text-danger"> <?php if (isset($email_error)) echo $email_error;?></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Zona captura">Lonja:</label>
+                    <div class="input-group-prepend">
+                        <select name="lonja" class="form-control rounded-right">
+                            <option disabled selected value> Seleccione una opción </option>
+                            <option>Santander</option>
+                            <option>Cádiz</option>
+                            <option>Cartagena</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-row">

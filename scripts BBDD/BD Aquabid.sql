@@ -2,6 +2,13 @@ DROP DATABASE IF EXISTS Aquabid;
 CREATE DATABASE IF NOT EXISTS Aquabid;
 
 USE Aquabid;
+-- Tabla Lonja --
+DROP TABLE IF EXISTS `Lonja`;
+CREATE TABLE `Lonja`(
+    `ID_Lonja` int NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(40) NOT NULL,
+    PRIMARY KEY (`ID_Lonja`)
+);
 -- Tabla Clientes --
 DROP TABLE IF EXISTS `Cliente`;
 CREATE TABLE `Cliente`(
@@ -17,7 +24,10 @@ CREATE TABLE `Cliente`(
     `telefonoE` VARCHAR(9)NOT NULL,
     `cif` VARCHAR(9) NOT NULL,
     `cuentaBancaria` VARCHAR(20) NOT NULL,
-    PRIMARY KEY(`ID_Cliente`)
+    `ID_Lonja` int NOT NULL,
+    PRIMARY KEY(`ID_Cliente`),
+    FOREIGN KEY(`ID_Lonja`) REFERENCES Lonja(`ID_Lonja`) ON UPDATE CASCADE
+    
 );
 
 -- Tabla Administradores --
@@ -40,7 +50,9 @@ CREATE TABLE `Subasta`(
     `actual` boolean NOT NULL,
     `realizada` boolean NOT NULL,
     `precio_actual` float,
-    PRIMARY KEY(`ID_Subasta`)
+    `ID_Lonja` int NOT NULL,
+    PRIMARY KEY(`ID_Subasta`),
+    FOREIGN KEY(`ID_Lonja`) REFERENCES Lonja(`ID_Lonja`) ON UPDATE CASCADE
 );
 
 -- Tabla Lotes --
@@ -57,6 +69,7 @@ CREATE TABLE `Lote`(
     `precio_minimo` float,
     `precio_venta` float,
     `subastado` boolean NOT NULL,
+    `pagado` boolean NOT NULL,
     `ID_Subasta` int,
     `ID_Cliente` int,
     `ID_Admin` int,
@@ -74,8 +87,8 @@ CREATE TABLE `Participa`(
     PRIMARY KEY(`ID_Subasta`, `ID_Cliente`),
     FOREIGN KEY(`ID_Subasta`) REFERENCES Subasta(`ID_Subasta`) ON UPDATE CASCADE,
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
-)
---Tabla Descuentos --
+);
+-- Tabla Descuentos --
 DROP TABLE IF EXISTS `Descuentos`;
 CREATE TABLE `Descuentos`(
     `ID_Cliente`int NOT NULL,
@@ -83,4 +96,8 @@ CREATE TABLE `Descuentos`(
     `fecha_ult_comp` DATE NOT NULL,
     PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
-)
+);
+INSERT INTO `Lonja` VALUES(1, 'Santander');
+INSERT INTO `Lonja` VALUES(2, 'Cádiz');
+INSERT INTO `Lonja` VALUES(3, 'Cartagena');
+

@@ -226,7 +226,7 @@ $(document).ready(function() {
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item-principal ">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Principal.php">Home</a>
                         </li>
                         <li class="nav-item-principal">
@@ -238,16 +238,19 @@ $(document).ready(function() {
                         <li class="nav-item-principal">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="Cesta.php">Cesta</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Informacion.php">Información</a>
+                        <li class="nav-item-principal">
+                            <a class="nav-link" href="InformacionCliente.php">Info</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
