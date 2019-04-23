@@ -100,4 +100,4 @@ CREATE TABLE `Descuentos`(
 INSERT INTO `Lonja` VALUES(1, 'Santander');
 INSERT INTO `Lonja` VALUES(2, 'CÃ¡diz');
 INSERT INTO `Lonja` VALUES(3, 'Cartagena');
-
+INSERT INTO `Administrador` (`ID_Admin`, `nombre`, `apellidos`, `telefono`, `email`, `contrasenia`) VALUES (NULL, 'Admin', 'Default', '555555555', 'admin.default@upm.es', '123456');

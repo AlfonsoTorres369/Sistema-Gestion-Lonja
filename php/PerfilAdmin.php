@@ -63,7 +63,6 @@ $row = mysqli_fetch_array($sql);
             </div>
         </nav>
     </header>
-
     <br>
     <br>
     <div id="perfilAdmin" class="shadow-lg container">
@@ -77,7 +76,7 @@ $row = mysqli_fetch_array($sql);
                 </div>
                 <div class="form-group col-md-6">
                     <label for="apellidos">Apellidos:</label>
-                    <output type="text" class="form-control" name="apellidos"><?php echo $row['telefono']; ?></output>
+                    <output type="text" class="form-control" name="apellidos"><?php echo $row['apellidos']; ?></output>
                 </div>
             </div>
             
