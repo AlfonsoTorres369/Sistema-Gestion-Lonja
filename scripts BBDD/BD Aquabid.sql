@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS Aquabid;
 CREATE DATABASE IF NOT EXISTS Aquabid;
 
 USE Aquabid;
---Tabla Lonja--
+-- Tabla Lonja --
 DROP TABLE IF EXISTS `Lonja`;
 CREATE TABLE `Lonja`(
     `ID_Lonja` int NOT NULL AUTO_INCREMENT,
