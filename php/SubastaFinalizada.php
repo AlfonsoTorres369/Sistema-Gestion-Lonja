@@ -8,12 +8,14 @@ include_once 'Conexion.php';
 $sql=mysqli_query($con, "SELECT * FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
 $row=mysqli_fetch_array($sql);
 
+$lote = mysqli_query($con, "SELECT * FROM lote WHERE ID_Subasta=".$_SESSION['subasta']);
+$loterow = mysqli_fetch_array($lote);
 //hay que sacar el ID_Lote
-$sql1 = "SELECT * FROM Lote WHERE ID_Lote = 1";
+$sql1 = "SELECT * FROM Lote WHERE ID_Lote =".$loterow['ID_Lote'];
 $consulta1 = mysqli_query($con, $sql1);
 $row = mysqli_fetch_array($consulta1);
 
-$sql2 = "SELECT usuario, nombreE FROM Cliente c INNER JOIN Lote l ON  c.ID_Cliente = l.ID_Cliente AND ID_Lote = 1";
+$sql2 = "SELECT usuario, nombreE FROM Cliente c INNER JOIN Lote l ON  c.ID_Cliente = l.ID_Cliente AND ID_Lote =".$loterow['ID_Lote'];
 $consulta2 = mysqli_query($con, $sql2);
 $row2 = mysqli_fetch_array($consulta2);
 ?>
