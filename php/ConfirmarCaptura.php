@@ -43,7 +43,7 @@ if (isset($_POST['confirmar'])) {
 		}
 		$id_Subasta=mysqli_fetch_assoc($res);
 		//Update en Lote
-		$sql_lote="UPDATE Lote SET barco = '" . $barco . "', zona_captura = '" . $zona_captura . "', producto = '" . $producto . "', peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."', ID_Subasta='".$id_Subasta["MAX(ID_Subasta)"]."' 
+		$sql_lote="UPDATE Lote SET peso = '" . $peso . "', tamanio = '" . $tamanio . "', precio_salida = '" . $precio_salida . "', precio_minimo = '" . $precio_minimo . "', ID_Admin = '" . $_SESSION['ID_Admin'] ."', ID_Subasta='".$id_Subasta["MAX(ID_Subasta)"]."' 
 		WHERE ID_Lote = '".$id_lote."'";
 		$result2 = mysqli_query($con,$sql_lote);
 		if (false == $result2) {
@@ -156,8 +156,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Barco">Barco:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/barco.png" class="img-input-decorator"></div>
-                        <input name="barco" class="form-control input-decorator-radius-left" value="<?php echo $captura[1] ?>" type="text">
-                        
+                        <output name="barco" class="form-control input-decorator-radius-left"><?php echo $captura[1] ?></output>
                     </div>
                 </div>
             </div>
@@ -166,12 +165,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Zona captura">Zona captura:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/location.png" class="img-input-decorator"></div>
-                        <select name="zona_captura" class="form-control rounded-right">
-                            <option disabled selected value> <?php echo $captura[2] ?> </option>
-                            <option>Cantábrico</option>
-                            <option>Atlántico</option>
-                            <option>Mediterráneo</option>
-                        </select>
+                        <output name="zona_captura" class="form-control input-decorator-radius-left"><?php echo $captura[2] ?></output>
                     </div>
                 </div>
             </div>
@@ -181,7 +175,7 @@ if (isset($_POST['confirmar'])) {
                     <label for="Producto">Producto:</label>
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/pez.png" class="img-input-decorator"></div>
-                        <input name="producto" class="form-control input-decorator-radius-left" value="<?php echo $captura[3] ?>" type="text">
+                        <output name="producto" class="form-control input-decorator-radius-left"><?php echo $captura[3] ?></output>
                     </div>
                 </div>
             </div>
