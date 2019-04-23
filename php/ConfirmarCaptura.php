@@ -37,7 +37,7 @@ if (isset($_POST['confirmar'])) {
 		}
     //Insert en Subasta
 	if(!$error){
-		$sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada,precio_actual, ID_Lonja) VALUES('" . $fecha . "', '0', '0', '".$precio_salida."', '".$id_lonja."')";
+		$sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada,precio_actual, ID_Lonja, express_no) VALUES('" . $fecha . "', '0', '0', '".$precio_salida."', '".$id_lonja."', '0')";
 		$result1 = mysqli_query($con, $sql_subasta);
 		if (false == $result1) {
 			printf("errorA: %s\n", mysqli_error($con));
