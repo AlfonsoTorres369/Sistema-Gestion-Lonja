@@ -33,7 +33,7 @@ if($numrow == 0){
         printf("error: %s\n",mysqli_error($con));
     }
     $maildef = mysqli_fetch_array($mail);
-    mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta\nBarco: ".$subasta[0]."\nZona de Captura:".$subasta[1]."\nProducto:".$subasta[2]."\nTamaño:".$subasta[3]." cm\nPeso:".$subasta[4]." kg\nPrecio de Salida:".$subasta[5]."\nFecha:".$subasta[6]."\n\n¡Gracias por apuntarse!");
+    mail($maildef['email'],"Apuntado en nueva Subasta","Te has apuntado en una nueva subasta!\nDatos de la subasta\nBarco: ".$subasta[0]."\nZona de Captura: ".$subasta[1]."\nProducto: ".$subasta[2]."\nTamaño: ".$subasta[3]." cm\nPeso: ".$subasta[4]." kg\nPrecio de Salida: ".$subasta[5]." €\nFecha: ".$subasta[6]."\n\n¡Gracias por apuntarse!");
     $result3=mysqli_query($con,"INSERT INTO Participa(ID_Cliente, ID_Subasta)VALUES('".$_SESSION['ID_Cliente']."', '".$subasta[8]."')");
     if(false==$result3){
 	   printf("\n error:. %s\n",mysqli_error($con));
@@ -73,7 +73,7 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
     }
     $mail2 = mysqli_query($con,"SELECT email FROM Cliente WHERE ID_Cliente='".$_SESSION['ID_Cliente']."'");
     $mailrow = mysqli_fetch_array($mail2);
-    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']."\nPor favor, pasese por nuestra web para ingresar el importe.");
+    mail($mailrow['email'],"Compra pendiente","Hola.\nLe informamos que tiene pendiente por pagar una compra de ".$subasta[2]." a un precio de ".$precio['precio_actual']." €\nPor favor, pasese por nuestra web para ingresar el importe.");
     
     
     header("Location:SubastaFinalizada.php");

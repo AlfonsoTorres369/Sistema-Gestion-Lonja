@@ -92,7 +92,7 @@ if(!$error){
     if(false==$sql){
 		printf("error: %s\n", mysqli_error($con));
 	}
-    //mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Web: localhost/Sistema-Gestion-Lonja/index.php");
+    mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Web: https://localhost/Sistema-Gestion-Lonja/index.php");
     $sql_ID="SELECT MAX(ID_Cliente) FROM Cliente";
 	$res=mysqli_query($con,$sql_ID);
 	if(false==$res){

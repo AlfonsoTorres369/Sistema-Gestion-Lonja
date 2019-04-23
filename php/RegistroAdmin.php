@@ -66,7 +66,7 @@ if(!$error){
     mail($email,"Registro","El registro a la lonja online Aquabid se ha realizado con éxito. Usted es un nuevo administrador. Aquí tiene los datos de su cuenta:
     Usuario:".$nombre."
     Contraseña:".$contrasenia."
-    Web: localhost/Sistema-Gestion-Lonja/index.php");
+    Web: https://localhost/Sistema-Gestion-Lonja/index.php");
 
         $successmsg = '
              <div class="alert alert-success alert-dismissable fade in">

@@ -83,7 +83,7 @@ if(isset($_POST['botonComprar'])){
     
     $c_email=mysqli_query($con, "SELECT email, cuentaBancaria FROM Cliente WHERE ID_Cliente=".$_SESSION['ID_Cliente']);
     $email=mysqli_fetch_array($c_email);
-    mail($email['email'],"Factura de tu Compra","Buenos días\n\nLe informamos que acaba de realizar el pago de su compra.\n\nHa comprado: ".$compra[2]."\nCuenta dónde se realizará la extracción: ".$email['cuentaBancaria']."\nImporte:".$precio_actual."\n\n¡Gracias por su compra!");
+    mail($email['email'],"Factura de tu Compra","Buenos días.\n\nLe informamos que acaba de realizar el pago de su compra.\n\nHa comprado: ".$compra[2]."\nCuenta dónde se realizará la extracción:  ".$email['cuentaBancaria']."\nImporte: ".$precio_actual." €\n\n¡Gracias por su compra!");
     $pagadito=mysqli_query($con, "UPDATE Lote SET pagado=true, precio_venta=".$precio_actual." WHERE ID_Lote=".$compra[7]);
     
     header("Location: Cesta.php");
@@ -177,13 +177,13 @@ if(isset($_POST['botonComprar'])){
         <form method="post">
         <br>
         <h1 class="text-center">Factura</h1>
-        <h3>Precio de adquisición: <?php echo $compra[5]; ?></h3>
+        <h3>Precio de adquisición: <?php echo $compra[5]."€"; ?></h3>
         <br>
         <span class="text-success"><?php if (isset($text_desc)) echo $text_desc; ?></span>
         <br>
         <span class="text-success"><?php if (isset($text_desc2)) echo $text_desc2; ?></span>
         <br>
-        <h3>Precio de compra final: <?php echo $precio_actual; ?></h3>
+        <h3>Precio de compra final: <?php echo $precio_actual."€"; ?></h3>
         <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">Pagar</button>
         </form>
     </div>
