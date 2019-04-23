@@ -81,6 +81,9 @@ $precio_actual=$compra[5];
 	}
 if(isset($_POST['botonComprar'])){
     
+    $c_email=mysqli_query($con, "SELECT email, cuentaBancaria FROM Cliente WHERE ID_Cliente=".$_SESSION['ID_Cliente']);
+    $email=mysqli_fetch_array($c_email);
+    mail($email['email'],"Factura de tu Compra","Buenos días\n\nLe informamos que acaba de realizar el pago de su compra.\n\nHa comprado: ".$compra[2]."\nCuenta dónde se realizará la extracción: ".$email['cuentaBancaria']."\nImporte:".$precio_actual."\n\n¡Gracias por su compra!");
     $pagadito=mysqli_query($con, "UPDATE Lote SET pagado=true, precio_venta=".$precio_actual." WHERE ID_Lote=".$compra[7]);
     
     header("Location: Cesta.php");
