@@ -54,7 +54,7 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
     
     $ejec3=mysqli_query($con, "SELECT actual, realizada FROM Subasta WHERE ID_Subasta=".$subasta[8]);
     $ejec3row=mysqli_fetch_array($ejec3);
-    if($ejec3row['actual']==true && ejec3row['realizada']==false){
+    if($ejec3row['actual']==true && $ejec3row['realizada']==false){
     
     $fix=mysqli_real_escape_string($con, $_POST['fix']);
     
@@ -145,7 +145,7 @@ if(isset($_POST['botonComprar']) && $_SESSION['expirada']==false){
 	}*/
     
     
-    header("Location:Principal.php");
+    header("Location:SubastaFinalizada.php");
     }
     if($ejec3row['actual']==false && $ejec3row['realizada']==true){
         header("Location:SubastaExpirada.php");
