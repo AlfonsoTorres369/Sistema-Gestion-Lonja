@@ -1,3 +1,17 @@
+<?php
+
+include_once "Conexion.php";
+session_start();
+
+if(isset($_POST['botonComprar'])){
+    header("Location: Principal.php");
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

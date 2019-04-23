@@ -8,7 +8,7 @@ if (isset($_SESSION['ID_Admin']) == "") {
 
 include_once 'Conexion.php';
 //Estrucutra captura 0 id lote, 1 barco, 2 zona, 3 producto, 4 peso, 5 tamaño 
-$captura=$_GET['captura'];
+$captura = $_GET['captura'];
 //el ID_Lote tiene que ser el pasado desde la pagina Revision.php
 
 if (isset($_POST['confirmar'])) {
@@ -109,7 +109,6 @@ if (isset($_POST['confirmar'])) {
 
 <body id="bprincipal ">
     <!-- Navigation -->
-    
    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
@@ -145,7 +144,6 @@ if (isset($_POST['confirmar'])) {
             </div>
         </nav>
     </header>
-
 
     <!-- Page Content -->
     <br>
