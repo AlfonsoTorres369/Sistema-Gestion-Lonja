@@ -90,7 +90,7 @@ if(isset($_POST['botonComprar'])){
     <!-- Page Content -->
     <br>
     <br>
-    <div id="expirada" class="shadow-lg container">
+    <div id="formularioCliente" class="shadow-lg container">
         <br>
         <h1 class="text-center">Subasta expirada</h1>
         <c>La subasta ha terminado sin que ninguno de los participantes haya adquirido el lote. El lote se pondrá a la venta en una subasta express próximamente</c>
@@ -98,7 +98,9 @@ if(isset($_POST['botonComprar'])){
         <br>
         <h4 class="text-center">Gracias por participar</h4>
         <br>
+        <form method="post">
         <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">Salir</button>
+        </form>
     </div>
     <!-- /.container -->
 
