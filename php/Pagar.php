@@ -81,9 +81,9 @@ $precio_actual=$compra[5];
 	}
 if(isset($_POST['botonComprar'])){
     
-    $pagadito=mysqli_query("UPDATE Lote SET pagado=true, precio_venta=".$precio_actual." WHERE ID_Lote=".$compra[7]);
+    $pagadito=mysqli_query($con, "UPDATE Lote SET pagado=true, precio_venta=".$precio_actual." WHERE ID_Lote=".$compra[7]);
     
-    header("Location: Principal.php");
+    header("Location: Cesta.php");
 }
 
 ?>
@@ -181,7 +181,7 @@ if(isset($_POST['botonComprar'])){
         <span class="text-success"><?php if (isset($text_desc2)) echo $text_desc2; ?></span>
         <br>
         <h3>Precio de compra final: <?php echo $precio_actual; ?></h3>
-        <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">Salir</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="botonComprar" name="botonComprar">Pagar</button>
         </form>
     </div>
     <!-- /.container -->

@@ -92,10 +92,10 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
-                        <li class="nav-item-principal active">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
                         <li class="nav-item-principal">
