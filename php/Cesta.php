@@ -92,13 +92,13 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                         <li class="nav-item-principal">
                             <a class="nav-link" href="Captura.php">Captura</a>
                         </li>
-                        <li class="nav-item-principal active">
+                        <li class="nav-item-principal">
                             <a class="nav-link" href="Subastas.php">Subastas</a>
                         </li>
                         <li class="nav-item-principal">
                             <a class="nav-link" href="SubastasExpress.php">Subastas Express</a>
                         </li>
-                        <li class="nav-item-principal">
+                        <li class="nav-item-principal active">
                             <a class="nav-link" href="Cesta.php">Cesta</a>
                         </li>
                     </ul>
@@ -111,7 +111,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                             <a class="nav-link" href="PerfilCliente.php">Perfil</a>
                         </li>
                         <li class="nav-item-principal">
-                            <a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
+							<a class="nav-link" href="logout-cliente.php">Cerrar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -124,7 +124,7 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
     <br>
     <div id="formularioCliente" class="shadow-lg container">
         <br>
-        <h1 class="text-center">Subastas</h1>
+        <h1 class="text-center">Cesta</h1>
 
         <?php
         //Falta poner el link personalizado que diriga a la pagina donde se realizará la subasta de cada lote

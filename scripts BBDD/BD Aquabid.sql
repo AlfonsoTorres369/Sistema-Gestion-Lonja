@@ -74,8 +74,8 @@ CREATE TABLE `Participa`(
     PRIMARY KEY(`ID_Subasta`, `ID_Cliente`),
     FOREIGN KEY(`ID_Subasta`) REFERENCES Subasta(`ID_Subasta`) ON UPDATE CASCADE,
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
-)
---Tabla Descuentos --
+);
+-- Tabla Descuentos --
 DROP TABLE IF EXISTS `Descuentos`;
 CREATE TABLE `Descuentos`(
     `ID_Cliente`int NOT NULL,
@@ -83,4 +83,4 @@ CREATE TABLE `Descuentos`(
     `fecha_ult_comp` DATE NOT NULL,
     PRIMARY KEY (`ID_Cliente`),
     FOREIGN KEY(`ID_Cliente`) REFERENCES Cliente(`ID_Cliente`) ON UPDATE CASCADE
-)
+);
