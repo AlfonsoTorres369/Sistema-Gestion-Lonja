@@ -8,7 +8,7 @@ if (isset($_SESSION['ID_Admin']) == "") {
 
 include_once 'Conexion.php';
 //Estrucutra captura 0 id lote, 1 barco, 2 zona, 3 producto, 4 peso, 5 tamaño 
-$captura=$_GET['captura'];
+$captura = $_GET['captura'];
 //el ID_Lote tiene que ser el pasado desde la pagina Revision.php
 
 if (isset($_POST['confirmar'])) {
@@ -23,13 +23,21 @@ if (isset($_POST['confirmar'])) {
     $fecha = mysqli_real_escape_string($con, $_POST['fecha']);
     $id_lote=mysqli_real_escape_string($con, $_POST['id_lote']);
     $error=false;
+    $lonja= mysqli_real_escape_string($con, $_POST['lonja']);
+	if($lonja=="Santander"){
+		$id_lonja=1;
+	}else if($lonja=="Cádiz"){
+		$id_lonja=2;
+		}else if($lonja=="Cartagena"){
+			$id_lonja=3;
+			}
 	if($precio_minimo>$precio_salida){
 			$error=true;
 			$precio_error="El precio minimo debe ser menor que el precio de salida";
 		}
     //Insert en Subasta
 	if(!$error){
-		$sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada,precio_actual) VALUES('" . $fecha . "', '0', '0', '".$precio_salida."')";
+		$sql_subasta = "INSERT INTO Subasta (fecha, actual, realizada,precio_actual, ID_Lonja) VALUES('" . $fecha . "', '0', '0', '".$precio_salida."', '".$id_lonja."')";
 		$result1 = mysqli_query($con, $sql_subasta);
 		if (false == $result1) {
 			printf("errorA: %s\n", mysqli_error($con));
@@ -58,7 +66,7 @@ if (isset($_POST['confirmar'])) {
 			</div>';
 		echo $successmsg;
 
-		header("Location: Revision.php");
+		//header("Location: Revision.php");
 	}else{
 		header('Location:' . getenv('HTTP_REFERER'));
 	}
@@ -101,7 +109,6 @@ if (isset($_POST['confirmar'])) {
 
 <body id="bprincipal ">
     <!-- Navigation -->
-    
    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top nnavbar">
             <div class="container">
@@ -138,7 +145,6 @@ if (isset($_POST['confirmar'])) {
         </nav>
     </header>
 
-
     <!-- Page Content -->
     <br>
     <br>
@@ -157,6 +163,20 @@ if (isset($_POST['confirmar'])) {
                     <div class="input-group-prepend">
                         <div class="input-group-text input-decorator-radius-right"><img src="../images/barco.png" class="img-input-decorator"></div>
                         <output name="barco" class="form-control input-decorator-radius-left"><?php echo $captura[1] ?></output>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-12">
+                    <label for="Zona captura">Lonja:</label>
+                    <div class="input-group-prepend">
+					<div class="input-group-text input-decorator-radius-right"><img src="../images/Lonja.png" class="img-input-decorator"></div>
+                        <select name="lonja" class="form-control rounded-right">
+                            <option disabled selected value> Seleccione una opción </option>
+                            <option>Santander</option>
+                            <option>Cádiz</option>
+                            <option>Cartagena</option>
+                        </select>
                     </div>
                 </div>
             </div>
