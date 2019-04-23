@@ -8,7 +8,7 @@ if (isset($_SESSION['ID_Cliente']) == "") {
 
 include_once 'Conexion.php';
 
-$sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_salida, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
+$sql = 'SELECT L. ID_Lote, L.barco, L.zona_captura, L.producto, L.tamanio, L.peso, L.precio_venta, L.precio_minimo, L.imagen, S.fecha, L.ID_Subasta
 		FROM Lote L INNER JOIN Subasta S ON L.ID_Subasta=S.ID_Subasta 
 		WHERE L.ID_Cliente = ' . $_SESSION['ID_Cliente'] . ' AND L.pagado = false';
 
@@ -27,7 +27,7 @@ if ($num_rows > 0) {
         $producto[] = $row["producto"];
         $tamaño[] = $row["tamanio"];
         $peso[] = $row["peso"];
-        $precio_salida[] = $row["precio_salida"];
+        $precio_venta[] = $row["precio_venta"];
         $precio_minimo[] = $row["precio_minimo"];
         $imagen[] = $row["imagen"];
         $lote[] = $row["ID_Lote"];
@@ -131,12 +131,12 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
         if ($num_rows > 0) {
             for ($x = 0; $x < $num_rows; $x++) {
 
-                //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_salida, 6: fecha, 7:ID_Lote, 8: ID_Subasta, 9:precio_minimo
-                $subasta = array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_salida[$x], $fecha[$x], $lote[$x], $ID_Subasta[$x], $precio_minimo[$x]);
+                //Estructura subasta 0: barco, 1: zona_captura, 2: producto, 3:tamaño, 4: peso, 5: precio_venta, 6: fecha, 7:ID_Lote, 8:precio_minimo
+                $compra = array($barco[$x], $zona_captura[$x], $producto[$x], $tamaño[$x], $peso[$x], $precio_venta[$x], $fecha[$x], $lote[$x], $precio_minimo[$x]);
 
                 echo '
                 <div class="col-md-12 mb-5">
-                    <a class="shadow-lg card h-100">
+                    <a href="Pagar.php?'. http_build_query(array('compra' => $compra)) .'" class="shadow-lg card h-100" id="tarjetaPrincipal">
                         <div class="d-flex flex-row">
                             <div style="width: 50%">
                                 <img style="width: 100%; height: 100%" src="data:image/jpeg;base64,' . base64_encode($imagen[$x]) . '" alt="Foto del lote">
@@ -159,8 +159,8 @@ $sin_subastas = '<p>No hay lotes pendientes de pago en estos momentos.</p>';
                                     <p class="list-inline-item">' . $peso[$x] . '</p>
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="precioSalida">Precio salida:</label>
-                                    <p class="list-inline-item">' . $precio_salida[$x] . '</p>
+                                    <label for="precioSalida">Precio compra:</label>
+                                    <p class="list-inline-item">' . $precio_venta[$x] . '</p>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="precioSalida">Fecha:</label>

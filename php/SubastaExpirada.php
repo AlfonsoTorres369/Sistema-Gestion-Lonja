@@ -90,7 +90,7 @@ if(isset($_POST['botonComprar'])){
     <!-- Page Content -->
     <br>
     <br>
-    <div id="expirada" class="shadow-lg container">
+    <div id="formularioCliente" class="shadow-lg container" >
         <br>
         <h1 class="text-center">Subasta expirada</h1>
         <c>La subasta ha terminado sin que ninguno de los participantes haya adquirido el lote. El lote se pondrá a la venta en una subasta express próximamente</c>
