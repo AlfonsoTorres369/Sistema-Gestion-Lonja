@@ -148,15 +148,15 @@ $sin_subastas = '<p>No hay subastas disponibles en estos momentos.</p>';
                             </div>
                             <div class="col-md-12">
                                 <label for="tamaño">Tamaño:</label>
-                                <p class="list-inline-item">' . $tamaño[$x] . '</p>
+                                <p class="list-inline-item">' . $tamaño[$x] . ' cm</p>
                             </div>
                             <div class="col-md-12">
                                 <label for="peso">Peso:</label>
-                                <p class="list-inline-item">' . $peso[$x] . '</p>
+                                <p class="list-inline-item">' . $peso[$x] . ' Kg</p>
                             </div>
                             <div class="col-md-12">
                                 <label for="precioSalida">Precio salida:</label>
-                                <p class="list-inline-item">' . $precio_salida[$x] . '</p>
+                                <p class="list-inline-item">' . $precio_salida[$x] . '€</p>
                             </div>
                             <div class="col-md-12">
                                 <label for="precioSalida">Fecha:</label>
