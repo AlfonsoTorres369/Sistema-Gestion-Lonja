@@ -2,7 +2,7 @@
 /*Datos de conexion a la base de datos*/
 $db_host = "localhost";
 $db_user = "phpmyadmin";
-$db_pass = "";
+$db_pass = "heartshapedbox1993";
 $db_name = "Aquabid";
  
 $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
