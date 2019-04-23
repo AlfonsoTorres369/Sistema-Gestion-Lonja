@@ -4,10 +4,6 @@ include_once 'Conexion.php';
 session_start();
 $sql = mysqli_query($con, "SELECT * FROM Administrador WHERE ID_Admin='" . $_SESSION['ID_Admin'] . "'");
 $row = mysqli_fetch_array($sql);
-
-
-
-
 ?>
 
 <!DOCTYPE html>
